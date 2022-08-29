@@ -8,7 +8,8 @@ object Versions {
     const val kotlin = "1.7.10"
     const val androidGradlePlugin = "7.2.2"
 
-    const val checkDependencyUpdates = "1.5.0"
+    const val detektPlugin = "1.21.0"
+    const val checkDependencyUpdatesPlugin = "1.5.0"
 
     const val coroutines = "1.6.4"
 

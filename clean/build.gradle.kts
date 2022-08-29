@@ -1,6 +1,14 @@
 plugins {
     id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
+
+    id(Plugins.detekt) version (Versions.detektPlugin)
+}
+
+detekt {
+    parallel = true
+    buildUponDefaultConfig = true
+    config = files("../config/detekt-config.yml")
 }
 
 android {
@@ -39,4 +47,14 @@ android {
 dependencies {
     implementation(Dependencies.coroutines)
     implementation(Dependencies.timber)
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    reports {
+        html.required.set(true)
+        xml.required.set(false)
+        txt.required.set(false)
+        sarif.required.set(false)
+        md.required.set(false)
+    }
 }

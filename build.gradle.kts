@@ -17,7 +17,7 @@ plugins {
     id(Plugins.androidLibrary) version(Versions.androidGradlePlugin) apply false
     id(Plugins.kotlinAndroid) version(Versions.kotlin) apply false
 
-    id(Plugins.checkDependencyUpdates) version(Versions.checkDependencyUpdates)
+    id(Plugins.checkDependencyUpdates) version(Versions.checkDependencyUpdatesPlugin)
 }
 
 tasks.register("clean", Delete::class) {

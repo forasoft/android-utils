@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "AndroidUtils"
-include(":clean")
+include(":clean", ":kotlin")

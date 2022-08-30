@@ -5,7 +5,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
-import kotlin.time.Duration.Companion.seconds
+import kotlin.time.Duration.Companion.days
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -79,6 +79,6 @@ class JobHolderTest {
         assertThat(job2.isActive).isTrue()
     }
 
-    private fun CoroutineScope.testJob(): Job = launch { delay(10.seconds) }
+    private fun CoroutineScope.testJob(): Job = launch { delay(1.days) }
 
 }

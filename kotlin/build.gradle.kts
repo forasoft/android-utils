@@ -8,6 +8,14 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
+tasks.test {
+    useJUnit()
+}
+
 dependencies {
     implementation(Dependencies.coroutines)
+
+    testImplementation(Dependencies.jUnit)
+    testImplementation(Dependencies.truth)
+    testImplementation(Dependencies.coroutinesTest)
 }

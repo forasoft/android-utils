@@ -15,4 +15,7 @@ object Versions {
 
     const val timber = "5.0.1"
 
+    const val jUnit = "4.13.2"
+    const val truth = "1.1.3"
+
 }

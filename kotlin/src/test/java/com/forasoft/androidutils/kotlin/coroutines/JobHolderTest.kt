@@ -79,15 +79,6 @@ class JobHolderTest {
         assertThat(job2.isActive).isTrue()
     }
 
-    @Test
-    fun cancel_cancelsCurrentJob() = runTest {
-        jobHolder interruptWith testJob()
-
-        jobHolder.cancel()
-
-        assertThat(jobHolder.job?.isCancelled).isTrue()
-    }
-
     private fun CoroutineScope.testJob(): Job = launch { delay(10.seconds) }
 
 }

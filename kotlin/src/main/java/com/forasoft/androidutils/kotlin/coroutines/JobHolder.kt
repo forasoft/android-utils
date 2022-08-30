@@ -1,6 +1,5 @@
 package com.forasoft.androidutils.kotlin.coroutines
 
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.getAndUpdate
@@ -43,23 +42,6 @@ class JobHolder {
      */
     infix fun replaceWith(job: Job?) {
         _job.value = job
-    }
-
-    /**
-     * Cancels the current job with an optional cancellation [cause].
-     *
-     * @param cause can be used to specify an error message or to provide
-     * other details on the cancellation reason for debugging purposes.
-     */
-    fun cancel(cause: CancellationException? = null) {
-        _job.value?.cancel(cause)
-    }
-
-    /**
-     * Suspends the coroutine until the current job is complete.
-     */
-    suspend fun join() {
-        _job.value?.join()
     }
 
 }

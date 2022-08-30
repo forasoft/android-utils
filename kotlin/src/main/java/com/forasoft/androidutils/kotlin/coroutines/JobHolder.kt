@@ -14,7 +14,7 @@ class JobHolder {
     private val _job = MutableStateFlow<Job?>(null)
 
     /**
-     * Represents the current job as a read-only job.
+     * Current job.
      */
     val job get() = _job.value
 

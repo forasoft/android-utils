@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace = "com.forasoft.androidutils.platform.android"
-    compileSdk = 32
+    compileSdk = 33
 
     defaultConfig {
-        minSdk = 16
-        targetSdk = 32
+        minSdk = 1
+        targetSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

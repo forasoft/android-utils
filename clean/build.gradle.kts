@@ -13,11 +13,11 @@ detekt {
 
 android {
     namespace = "com.forasoft.androidutils.clean"
-    compileSdk = Versions.compileSdk
+    compileSdk = 33
 
     defaultConfig {
-        minSdk = Versions.cleanMinSdk
-        targetSdk = Versions.targetSdk
+        minSdk = 14
+        targetSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

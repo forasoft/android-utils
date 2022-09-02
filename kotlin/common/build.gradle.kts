@@ -1,6 +1,14 @@
 plugins {
     id(Plugins.javaLibrary)
     id(Plugins.kotlinJvm)
+
+    id(Plugins.detekt) version (Versions.detektPlugin)
+}
+
+detekt {
+    parallel = true
+    buildUponDefaultConfig = true
+    config = files("../config/detekt-config.yml")
 }
 
 java {

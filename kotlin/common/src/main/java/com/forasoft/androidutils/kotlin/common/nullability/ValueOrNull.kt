@@ -19,7 +19,7 @@ package com.forasoft.androidutils.kotlin.common.nullability
  * @param operation function to run
  * @return [operation] result or null if [E] is thrown
  */
-inline fun <reified E : Throwable, R> valueOrNull(operation: () -> R): R? {
+inline fun <R, reified E : Throwable> valueOrNull(operation: () -> R): R? {
     runCatching { operation() }
         .onSuccess { return it }
         .onFailure { if (it is E) return null else throw it }

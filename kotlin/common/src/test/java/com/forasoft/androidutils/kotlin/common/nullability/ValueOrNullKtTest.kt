@@ -11,7 +11,7 @@ class ValueOrNullKtTest {
         val returnValue = true
         val operation = { returnValue }
 
-        val result = valueOrNull<Exception, Boolean> { operation() }
+        val result = valueOrNull<Boolean, Exception> { operation() }
 
         Truth.assertThat(result).isEqualTo(returnValue)
     }
@@ -24,7 +24,7 @@ class ValueOrNullKtTest {
             true
         }
 
-        val result = valueOrNull<IllegalStateException, Boolean> { operation() }
+        val result = valueOrNull<Boolean, IllegalStateException> { operation() }
 
         Truth.assertThat(result).isEqualTo(null)
     }
@@ -37,7 +37,7 @@ class ValueOrNullKtTest {
             true
         }
 
-        val result = valueOrNull<Exception, Boolean> { operation() }
+        val result = valueOrNull<Boolean, Exception> { operation() }
 
         Truth.assertThat(result).isEqualTo(null)
     }
@@ -51,7 +51,7 @@ class ValueOrNullKtTest {
         }
 
         assertThrows(IllegalStateException::class.java) {
-            valueOrNull<IllegalArgumentException, Boolean> { operation() }
+            valueOrNull<Boolean, IllegalArgumentException> { operation() }
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.forasoft.androidutils.kotlin.common.nullability
 
-import com.google.common.truth.Truth
-import org.junit.Assert.*
+import com.google.common.truth.Truth.assertThat
+import org.junit.Assert.assertThrows
 import org.junit.Test
 
 class ValueOrNullKtTest {
@@ -13,7 +13,7 @@ class ValueOrNullKtTest {
 
         val result = valueOrNull<Boolean, Exception> { operation() }
 
-        Truth.assertThat(result).isEqualTo(returnValue)
+        assertThat(result).isEqualTo(returnValue)
     }
 
     @Test
@@ -26,7 +26,7 @@ class ValueOrNullKtTest {
 
         val result = valueOrNull<Boolean, IllegalStateException> { operation() }
 
-        Truth.assertThat(result).isEqualTo(null)
+        assertThat(result).isEqualTo(null)
     }
 
     @Test
@@ -39,7 +39,7 @@ class ValueOrNullKtTest {
 
         val result = valueOrNull<Boolean, Exception> { operation() }
 
-        Truth.assertThat(result).isEqualTo(null)
+        assertThat(result).isEqualTo(null)
     }
 
     @Test

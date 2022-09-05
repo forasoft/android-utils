@@ -14,8 +14,8 @@ package com.forasoft.androidutils.kotlin.common.nullability
  * val date = valueOrNull<ZonedDateTime, DateTimeParseException> { ZonedDateTime.parse(dateString) }
  * ```
  *
- * @param E allowed throwable type
  * @param R return type
+ * @param E allowed throwable type
  * @param operation function to run
  * @return [operation] result or null if [E] is thrown
  */

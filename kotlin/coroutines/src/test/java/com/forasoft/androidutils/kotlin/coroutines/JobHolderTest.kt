@@ -1,6 +1,6 @@
 package com.forasoft.androidutils.kotlin.coroutines
 
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -26,7 +26,7 @@ class JobHolderTest {
 
         val currentJob = jobHolder.job
 
-        Truth.assertThat(currentJob).isEqualTo(job)
+        assertThat(currentJob).isEqualTo(job)
     }
 
     @Test
@@ -38,8 +38,8 @@ class JobHolderTest {
         jobHolder interruptWith job2
 
         val currentJob = jobHolder.job
-        Truth.assertThat(currentJob).isEqualTo(job2)
-        Truth.assertThat(currentJob).isNotEqualTo(job1)
+        assertThat(currentJob).isEqualTo(job2)
+        assertThat(currentJob).isNotEqualTo(job1)
     }
 
     @Test
@@ -50,8 +50,8 @@ class JobHolderTest {
         val job2 = testJob()
         jobHolder interruptWith job2
 
-        Truth.assertThat(job1.isCancelled).isTrue()
-        Truth.assertThat(job2.isActive).isTrue()
+        assertThat(job1.isCancelled).isTrue()
+        assertThat(job2.isActive).isTrue()
     }
 
     @Test
@@ -63,8 +63,8 @@ class JobHolderTest {
         jobHolder replaceWith job2
 
         val currentJob = jobHolder.job
-        Truth.assertThat(currentJob).isEqualTo(job2)
-        Truth.assertThat(currentJob).isNotEqualTo(job1)
+        assertThat(currentJob).isEqualTo(job2)
+        assertThat(currentJob).isNotEqualTo(job1)
     }
 
     @Test
@@ -75,8 +75,8 @@ class JobHolderTest {
         val job2 = testJob()
         jobHolder replaceWith job2
 
-        Truth.assertThat(job1.isActive).isTrue()
-        Truth.assertThat(job2.isActive).isTrue()
+        assertThat(job1.isActive).isTrue()
+        assertThat(job2.isActive).isTrue()
     }
 
     private fun CoroutineScope.testJob(): Job = launch { delay(1.days) }

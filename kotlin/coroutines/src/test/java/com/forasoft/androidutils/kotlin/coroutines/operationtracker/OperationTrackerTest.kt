@@ -122,6 +122,26 @@ class OperationTrackerTest {
     }
 
     @Test
+    fun isOperationOngoing_whenMultipleKeysArePassedAndAnyOfThemIsOngoing_returnsTrue() = runTest {
+        launch {
+            tracker.track(Key1) {
+                delay(10.hours)
+            }
+        }
+        launch {
+            tracker.track(Key2) {
+                delay(20.hours)
+            }
+        }
+
+        launch {
+            delay(15.hours)
+            val isAnyKeyOngoing = tracker.isOperationOngoing(Key1, Key2).first()
+            assertThat(isAnyKeyOngoing).isTrue()
+        }
+    }
+
+    @Test
     fun ongoingOperationKeys_whenOperationIsOngoing_containsKey() = runTest {
         launch {
             tracker.track(Key1) {

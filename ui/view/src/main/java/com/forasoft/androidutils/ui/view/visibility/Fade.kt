@@ -2,7 +2,6 @@ package com.forasoft.androidutils.ui.view.visibility
 
 import android.animation.TimeInterpolator
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.view.isVisible
 import kotlin.time.Duration
 
@@ -11,7 +10,7 @@ fun View.fade(
     isVisible: Boolean,
     duration: Duration = this.context.getShortAnimationDuration(),
     outTargetVisibility: Int = View.GONE,
-    interpolator: TimeInterpolator = AccelerateDecelerateInterpolator(),
+    interpolator: TimeInterpolator? = null,
 ) {
     if (isVisible) {
         this.fadeIn(duration, interpolator)
@@ -23,7 +22,7 @@ fun View.fade(
 // TODO: Write documentation
 fun View.fadeIn(
     duration: Duration = this.context.getShortAnimationDuration(),
-    interpolator: TimeInterpolator = AccelerateDecelerateInterpolator(),
+    interpolator: TimeInterpolator? = null,
 ) {
     this.animate()
         .apply { cancel() } // Cancel current animation
@@ -37,7 +36,7 @@ fun View.fadeIn(
 fun View.fadeOut(
     duration: Duration = this.context.getShortAnimationDuration(),
     targetVisibility: Int = View.GONE,
-    interpolator: TimeInterpolator = AccelerateDecelerateInterpolator(),
+    interpolator: TimeInterpolator? = null,
 ) {
     this.animate()
         .apply { cancel() } // Cancel current animation

@@ -36,5 +36,5 @@ android {
 }
 
 dependencies {
-
+    compileOnly(Dependencies.webRtc)
 }

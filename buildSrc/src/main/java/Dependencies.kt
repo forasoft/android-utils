@@ -2,6 +2,8 @@ object Dependencies {
 
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 
+    const val jetpackCore = "androidx.core:core-ktx:${Versions.jetpackCore}"
+
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
     const val webRtc = "com.github.webrtc-sdk:android:${Versions.webRtc}"

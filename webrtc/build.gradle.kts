@@ -22,7 +22,7 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 }
 
 android {
-    namespace = "com.forasoft.androidutils.clean"
+    namespace = "com.forasoft.androidutils.webrtc"
     compileSdk = 33
 
     defaultConfig {
@@ -34,7 +34,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -51,10 +51,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
 }
 
 dependencies {
-    implementation(Dependencies.coroutines)
-    implementation(Dependencies.timber)
+    compileOnly(Dependencies.webRtc)
 }

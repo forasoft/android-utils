@@ -7,7 +7,8 @@ import java.nio.ByteBuffer
 /** This is a two half-bytes having half of their maximum value
  *
  * The UV parts of YUV420 are half-byte in size, hence they belong to the range [0b0000, 0b1111].
- * We need the byte of two half-bytes which are in the middle of their range */
+ * We need the byte of two half-bytes which are in the middle of their range
+ */
 private val BLACK_UV_BYTE = 0b10001000.toUByte().toByte()
 
 fun getBlankVideoFrame(width: Int, height: Int, rotation: Int): VideoFrame {

@@ -15,7 +15,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AndroidUtils"
 include(":clean")
-include(":platfrom:android")
 include(":kotlin:common")
 include(":kotlin:coroutines")
+include(":platfrom:android")
+include(":ui:view")
 include(":webrtc")

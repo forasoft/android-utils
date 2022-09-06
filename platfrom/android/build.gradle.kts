@@ -54,5 +54,5 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.jetpackCore)
+
 }

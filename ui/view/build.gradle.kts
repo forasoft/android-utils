@@ -55,4 +55,11 @@ android {
 
 dependencies {
     implementation(Dependencies.jetpackCore)
+
+    testImplementation(Dependencies.jUnit)
+    testImplementation(Dependencies.truth)
+
+    androidTestImplementation(Dependencies.androidJunit)
+    androidTestImplementation(Dependencies.truth)
+    androidTestImplementation(Dependencies.espresso)
 }

@@ -24,20 +24,15 @@ class VisibilityTest {
     }
 
     @Test
-    fun showImmediately_setsVisibilityToVisible() {
-        view.visibility = View.GONE
+    fun showImmediately_showsView() {
+        view.apply {
+            visibility = View.GONE
+            alpha = 0f
+        }
 
         view.showImmediately()
 
         assertThat(view.visibility).isEqualTo(View.VISIBLE)
-    }
-
-    @Test
-    fun showImmediately_setsAlphaToOne() {
-        view.alpha = 0f
-
-        view.showImmediately()
-
         assertThat(view.alpha).isEqualTo(1f)
     }
 

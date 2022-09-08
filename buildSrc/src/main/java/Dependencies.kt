@@ -8,11 +8,11 @@ object Dependencies {
 
     const val webRtc = "com.github.webrtc-sdk:android:${Versions.webRtc}"
 
-    const val jUnit = "junit:junit:${Versions.jUnit}"
-    const val truth = "com.google.truth:truth:${Versions.truth}"
+    const val junit = "junit:junit:${Versions.junit}"
+
     const val androidJunit = "androidx.test.ext:junit-ktx:${Versions.androidJunit}"
-    const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+
     const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
-    const val jetpackCoreTest = "androidx.test:core:${Versions.jetpackCoreTest}"
+    const val truth = "com.google.truth:truth:${Versions.truth}"
 
 }

@@ -33,7 +33,7 @@ tasks.test {
 dependencies {
     implementation(Dependencies.coroutines)
 
-    testImplementation(Dependencies.jUnit)
+    testImplementation(Dependencies.junit)
     testImplementation(Dependencies.truth)
     testImplementation(Dependencies.coroutinesTest)
 }

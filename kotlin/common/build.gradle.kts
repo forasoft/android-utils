@@ -31,6 +31,6 @@ tasks.test {
 }
 
 dependencies {
-    testImplementation(Dependencies.jUnit)
+    testImplementation(Dependencies.junit)
     testImplementation(Dependencies.truth)
 }

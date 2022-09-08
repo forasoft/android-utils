@@ -15,7 +15,7 @@ import kotlin.time.Duration
  * @param fadeOutTargetVisibility visibility that will be set when the disappearing animation ends.
  * Defaults to [View.GONE].
  * @param interpolator [TimeInterpolator] that will be used by the underlying animator. Defaults
- * to null that results in linear interpolation.
+ * to `null` that results in linear interpolation.
  */
 fun View.fade(
     isVisible: Boolean,
@@ -37,7 +37,7 @@ fun View.fade(
  * @param duration [Duration] of the animation. Defaults to
  * [android.R.integer.config_shortAnimTime] value.
  * @param interpolator [TimeInterpolator] that will be used by the underlying animator. Defaults
- * to null that results in linear interpolation.
+ * to `null` that results in linear interpolation.
  */
 fun View.fadeIn(
     duration: Duration = this.context.getShortAnimationDuration(),
@@ -60,7 +60,7 @@ fun View.fadeIn(
  * @param targetVisibility visibility that will be set when the animation ends. Defaults to
  * [View.GONE].
  * @param interpolator [TimeInterpolator] that will be used by the underlying animator. Defaults
- * to null that results in linear interpolation.
+ * to `null` that results in linear interpolation.
  */
 fun View.fadeOut(
     duration: Duration = this.context.getShortAnimationDuration(),

@@ -60,5 +60,6 @@ dependencies {
     testImplementation(Dependencies.truth)
 
     androidTestImplementation(Dependencies.androidJunit)
+    androidTestImplementation(Dependencies.espresso)
     androidTestImplementation(Dependencies.truth)
 }

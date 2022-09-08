@@ -18,5 +18,6 @@ object Versions {
     const val truth = "1.1.3"
     const val androidJunit = "1.1.3"
     const val espresso = "3.4.0"
+    const val jetpackCoreTest = "1.4.0"
 
 }

@@ -13,5 +13,6 @@ object Dependencies {
     const val androidJunit = "androidx.test.ext:junit-ktx:${Versions.androidJunit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    const val jetpackCoreTest = "androidx.test:core:${Versions.jetpackCoreTest}"
 
 }

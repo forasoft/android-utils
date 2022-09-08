@@ -62,4 +62,5 @@ dependencies {
     androidTestImplementation(Dependencies.androidJunit)
     androidTestImplementation(Dependencies.truth)
     androidTestImplementation(Dependencies.espresso)
+    androidTestImplementation(Dependencies.jetpackCoreTest)
 }

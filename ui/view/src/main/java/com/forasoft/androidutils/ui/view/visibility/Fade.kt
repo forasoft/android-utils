@@ -21,7 +21,7 @@ import kotlin.time.Duration
  */
 fun View.fade(
     isVisible: Boolean,
-    duration: Duration = this.context.getShortAnimationDuration(),
+    duration: Duration = context.getSystemAnimationDuration(SystemAnimationDuration.SHORT),
     fadeOutTargetVisibility: Int = View.GONE,
     interpolator: TimeInterpolator? = null,
     listener: Animator.AnimatorListener? = null,
@@ -44,7 +44,7 @@ fun View.fade(
  * @param listener [Animator.AnimatorListener] that receives notifications from the animation.
  */
 fun View.fadeIn(
-    duration: Duration = this.context.getShortAnimationDuration(),
+    duration: Duration = context.getSystemAnimationDuration(SystemAnimationDuration.SHORT),
     interpolator: TimeInterpolator? = null,
     listener: Animator.AnimatorListener? = null,
 ) {
@@ -71,7 +71,7 @@ fun View.fadeIn(
  * @param listener [Animator.AnimatorListener] that receives notifications from the animation.
  */
 fun View.fadeOut(
-    duration: Duration = this.context.getShortAnimationDuration(),
+    duration: Duration = context.getSystemAnimationDuration(SystemAnimationDuration.SHORT),
     targetVisibility: Int = View.GONE,
     interpolator: TimeInterpolator? = null,
     listener: Animator.AnimatorListener? = null,

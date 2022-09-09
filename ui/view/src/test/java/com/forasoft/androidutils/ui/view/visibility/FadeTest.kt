@@ -22,8 +22,8 @@ class FadeTest {
         get() = RuntimeEnvironment.getApplication()
 
     private val animationDuration = 200.milliseconds
-    private val rightBeforeAnimationEnd = animationDuration - 10.milliseconds
-    private val rightAfterAnimationEnd = animationDuration + 10.milliseconds
+    private val rightBeforeAnimationEnd = animationDuration - 1.milliseconds
+    private val rightAfterAnimationEnd = animationDuration + 1.milliseconds
 
     private lateinit var visibleView: View
     private lateinit var goneView: View

@@ -15,6 +15,7 @@ object Versions {
     const val webRtc = "104.5112.01"
 
     const val junit = "4.13.2"
+    const val robolectric = "4.8.2"
 
     const val androidJunit = "1.1.3"
     const val espresso = "3.4.0"

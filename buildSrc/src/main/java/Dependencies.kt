@@ -9,6 +9,7 @@ object Dependencies {
     const val webRtc = "com.github.webrtc-sdk:android:${Versions.webRtc}"
 
     const val junit = "junit:junit:${Versions.junit}"
+    const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
 
     const val androidJunit = "androidx.test.ext:junit-ktx:${Versions.androidJunit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"

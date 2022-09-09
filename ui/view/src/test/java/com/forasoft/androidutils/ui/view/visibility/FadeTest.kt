@@ -66,6 +66,7 @@ class FadeTest {
     fun fade_hidesView() {
         var isCompleted = false
         val listener = onAnimationEndListener { isCompleted = true }
+
         visibleView.fade(
             isVisible = false,
             duration = animationDuration,
@@ -91,6 +92,7 @@ class FadeTest {
     fun fade_setsVisibilityToInvisible() {
         var isCompleted = false
         val listener = onAnimationEndListener { isCompleted = true }
+
         visibleView.fade(
             isVisible = false,
             duration = animationDuration,
@@ -117,6 +119,7 @@ class FadeTest {
     fun fadeIn_showsView() {
         var isCompleted = false
         val listener = onAnimationEndListener { isCompleted = true }
+
         goneView.fadeIn(duration = animationDuration, listener = listener)
 
         with(goneView) {
@@ -138,6 +141,7 @@ class FadeTest {
     fun fadeOut_hidesView() {
         var isCompleted = false
         val listener = onAnimationEndListener { isCompleted = true }
+
         visibleView.fadeOut(duration = animationDuration, listener = listener)
 
         with(visibleView) {
@@ -159,6 +163,7 @@ class FadeTest {
     fun fadeOut_setsVisibilityToInvisible() {
         var isCompleted = false
         val listener = onAnimationEndListener { isCompleted = true }
+
         visibleView.fadeOut(
             duration = animationDuration,
             targetVisibility = View.INVISIBLE,

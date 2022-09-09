@@ -129,28 +129,4 @@ class TextTest {
         assertThat(string1.hashCode()).isEqualTo(string2.hashCode())
     }
 
-    @Test
-    fun hashCode_forDifferentText_returnsDifferentHashCode() {
-        val emptyHash = Text.Empty.hashCode()
-        val resource1Hash = Text.Resource(R.string.string).hashCode()
-        val resource2Hash = Text.Resource(R.string.string_with_args).hashCode()
-        val pluralsResource1Hash = Text.PluralsResource(R.plurals.plurals_string, 1, 1).hashCode()
-        val pluralsResource2Hash = Text.PluralsResource(R.plurals.plurals_string, 2, 2).hashCode()
-        val string1Hash = Text.String("text1").hashCode()
-        val string2Hash = Text.String("text2").hashCode()
-
-        assertThat(emptyHash).isNotEqualTo(resource1Hash)
-        assertThat(emptyHash).isNotEqualTo(pluralsResource1Hash)
-        assertThat(emptyHash).isNotEqualTo(string1Hash)
-
-        assertThat(resource1Hash).isNotEqualTo(resource2Hash)
-        assertThat(resource1Hash).isNotEqualTo(pluralsResource1Hash)
-        assertThat(resource1Hash).isNotEqualTo(string1Hash)
-
-        assertThat(pluralsResource1Hash).isNotEqualTo(pluralsResource2Hash)
-        assertThat(pluralsResource1Hash).isNotEqualTo(string1Hash)
-
-        assertThat(string1Hash).isNotEqualTo(string2Hash)
-    }
-
 }

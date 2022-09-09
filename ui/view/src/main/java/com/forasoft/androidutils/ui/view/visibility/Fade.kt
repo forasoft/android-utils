@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import com.forasoft.androidutils.ui.view.SystemAnimationDuration
 import com.forasoft.androidutils.ui.view.getSystemAnimationDuration
+import kotlin.math.roundToLong
 import kotlin.time.Duration
 
 /**
@@ -50,11 +51,14 @@ fun View.fadeIn(
     interpolator: TimeInterpolator? = null,
     listener: Animator.AnimatorListener? = null,
 ) {
+    val currentProgress = this.alpha
+    val remainingTimeMillis = duration.inWholeMilliseconds * (1 - currentProgress)
+
     this.animate()
         .apply { cancel() } // Cancel current animation
         .setListener(listener)
         .setInterpolator(interpolator)
-        .setDuration(duration.inWholeMilliseconds)
+        .setDuration(remainingTimeMillis.roundToLong())
         .withStartAction { isVisible = true }
         .alpha(1f)
         .start()
@@ -78,11 +82,14 @@ fun View.fadeOut(
     interpolator: TimeInterpolator? = null,
     listener: Animator.AnimatorListener? = null,
 ) {
+    val currentProgress = 1 - this.alpha
+    val remainingTimeMillis = duration.inWholeMilliseconds * (1 - currentProgress)
+
     this.animate()
         .apply { cancel() } // Cancel current animation
         .setListener(listener)
         .setInterpolator(interpolator)
-        .setDuration(duration.inWholeMilliseconds)
+        .setDuration(remainingTimeMillis.roundToLong())
         .withEndAction { visibility = targetVisibility }
         .alpha(0f)
         .start()

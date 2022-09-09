@@ -12,6 +12,7 @@ import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
+import kotlin.math.roundToInt
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -116,6 +117,34 @@ class FadeTest {
     }
 
     @Test
+    fun fade_whenCurrentAlphaIsBetweenZeroAndOne_animationDurationShouldBeAppropriate() {
+        var isCompleted = false
+        val listener = onAnimationEndListener { isCompleted = true }
+        val initialProgress = 0.7f
+        visibleView.alpha = initialProgress
+
+        visibleView.fade(isVisible = true, duration = animationDuration, listener = listener)
+
+        with(visibleView) {
+            val expectedDuration = animationDuration.inWholeMilliseconds * (1 - initialProgress)
+            val rightBeforeAnimationEnd = expectedDuration - 5 // Not 1 because of rounding
+            val rightAfterAnimationEnd = expectedDuration + 5
+
+            postDelayed(rightBeforeAnimationEnd.roundToInt().milliseconds){
+                assertThat(visibility).isEqualTo(View.VISIBLE)
+                assertThat(alpha).isNotEqualTo(1f)
+                assertThat(alpha).isNotEqualTo(0f)
+            }
+            postDelayed(rightAfterAnimationEnd.roundToInt().milliseconds){
+                assertThat(visibility).isEqualTo(View.VISIBLE)
+                assertThat(alpha).isEqualTo(1f)
+            }
+            Robolectric.flushForegroundThreadScheduler()
+            assertThat(isCompleted).isTrue()
+        }
+    }
+
+    @Test
     fun fadeIn_showsView() {
         var isCompleted = false
         val listener = onAnimationEndListener { isCompleted = true }
@@ -129,6 +158,34 @@ class FadeTest {
                 assertThat(alpha).isNotEqualTo(0f)
             }
             checkRightAfterAnimationEnd {
+                assertThat(visibility).isEqualTo(View.VISIBLE)
+                assertThat(alpha).isEqualTo(1f)
+            }
+            Robolectric.flushForegroundThreadScheduler()
+            assertThat(isCompleted).isTrue()
+        }
+    }
+
+    @Test
+    fun fadeIn_whenCurrentAlphaIsBetweenZeroAndOne_animationDurationShouldBeAppropriate() {
+        var isCompleted = false
+        val listener = onAnimationEndListener { isCompleted = true }
+        val initialProgress = 0.7f
+        visibleView.alpha = initialProgress
+
+        visibleView.fadeIn(duration = animationDuration, listener = listener)
+
+        with(visibleView) {
+            val expectedDuration = animationDuration.inWholeMilliseconds * (1 - initialProgress)
+            val rightBeforeAnimationEnd = expectedDuration - 5 // Not 1 because of rounding
+            val rightAfterAnimationEnd = expectedDuration + 5
+
+            postDelayed(rightBeforeAnimationEnd.roundToInt().milliseconds){
+                assertThat(visibility).isEqualTo(View.VISIBLE)
+                assertThat(alpha).isNotEqualTo(1f)
+                assertThat(alpha).isNotEqualTo(0f)
+            }
+            postDelayed(rightAfterAnimationEnd.roundToInt().milliseconds){
                 assertThat(visibility).isEqualTo(View.VISIBLE)
                 assertThat(alpha).isEqualTo(1f)
             }
@@ -178,6 +235,34 @@ class FadeTest {
             }
             checkRightAfterAnimationEnd {
                 assertThat(visibility).isEqualTo(View.INVISIBLE)
+                assertThat(alpha).isEqualTo(0f)
+            }
+            Robolectric.flushForegroundThreadScheduler()
+            assertThat(isCompleted).isTrue()
+        }
+    }
+
+    @Test
+    fun fadeOut_whenCurrentAlphaIsBetweenZeroAndOne_animationDurationShouldBeAppropriate() {
+        var isCompleted = false
+        val listener = onAnimationEndListener { isCompleted = true }
+        val initialProgress = 0.3f
+        visibleView.alpha = 1 - initialProgress
+
+        visibleView.fadeOut(duration = animationDuration, listener = listener)
+
+        with(visibleView) {
+            val expectedDuration = animationDuration.inWholeMilliseconds * (1 - initialProgress)
+            val rightBeforeAnimationEnd = expectedDuration - 5 // Not 1 because of rounding
+            val rightAfterAnimationEnd = expectedDuration + 5
+
+            postDelayed(rightBeforeAnimationEnd.roundToInt().milliseconds){
+                assertThat(visibility).isEqualTo(View.VISIBLE)
+                assertThat(alpha).isNotEqualTo(1f)
+                assertThat(alpha).isNotEqualTo(0f)
+            }
+            postDelayed(rightAfterAnimationEnd.roundToInt().milliseconds){
+                assertThat(visibility).isEqualTo(View.GONE)
                 assertThat(alpha).isEqualTo(0f)
             }
             Robolectric.flushForegroundThreadScheduler()

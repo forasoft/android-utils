@@ -4,6 +4,8 @@ import android.animation.Animator
 import android.animation.TimeInterpolator
 import android.view.View
 import androidx.core.view.isVisible
+import com.forasoft.androidutils.ui.view.SystemAnimationDuration
+import com.forasoft.androidutils.ui.view.getSystemAnimationDuration
 import kotlin.time.Duration
 
 /**

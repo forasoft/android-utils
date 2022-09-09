@@ -1,4 +1,4 @@
-package com.forasoft.androidutils.ui.view.visibility
+package com.forasoft.androidutils.ui.view
 
 import android.content.Context
 import kotlin.time.Duration

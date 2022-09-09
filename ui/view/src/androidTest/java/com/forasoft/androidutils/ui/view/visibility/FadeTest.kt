@@ -14,7 +14,7 @@ import org.junit.runner.RunWith
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 
-// TODO: Are these tests good? Looks like the animation time is skipped somehow
+// TODO: Rewrite tests, find a way to wait for animation. Use Robolectric?
 
 @RunWith(AndroidJUnit4::class)
 class FadeTest {

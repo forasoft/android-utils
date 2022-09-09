@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.forasoft.androidutils.ui.view
 
 import android.view.View

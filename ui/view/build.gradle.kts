@@ -22,12 +22,12 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 }
 
 android {
-    namespace = "com.forasoft.androidutils.platform.android"
-    compileSdk = 33
+    namespace = "com.forasoft.androidutils.ui.view"
+    compileSdk = 32
 
     defaultConfig {
-        minSdk = 14
-        targetSdk = 33
+        minSdk = 16
+        targetSdk = 32
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -54,5 +54,13 @@ android {
 }
 
 dependencies {
+    implementation(Dependencies.jetpackCore)
 
+    testImplementation(Dependencies.junit)
+    testImplementation(Dependencies.truth)
+    testImplementation(Dependencies.robolectric)
+
+    androidTestImplementation(Dependencies.androidJunit)
+    androidTestImplementation(Dependencies.espresso)
+    androidTestImplementation(Dependencies.truth)
 }

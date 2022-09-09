@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="string">String</string>
+    <string name="string_with_args">String %1$s %2$d</string>
+
+    <plurals name="plurals_string">
+        <item quantity="one">%1$d string</item>
+        <item quantity="other">%1$d strings</item>
+    </plurals>
+
+</resources>

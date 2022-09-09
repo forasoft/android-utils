@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.forasoft.androidutils.clean.usecase
 
 import kotlinx.coroutines.CoroutineDispatcher

@@ -5,6 +5,7 @@ package com.forasoft.androidutils.platform.android
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.provider.Settings
 
 /**
  * Opens the given [url] in the browser.
@@ -21,4 +22,16 @@ fun Context.openBrowser(url: String): Boolean {
     } else {
         false
     }
+}
+
+/**
+ * Opens the application settings in the system.
+ */
+fun Context.openApplicationSettings() {
+    val packageName = this.packageName
+    val intent = Intent().apply {
+        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+        data = Uri.fromParts("package", packageName, null)
+    }
+    startActivity(intent)
 }

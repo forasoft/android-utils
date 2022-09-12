@@ -12,9 +12,10 @@ import kotlinx.coroutines.flow.stateIn
  */
 fun <T, R> StateFlow<T>.mapState(
     coroutineScope: CoroutineScope,
+    started: SharingStarted = SharingStarted.WhileSubscribed(),
     transform: (T) -> R,
 ): StateFlow<R> {
     return this
         .map(transform)
-        .stateIn(coroutineScope, SharingStarted.WhileSubscribed(), transform(this.value))
+        .stateIn(coroutineScope, started, transform(this.value))
 }

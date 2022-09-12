@@ -16,11 +16,11 @@ class StateFlowKtTest {
 
     @Test
     fun mapState_returnsTransformedStateFlow() = runTest {
-        val original = MutableStateFlow(0)
+        val original = MutableStateFlow(8)
         val transform = { value: Int -> value * 31 }
 
         val transformScope = CoroutineScope(StandardTestDispatcher())
-        val transformed = original.mapState(transformScope, transform)
+        val transformed = original.mapState(transformScope, transform = transform)
 
         assertThat(transformed).isInstanceOf(StateFlow::class.java)
         assertThat(transformed.value).isEqualTo(transform(original.value))

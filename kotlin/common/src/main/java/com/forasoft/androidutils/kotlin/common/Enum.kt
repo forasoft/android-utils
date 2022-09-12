@@ -1,4 +1,4 @@
-package com.forasoft.androidutils.kotlin.common.enums
+package com.forasoft.androidutils.kotlin.common
 
 /**
  * Returns an enum entry with the specified name, or `null` if no such enum entry is found.

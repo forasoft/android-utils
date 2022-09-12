@@ -1,6 +1,6 @@
-package com.forasoft.androidutils.kotlin.common.enums
+package com.forasoft.androidutils.kotlin.common
 
-import com.google.common.truth.Truth.assertThat
+import com.google.common.truth.Truth
 import org.junit.Test
 
 class EnumKtTest {
@@ -10,14 +10,14 @@ class EnumKtTest {
         val expected = TestEnum.ENTRY
         val entry = enumValueOfOrNull<TestEnum>(expected.name)
 
-        assertThat(entry).isEqualTo(expected)
+        Truth.assertThat(entry).isEqualTo(expected)
     }
 
     @Test
     fun enumValueOfOrNull_whenEntryNotFound_returnsNull() {
         val entry = enumValueOfOrNull<TestEnum>("")
 
-        assertThat(entry).isEqualTo(null)
+        Truth.assertThat(entry).isEqualTo(null)
     }
 
 }

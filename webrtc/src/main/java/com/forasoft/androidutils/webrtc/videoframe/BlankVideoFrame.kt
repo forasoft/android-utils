@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.forasoft.androidutils.webrtc
+package com.forasoft.androidutils.webrtc.videoframe
 
 import org.webrtc.JavaI420Buffer
 import org.webrtc.VideoFrame

@@ -9,6 +9,7 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 import androidx.core.content.FileProvider
+import timber.log.Timber
 import java.io.File
 
 /**
@@ -88,7 +89,7 @@ fun Context.viewFile(
 }
 
 /**
- * Prompts the user to share [File]s via on of the applications offered in the chooser.
+ * Prompts the user to share [File]s via one of the applications offered in the chooser.
  *
  * @param files [File]s to share.
  * @param fileProviderAuthority the authority of a FileProvider defined in a `<provider>`
@@ -100,13 +101,23 @@ fun Context.shareFiles(
     fileProviderAuthority: String,
     mimeType: String = "*/*",
 ) {
+    if (files.isEmpty()) {
+        Timber.tag("Context.shareFiles").w("List of files to share is empty")
+        return
+    }
+
     val uris = files.map {
         FileProvider.getUriForFile(this, fileProviderAuthority, it)
     }
     val intent = Intent().apply {
-        action = Intent.ACTION_SEND_MULTIPLE
-        putParcelableArrayListExtra(Intent.EXTRA_STREAM, ArrayList(uris))
-        type = mimeType
+        if (uris.size == 1) {
+            action = Intent.ACTION_SEND
+            setDataAndType(uris.firstOrNull(), mimeType)
+        } else {
+            action = Intent.ACTION_SEND_MULTIPLE
+            putParcelableArrayListExtra(Intent.EXTRA_STREAM, ArrayList(uris))
+            type = mimeType
+        }
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
     startActivity(Intent.createChooser(intent, null))

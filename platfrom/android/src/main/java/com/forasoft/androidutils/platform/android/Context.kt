@@ -67,7 +67,7 @@ fun Context.openApplicationSettings(): Boolean {
 /**
  * Prompts the user to view the [File] in one of the applications offered in the chooser.
  *
- * @param file [File] to view.
+ * @param file file to view.
  * @param fileProviderAuthority the authority of a FileProvider defined in a `<provider>`
  * element in your app's manifest.
  * @param mimeType optional file MIME type.
@@ -91,7 +91,7 @@ fun Context.viewFile(
 /**
  * Prompts the user to share [File]s via one of the applications offered in the chooser.
  *
- * @param files [File]s to share.
+ * @param files files to share.
  * @param fileProviderAuthority the authority of a FileProvider defined in a `<provider>`
  * element in your app's manifest.
  * @param mimeType optional files MIME type.

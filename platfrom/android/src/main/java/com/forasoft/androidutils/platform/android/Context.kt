@@ -86,3 +86,28 @@ fun Context.viewFile(
     }
     startActivity(Intent.createChooser(intent, chooserTitle))
 }
+
+/**
+ * Prompts the user to share [File]s via on of the applications offered in the chooser.
+ *
+ * @param files [File]s to share.
+ * @param fileProviderAuthority the authority of a FileProvider defined in a `<provider>`
+ * element in your app's manifest.
+ * @param mimeType optional files MIME type.
+ */
+fun Context.shareFiles(
+    files: List<File>,
+    fileProviderAuthority: String,
+    mimeType: String = "*/*",
+) {
+    val uris = files.map {
+        FileProvider.getUriForFile(this, fileProviderAuthority, it)
+    }
+    val intent = Intent().apply {
+        action = Intent.ACTION_SEND_MULTIPLE
+        putParcelableArrayListExtra(Intent.EXTRA_STREAM, ArrayList(uris))
+        type = mimeType
+        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+    }
+    startActivity(Intent.createChooser(intent, null))
+}

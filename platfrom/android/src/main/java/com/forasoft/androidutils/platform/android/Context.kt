@@ -8,6 +8,8 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
+import androidx.core.content.FileProvider
+import java.io.File
 
 /**
  * Opens the given [url] in the browser.
@@ -59,4 +61,28 @@ fun Context.getActivity(): Activity? {
             null -> return null
         }
     }
+}
+
+/**
+ * Prompts the user to view the [File] in the list of applications offered in the chooser.
+ *
+ * @param file [File] to view.
+ * @param fileProviderAuthority the authority of a FileProvider defined in a `<provider>`
+ * element in your app's manifest.
+ * @param mimeType optional file MIME type.
+ * @param chooserTitle optional title that will be displayed in the chooser.
+ */
+fun Context.viewFile(
+    file: File,
+    fileProviderAuthority: String,
+    mimeType: String? = null,
+    chooserTitle: String? = null,
+) {
+    val uri = FileProvider.getUriForFile(this, fileProviderAuthority, file)
+    val intent = Intent().apply {
+        action = Intent.ACTION_VIEW
+        setDataAndType(uri, mimeType)
+        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+    }
+    startActivity(Intent.createChooser(intent, chooserTitle))
 }

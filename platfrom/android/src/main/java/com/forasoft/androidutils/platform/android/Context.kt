@@ -64,7 +64,7 @@ fun Context.openApplicationSettings(): Boolean {
 }
 
 /**
- * Prompts the user to view the [File] in the list of applications offered in the chooser.
+ * Prompts the user to view the [File] in one of the applications offered in the chooser.
  *
  * @param file [File] to view.
  * @param fileProviderAuthority the authority of a FileProvider defined in a `<provider>`

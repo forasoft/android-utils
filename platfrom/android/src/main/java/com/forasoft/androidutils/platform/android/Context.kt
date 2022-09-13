@@ -40,6 +40,7 @@ fun Context.openBrowser(url: String): Boolean {
         startActivity(intent)
         true
     } else {
+        Timber.tag("Context.openBrowser").w("Activity that can open URL is not found")
         false
     }
 }
@@ -60,6 +61,8 @@ fun Context.openApplicationSettings(): Boolean {
         startActivity(intent)
         true
     } else {
+        Timber.tag("Context.openApplicationSettings")
+            .w("Activity that can open application settings is not found")
         false
     }
 }
@@ -101,10 +104,7 @@ fun Context.shareFiles(
     fileProviderAuthority: String,
     mimeType: String = "*/*",
 ) {
-    if (files.isEmpty()) {
-        Timber.tag("Context.shareFiles").w("List of files to share is empty")
-        return
-    }
+    if (files.isEmpty()) return
 
     val uris = files.map {
         FileProvider.getUriForFile(this, fileProviderAuthority, it)

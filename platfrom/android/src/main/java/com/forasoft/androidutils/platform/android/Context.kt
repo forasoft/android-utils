@@ -12,6 +12,21 @@ import androidx.core.content.FileProvider
 import java.io.File
 
 /**
+ * Goes up the [ContextWrapper] hierarchy and returns the first [Activity] found.
+ * If none of the [ContextWrapper]s of the current context are Activity, returns `null`.
+ */
+fun Context.getActivity(): Activity? {
+    var context: Context? = this
+    while (true) {
+        when (context) {
+            is Activity -> return context
+            is ContextWrapper -> context = context.baseContext
+            null -> return null
+        }
+    }
+}
+
+/**
  * Opens the given [url] in the browser.
  *
  * @param url link to open.
@@ -45,21 +60,6 @@ fun Context.openApplicationSettings(): Boolean {
         true
     } else {
         false
-    }
-}
-
-/**
- * Goes up the [ContextWrapper] hierarchy and returns the first [Activity] found.
- * If none of the [ContextWrapper]s of the current context are Activity, returns `null`.
- */
-fun Context.getActivity(): Activity? {
-    var context: Context? = this
-    while (true) {
-        when (context) {
-            is Activity -> return context
-            is ContextWrapper -> context = context.baseContext
-            null -> return null
-        }
     }
 }
 

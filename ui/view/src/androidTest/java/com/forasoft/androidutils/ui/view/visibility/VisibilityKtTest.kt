@@ -11,7 +11,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class VisibilityTest {
+class VisibilityKtTest {
 
     private val context: Context
         get() = InstrumentationRegistry.getInstrumentation().targetContext

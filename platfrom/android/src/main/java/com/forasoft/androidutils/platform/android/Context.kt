@@ -27,15 +27,23 @@ fun Context.openBrowser(url: String): Boolean {
 }
 
 /**
- * Opens the application settings in the system.
+ * Opens the application settings screen.
+ *
+ * @return `true` if settings screen has been successfully opened, `false` otherwise.
  */
-fun Context.openApplicationSettings() {
+fun Context.openApplicationSettings(): Boolean {
     val packageName = this.packageName
+    val uri = Uri.fromParts("package", packageName, null)
     val intent = Intent().apply {
         action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-        data = Uri.fromParts("package", packageName, null)
+        data = uri
     }
-    startActivity(intent)
+    return if (intent.resolveActivity(packageManager) != null) {
+        startActivity(intent)
+        true
+    } else {
+        false
+    }
 }
 
 /**

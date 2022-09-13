@@ -75,7 +75,7 @@ fun Context.openApplicationSettings(): Boolean {
 fun Context.viewFile(
     file: File,
     fileProviderAuthority: String,
-    mimeType: String? = null,
+    mimeType: String = "*/*",
     chooserTitle: String? = null,
 ) {
     val uri = FileProvider.getUriForFile(this, fileProviderAuthority, file)

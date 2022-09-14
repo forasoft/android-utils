@@ -60,4 +60,5 @@ dependencies {
 
     testImplementation(Dependencies.junit)
     testImplementation(Dependencies.truth)
+    testImplementation(Dependencies.coroutinesTest)
 }

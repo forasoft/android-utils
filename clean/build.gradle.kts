@@ -57,4 +57,7 @@ android {
 dependencies {
     implementation(Dependencies.coroutines)
     implementation(Dependencies.timber)
+
+    testImplementation(Dependencies.junit)
+    testImplementation(Dependencies.truth)
 }

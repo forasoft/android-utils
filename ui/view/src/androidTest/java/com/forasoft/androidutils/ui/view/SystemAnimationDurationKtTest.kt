@@ -8,7 +8,7 @@ import org.junit.runner.RunWith
 import com.google.common.truth.Truth.assertThat
 
 @RunWith(AndroidJUnit4::class)
-class SystemAnimationDurationTest {
+class SystemAnimationDurationKtTest {
 
     private val context: Context
         get() = InstrumentationRegistry.getInstrumentation().targetContext

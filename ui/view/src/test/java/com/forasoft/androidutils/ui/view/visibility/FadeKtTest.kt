@@ -17,7 +17,7 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 
 @RunWith(RobolectricTestRunner::class)
-class FadeTest {
+class FadeKtTest {
 
     private val context: Context
         get() = RuntimeEnvironment.getApplication()

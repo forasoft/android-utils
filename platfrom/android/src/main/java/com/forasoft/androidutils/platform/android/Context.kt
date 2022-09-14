@@ -36,13 +36,11 @@ fun Context.getActivity(): Activity? {
 fun Context.openBrowser(url: String): Boolean {
     val uri = Uri.parse(url)
     val intent = Intent(Intent.ACTION_VIEW, uri)
-    return if (intent.resolveActivity(packageManager) != null) {
-        startActivity(intent)
-        true
-    } else {
+    val isActivityStarted = this.tryStartActivity(intent)
+    if (!isActivityStarted) {
         Timber.tag("Context.openBrowser").w("Activity that can open URL is not found")
-        false
     }
+    return isActivityStarted
 }
 
 /**
@@ -57,14 +55,12 @@ fun Context.openApplicationSettings(): Boolean {
         action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
         data = uri
     }
-    return if (intent.resolveActivity(packageManager) != null) {
-        startActivity(intent)
-        true
-    } else {
+    val isActivityStarted = this.tryStartActivity(intent)
+    if (!isActivityStarted) {
         Timber.tag("Context.openApplicationSettings")
             .w("Activity that can open application settings is not found")
-        false
     }
+    return isActivityStarted
 }
 
 /**
@@ -121,4 +117,13 @@ fun Context.shareFiles(
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
     startActivity(Intent.createChooser(intent, null))
+}
+
+private fun Context.tryStartActivity(intent: Intent): Boolean {
+    return if (intent.resolveActivity(packageManager) != null) {
+        startActivity(intent)
+        true
+    } else {
+        false
+    }
 }

@@ -14,7 +14,6 @@ import timber.log.Timber
  * @param P type of operation parameters.
  * @param R type of operation expected result.
  * @see [UseCase]
- * @see [SimpleUseCase]
  * @property dispatcher [CoroutineDispatcher] to run the operation on.
  */
 abstract class FlowUseCase<in P, out R>(private val dispatcher: CoroutineDispatcher) {

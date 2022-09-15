@@ -1,6 +1,6 @@
 @file:Suppress("Unused", "FunctionNaming")
 
-package com.forasoft.androidutils.ui.compose
+package com.forasoft.androidutils.ui.compose.effect
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect

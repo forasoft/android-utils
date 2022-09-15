@@ -8,6 +8,8 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.platform.LocalContext
 import com.forasoft.androidutils.platform.android.findActivity
 
+// TODO: Write tests?
+
 /**
  * Effect for screen orientation setup. When the effect leaves the composition, the
  * previous screen orientation is restored.

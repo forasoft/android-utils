@@ -82,4 +82,5 @@ dependencies {
     implementation(Dependencies.jetpackCore)
 
     implementation(Dependencies.composeRuntime)
+    implementation(Dependencies.composeUi)
 }

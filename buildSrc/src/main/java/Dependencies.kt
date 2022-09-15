@@ -4,6 +4,8 @@ object Dependencies {
 
     const val jetpackCore = "androidx.core:core-ktx:${Versions.jetpackCore}"
 
+    const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
+
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
     const val webRtc = "com.github.webrtc-sdk:android:${Versions.webRtc}"

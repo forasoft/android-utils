@@ -10,7 +10,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 
 /**
- * An effect for handling [Lifecycle] events.
+ * Effect for handling [Lifecycle] events.
  *
  * @param onEvent callback that will be invoked when a state transition event happens.
  */

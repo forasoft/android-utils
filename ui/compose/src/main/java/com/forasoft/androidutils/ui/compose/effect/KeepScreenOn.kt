@@ -11,7 +11,7 @@ import com.forasoft.androidutils.platform.android.findActivity
 // TODO: Write tests?
 
 /**
- * An effect for keeping the screen turned on. When the effect leaves the composition, the screen
+ * Effect for keeping the screen on. When the effect leaves the composition, the screen
  * is no longer kept turned on.
  */
 @Composable

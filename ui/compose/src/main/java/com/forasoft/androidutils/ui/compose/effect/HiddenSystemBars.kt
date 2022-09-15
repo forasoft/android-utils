@@ -14,11 +14,11 @@ import com.forasoft.androidutils.platform.android.findActivity
 // TODO: Write tests?
 
 /**
- * An effect for hiding system bars. When the effect leaves the composition, the system bars
- * show up and the previous behavior gets restored.
+ * Effect for hiding system bars. When the effect leaves the composition, the system bars
+ * show up and the previous behavior is restored.
  *
  * @param behavior determines how the bars behave when being hidden.
- * Should be one of [WindowInsetsControllerCompat] constants.
+ * Should be one of [WindowInsetsControllerCompat] behavior constants.
  */
 @Composable
 fun HiddenSystemBars(

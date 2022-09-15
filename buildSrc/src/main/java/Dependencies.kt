@@ -6,6 +6,7 @@ object Dependencies {
 
     const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
+    const val composeAnimation = "androidx.compose.animation:animation:${Versions.compose}"
 
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 

@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.forasoft.androidutils.platform.android.getActivity
+import com.forasoft.androidutils.platform.android.findActivity
 
 // TODO: Write tests?
 
@@ -25,7 +25,7 @@ fun HiddenSystemBars(
     behavior: Int = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE,
 ) {
     val view = LocalView.current
-    val activity = LocalContext.current.getActivity()
+    val activity = LocalContext.current.findActivity()
     val window = activity?.window
 
     DisposableEffect(view, window) {

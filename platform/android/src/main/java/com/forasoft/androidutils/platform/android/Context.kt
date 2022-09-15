@@ -16,7 +16,7 @@ import java.io.File
  * Goes up the [ContextWrapper] hierarchy and returns the first [Activity] found.
  * If none of the [ContextWrapper]s of the current context are Activity, returns `null`.
  */
-fun Context.getActivity(): Activity? {
+fun Context.findActivity(): Activity? {
     var context: Context? = this
     while (true) {
         when (context) {

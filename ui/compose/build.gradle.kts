@@ -61,6 +61,23 @@ android {
     }
 }
 
+// Compose metrics
+// ./gradlew assembleRelease -P.enableComposeCompilerReports=true --rerun-tasks
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+
+    kotlinOptions.freeCompilerArgs += listOf(
+        "-P",
+        "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
+                "${project.buildDir.absolutePath}/compose_metrics"
+    )
+    kotlinOptions.freeCompilerArgs += listOf(
+        "-P",
+        "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
+                "${project.buildDir.absolutePath}/compose_metrics"
+    )
+}
+
 dependencies {
     implementation(Dependencies.jetpackCore)
 

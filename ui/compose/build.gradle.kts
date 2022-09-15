@@ -84,4 +84,6 @@ dependencies {
     implementation(Dependencies.composeRuntime)
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeAnimation)
+
+    implementation(project(Dependencies.Modules.platformAndroid))
 }

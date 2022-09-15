@@ -17,7 +17,7 @@ rootProject.name = "AndroidUtils"
 include(":clean")
 include(":kotlin:common")
 include(":kotlin:coroutines")
-include(":platfrom:android")
+include(":platform:android")
 include(":ui:view")
 include(":ui:compose")
 include(":webrtc")

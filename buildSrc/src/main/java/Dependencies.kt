@@ -1,5 +1,9 @@
 object Dependencies {
 
+    object Modules {
+        const val platformAndroid = ":platform:android"
+    }
+
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 
     const val jetpackCore = "androidx.core:core-ktx:${Versions.jetpackCore}"

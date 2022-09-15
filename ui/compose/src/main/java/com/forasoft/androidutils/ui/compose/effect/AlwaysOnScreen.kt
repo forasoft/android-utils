@@ -15,7 +15,7 @@ import com.forasoft.androidutils.platform.android.findActivity
  * is no longer kept turned on.
  */
 @Composable
-fun KeepScreenOn() {
+fun AlwaysOnScreen() {
     val context = LocalContext.current
     DisposableEffect(context) {
         val window = context.findActivity()?.window

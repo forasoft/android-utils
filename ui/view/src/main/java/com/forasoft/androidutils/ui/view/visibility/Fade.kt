@@ -15,11 +15,11 @@ import kotlin.time.Duration
  *
  * @param isVisible indicates whether the View should appear or disappear with the fade animation.
  * @param duration [Duration] of the animation. Defaults to
- *                 `android.R.integer.config_shortAnimTime` value.
+ * `android.R.integer.config_shortAnimTime` value.
  * @param fadeOutTargetVisibility visibility that will be set when the disappearing animation ends.
- *                                Defaults to `View.GONE`.
+ * Defaults to [View.GONE].
  * @param interpolator [TimeInterpolator] that will be used by the underlying animator. Defaults
- *                     to `null` that results in linear interpolation.
+ * to `null` that results in linear interpolation.
  * @param listener [Animator.AnimatorListener] that receives notifications from the animation.
  */
 fun View.fade(
@@ -41,9 +41,9 @@ fun View.fade(
  * View as the initial state.
  *
  * @param duration [Duration] of the animation. Defaults to
- *                 `android.R.integer.config_shortAnimTime` value.
+ * `android.R.integer.config_shortAnimTime` value.
  * @param interpolator [TimeInterpolator] that will be used by the underlying animator. Defaults
- *                     to `null` that results in linear interpolation.
+ * to `null` that results in linear interpolation.
  * @param listener [Animator.AnimatorListener] that receives notifications from the animation.
  */
 fun View.fadeIn(
@@ -69,11 +69,11 @@ fun View.fadeIn(
  * View as the initial state.
  *
  * @param duration [Duration] of the animation. Defaults to
- *                 `android.R.integer.config_shortAnimTime` value.
- * @param targetVisibility visibility that will be set when the animation ends. Defaults to
- *                         `View.GONE`.
+ * `android.R.integer.config_shortAnimTime` value.
+ * @param targetVisibility visibility that will be set when the animation ends.
+ * Defaults to [View.GONE].
  * @param interpolator [TimeInterpolator] that will be used by the underlying animator. Defaults
- *                     to `null` that results in linear interpolation.
+ * to `null` that results in linear interpolation.
  * @param listener [Animator.AnimatorListener] that receives notifications from the animation.
  */
 fun View.fadeOut(

@@ -18,7 +18,7 @@ enum class SystemAnimationDuration {
  * Returns [Duration] of the system animation specified in system resources.
  *
  * @param duration [SystemAnimationDuration] that represents the system animation duration
- *                 specified in system resources.
+ * specified in system resources.
  */
 fun Context.getSystemAnimationDuration(duration: SystemAnimationDuration): Duration {
     val resId = when (duration) {

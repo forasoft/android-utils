@@ -23,7 +23,7 @@ private val DefaultAnimation = spring<Float>()
  *
  * @param targetAlignment target value of the animation.
  * @param animationSpec The animation that will be used to change the value through time. [spring]
- *                      will be used by default.
+ * will be used by default.
  * @param finishedListener An optional end listener to get notified when the animation is finished.
  * @return
  */

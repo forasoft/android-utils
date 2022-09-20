@@ -28,7 +28,7 @@ object RouteUtils {
      * @param args names of mandatory arguments.
      * @param optionalArgs names of optional arguments.
      * @see [generateRoute]
-     * @return string that can be used as a route schema for a composable destination.
+     * @return string that can be used as a route schema for a destination.
      */
     fun generateRouteSchema(
         routeBase: String,
@@ -69,7 +69,7 @@ object RouteUtils {
      * ```
      *
      * Use [generateRouteSchema] if you need a string with parameter names to use as a
-     * route schema for composable destinations.
+     * route schema for a destination.
      *
      * @param routeBase unchanging beginning of the route.
      * @param args values of mandatory arguments. **The order should be preserved as in

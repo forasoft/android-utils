@@ -12,6 +12,8 @@ object Dependencies {
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
     const val composeAnimation = "androidx.compose.animation:animation:${Versions.compose}"
 
+    const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigation}"
+
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
     const val webRtc = "com.github.webrtc-sdk:android:${Versions.webRtc}"

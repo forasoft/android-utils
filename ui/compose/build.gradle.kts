@@ -85,6 +85,8 @@ dependencies {
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeAnimation)
 
+    implementation(Dependencies.navigationCompose)
+
     implementation(project(Dependencies.Modules.platformAndroid))
 
     testImplementation(Dependencies.junit)

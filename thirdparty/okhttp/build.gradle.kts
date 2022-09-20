@@ -54,4 +54,7 @@ android {
 dependencies {
     implementation(Dependencies.okHttp)
     implementation(Dependencies.timber)
+
+    testImplementation(Dependencies.junit)
+    testImplementation(Dependencies.truth)
 }

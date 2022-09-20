@@ -60,7 +60,7 @@ object LoggingInterceptor : Interceptor() {
             append("--> END ")
             append(request.method)
         }
-        Timber.tag("OkHttpLogging").d(message)
+        Timber.tag(LOG_TAG).d(message)
         return super.onRequest(info)
     }
 
@@ -80,12 +80,12 @@ object LoggingInterceptor : Interceptor() {
             }
             append("<-- END HTTP")
         }
-        Timber.tag("OkHttpLogging").d(message)
+        Timber.tag(LOG_TAG).d(message)
         return super.onResponse(info)
     }
 
     override fun onError(exception: Exception) {
-        Timber.tag("OkHttpLogging").d("<-- HTTP FAILED: $exception")
+        Timber.tag(LOG_TAG).d(exception, "<-- HTTP FAILED")
         super.onError(exception)
     }
 
@@ -196,4 +196,5 @@ object LoggingInterceptor : Interceptor() {
 
     private const val HEADER_NAME_VALUE_SEPARATOR = ": "
     private const val HEADER_ENTRY_SEPARATOR = " || "
+    const val LOG_TAG = "OkHttpLogging"
 }

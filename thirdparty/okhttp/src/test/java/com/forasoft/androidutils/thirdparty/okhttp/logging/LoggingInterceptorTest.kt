@@ -45,7 +45,7 @@ class LoggingInterceptorTest {
         kotlin.runCatching { okHttpClient.newCall(request).execute() }
 
         val expectedMessage = LogMessage(
-            priority = Log.DEBUG,
+            priority = Log.VERBOSE,
             tag = LoggingInterceptor.LOG_TAG,
             message = "--> POST $DOMAIN$endpoint \n" +
                     "Content-Type: application/x-www-form-urlencoded || ${headerValue.first}: ${headerValue.second}\n" +
@@ -65,7 +65,7 @@ class LoggingInterceptorTest {
         kotlin.runCatching { okHttpClient.newCall(request).execute() }
 
         val exceptedMessage = LogMessage(
-            priority = Log.DEBUG,
+            priority = Log.ERROR,
             tag = LoggingInterceptor.LOG_TAG,
             message = "<-- HTTP FAILED",
             throwable = null

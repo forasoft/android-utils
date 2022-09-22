@@ -60,7 +60,7 @@ object LoggingInterceptor : Interceptor() {
             append("--> END ")
             append(request.method)
         }
-        Timber.tag(LOG_TAG).d(message)
+        Timber.tag(LOG_TAG).v(message)
         return super.onRequest(info)
     }
 
@@ -80,12 +80,12 @@ object LoggingInterceptor : Interceptor() {
             }
             append("<-- END HTTP")
         }
-        Timber.tag(LOG_TAG).d(message)
+        Timber.tag(LOG_TAG).v(message)
         return super.onResponse(info)
     }
 
     override fun onError(exception: Exception) {
-        Timber.tag(LOG_TAG).d(exception, "<-- HTTP FAILED")
+        Timber.tag(LOG_TAG).e(exception, "<-- HTTP FAILED")
         super.onError(exception)
     }
 

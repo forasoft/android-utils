@@ -4,6 +4,8 @@ object Dependencies {
 
     const val jetpackCore = "androidx.core:core-ktx:${Versions.jetpackCore}"
 
+    const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
+
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
     const val webRtc = "com.github.webrtc-sdk:android:${Versions.webRtc}"

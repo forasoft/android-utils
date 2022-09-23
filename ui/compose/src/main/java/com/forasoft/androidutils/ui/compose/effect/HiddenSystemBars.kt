@@ -11,8 +11,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.forasoft.androidutils.platform.android.findActivity
 
-// TODO: Write tests?
-
 /**
  * Effect for hiding system bars. When the effect leaves the composition, the system bars
  * show up and the previous behavior is restored.

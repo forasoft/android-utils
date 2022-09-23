@@ -13,8 +13,6 @@ import androidx.compose.ui.BiasAlignment
 
 private val DefaultAnimation = spring<Float>()
 
-// TODO: Write tests
-
 /**
  * Fire-and-forget animation for [BiasAlignment]. When the provided targetAlignment is changed,
  * the animation will run automatically. If there is already an animation in-flight when

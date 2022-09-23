@@ -8,8 +8,6 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.platform.LocalContext
 import com.forasoft.androidutils.platform.android.findActivity
 
-// TODO: Write tests?
-
 /**
  * Effect for keeping the screen on. When the effect leaves the composition, the screen
  * is no longer kept turned on.

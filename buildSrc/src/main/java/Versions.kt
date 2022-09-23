@@ -10,6 +10,11 @@ object Versions {
 
     const val jetpackCore = "1.8.0"
 
+    const val composeCompiler = "1.3.1"
+    const val compose = "1.2.1"
+
+    const val navigation = "2.5.2"
+
     const val okHttp = "4.10.0"
 
     const val timber = "5.0.1"

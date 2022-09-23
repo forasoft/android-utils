@@ -15,7 +15,7 @@ class RouteUtilsTest {
     fun generateRouteSchema_withOneArg_returnsCorrectString() {
         val routeSchema = RouteUtils.generateRouteSchema(
             routeBase = "events",
-            args = arrayOf("id"),
+            argNames = arrayOf("id"),
         )
         assertThat(routeSchema).isEqualTo("events/{id}")
     }
@@ -24,7 +24,7 @@ class RouteUtilsTest {
     fun generateRouteSchema_withMultipleArgs_returnsCorrectString() {
         val routeSchema = RouteUtils.generateRouteSchema(
             routeBase = "events",
-            args = arrayOf("firstId", "secondId"),
+            argNames = arrayOf("firstId", "secondId"),
         )
         assertThat(routeSchema).isEqualTo("events/{firstId}/{secondId}")
     }
@@ -33,7 +33,7 @@ class RouteUtilsTest {
     fun generateRouteSchema_withOneOptionalArg_returnsCorrectString() {
         val routeSchema = RouteUtils.generateRouteSchema(
             routeBase = "events",
-            optionalArgs = arrayOf("id"),
+            optionalArgNames = arrayOf("id"),
         )
         assertThat(routeSchema).isEqualTo("events?id={id}")
     }
@@ -42,7 +42,7 @@ class RouteUtilsTest {
     fun generateRouteSchema_withMultipleOptionalArgs_returnsCorrectString() {
         val routeSchema = RouteUtils.generateRouteSchema(
             routeBase = "events",
-            optionalArgs = arrayOf("firstId", "secondId"),
+            optionalArgNames = arrayOf("firstId", "secondId"),
         )
         assertThat(routeSchema).isEqualTo("events?firstId={firstId}&secondId={secondId}")
     }
@@ -51,8 +51,8 @@ class RouteUtilsTest {
     fun generateRouteSchema_withOneArgAndOneOptionalArg_returnsCorrectString() {
         val routeSchema = RouteUtils.generateRouteSchema(
             routeBase = "events",
-            args = arrayOf("id"),
-            optionalArgs = arrayOf("optionalId"),
+            argNames = arrayOf("id"),
+            optionalArgNames = arrayOf("optionalId"),
         )
         assertThat(routeSchema).isEqualTo("events/{id}?optionalId={optionalId}")
     }
@@ -61,8 +61,8 @@ class RouteUtilsTest {
     fun generateRouteSchema_withMultipleArgsAndOneOptionalArg_returnsCorrectString() {
         val routeSchema = RouteUtils.generateRouteSchema(
             routeBase = "events",
-            args = arrayOf("firstId", "secondId"),
-            optionalArgs = arrayOf("optionalId"),
+            argNames = arrayOf("firstId", "secondId"),
+            optionalArgNames = arrayOf("optionalId"),
         )
         assertThat(routeSchema)
             .isEqualTo("events/{firstId}/{secondId}?optionalId={optionalId}")
@@ -72,8 +72,8 @@ class RouteUtilsTest {
     fun generateRouteSchema_withMultipleArgsAndMultipleOptionalArgs_returnsCorrectString() {
         val routeSchema = RouteUtils.generateRouteSchema(
             routeBase = "events",
-            args = arrayOf("firstId", "secondId"),
-            optionalArgs = arrayOf("firstOptionalId", "secondOptionalId"),
+            argNames = arrayOf("firstId", "secondId"),
+            optionalArgNames = arrayOf("firstOptionalId", "secondOptionalId"),
         )
         assertThat(routeSchema).isEqualTo(
             "events/{firstId}/{secondId}?firstOptionalId={firstOptionalId}&secondOptionalId={secondOptionalId}"
@@ -84,8 +84,8 @@ class RouteUtilsTest {
     fun generateRouteSchema_withOneArgsAndMultipleOptionalArgs_returnsCorrectString() {
         val routeSchema = RouteUtils.generateRouteSchema(
             routeBase = "events",
-            args = arrayOf("id"),
-            optionalArgs = arrayOf("firstOptionalId", "secondOptionalId"),
+            argNames = arrayOf("id"),
+            optionalArgNames = arrayOf("firstOptionalId", "secondOptionalId"),
         )
         assertThat(routeSchema).isEqualTo(
             "events/{id}?firstOptionalId={firstOptionalId}&secondOptionalId={secondOptionalId}"
@@ -96,8 +96,8 @@ class RouteUtilsTest {
     fun generateRouteSchema_withRouteBaseWithClosingSlashAndArgs_returnsCorrectString() {
         val routeSchema = RouteUtils.generateRouteSchema(
             routeBase = "events/stream/",
-            args = arrayOf("id"),
-            optionalArgs = arrayOf("firstOptionalId"),
+            argNames = arrayOf("id"),
+            optionalArgNames = arrayOf("firstOptionalId"),
         )
         assertThat(routeSchema).isEqualTo(
             "events/stream/{id}?firstOptionalId={firstOptionalId}"

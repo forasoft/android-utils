@@ -25,31 +25,31 @@ object RouteUtils {
      * NavController navigation.
      *
      * @param routeBase unchanging beginning of the route.
-     * @param args names of mandatory arguments.
-     * @param optionalArgs names of optional arguments.
+     * @param argNames names of mandatory arguments.
+     * @param optionalArgNames names of optional arguments.
      * @see [generateRoute]
      * @return string that can be used as a route schema for a destination.
      */
     fun generateRouteSchema(
         routeBase: String,
-        args: Array<String> = emptyArray(),
-        optionalArgs: Array<String> = emptyArray(),
+        argNames: Array<String> = emptyArray(),
+        optionalArgNames: Array<String> = emptyArray(),
     ): String = buildString {
         append(routeBase)
 
-        if (args.isNotEmpty()) {
+        if (argNames.isNotEmpty()) {
             if (!this.endsWith(MandatoryArgumentsSeparator)) append(MandatoryArgumentsSeparator)
-            args.forEachIndexed { index, arg ->
+            argNames.forEachIndexed { index, arg ->
                 append("{$arg}")
-                if (index < args.lastIndex) append(MandatoryArgumentsSeparator)
+                if (index < argNames.lastIndex) append(MandatoryArgumentsSeparator)
             }
         }
 
-        if (optionalArgs.isNotEmpty()) {
+        if (optionalArgNames.isNotEmpty()) {
             append(MandatoryAndOptionalArgumentsSeparator)
-            optionalArgs.forEachIndexed { index, arg ->
+            optionalArgNames.forEachIndexed { index, arg ->
                 append("$arg={$arg}")
-                if (index < optionalArgs.lastIndex) append(OptionalArgumentsSeparator)
+                if (index < optionalArgNames.lastIndex) append(OptionalArgumentsSeparator)
             }
         }
     }

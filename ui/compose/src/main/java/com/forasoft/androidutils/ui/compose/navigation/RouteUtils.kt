@@ -38,18 +38,18 @@ object RouteUtils {
         append(routeBase)
 
         if (args.isNotEmpty()) {
-            if (!this.endsWith(Slash)) append(Slash)
+            if (!this.endsWith(MandatoryArgumentsSeparator)) append(MandatoryArgumentsSeparator)
             args.forEachIndexed { index, arg ->
                 append("{$arg}")
-                if (index < args.size - 1) append(Slash)
+                if (index < args.lastIndex) append(MandatoryArgumentsSeparator)
             }
         }
 
         if (optionalArgs.isNotEmpty()) {
-            append(QuestionMark)
+            append(MandatoryAndOptionalArgumentsSeparator)
             optionalArgs.forEachIndexed { index, arg ->
                 append("$arg={$arg}")
-                if (index < optionalArgs.size - 1) append(Ampersand)
+                if (index < optionalArgs.lastIndex) append(OptionalArgumentsSeparator)
             }
         }
     }
@@ -86,25 +86,25 @@ object RouteUtils {
         append(routeBase)
 
         if (args.isNotEmpty()) {
-            if (!this.endsWith(Slash)) append(Slash)
+            if (!this.endsWith(MandatoryArgumentsSeparator)) append(MandatoryArgumentsSeparator)
             args.forEachIndexed { index, arg ->
                 append("$arg")
-                if (index < args.size - 1) append(Slash)
+                if (index < args.lastIndex) append(MandatoryArgumentsSeparator)
             }
         }
 
         if (optionalArgs.isNotEmpty()) {
-            append(QuestionMark)
+            append(MandatoryAndOptionalArgumentsSeparator)
             optionalArgs.forEachIndexed { index, arg ->
                 val (name, value) = arg
                 append("$name=$value")
-                if (index < optionalArgs.size - 1) append(Ampersand)
+                if (index < optionalArgs.lastIndex) append(OptionalArgumentsSeparator)
             }
         }
     }
 
-    private const val Slash = "/"
-    private const val QuestionMark = "?"
-    private const val Ampersand = "&"
+    private const val MandatoryArgumentsSeparator = "/"
+    private const val MandatoryAndOptionalArgumentsSeparator = "?"
+    private const val OptionalArgumentsSeparator = "&"
 
 }

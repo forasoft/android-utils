@@ -28,7 +28,9 @@ fun NavGraphBuilder.composableDestination(
 
 /**
  * Adds the [Destination] to the [NavGraphBuilder] that will be hosted within a
- * [androidx.compose.ui.window.Dialog]. This is suitable only when this dialog represents
+ * [androidx.compose.ui.window.Dialog].
+ *
+ * This is suitable only when this dialog represents
  * a separate screen in your app that needs its own lifecycle and saved state, independent
  * of any other destination in your navigation graph. For use cases such as `AlertDialog`,
  * you should use those APIs directly in the [composableDestination] destination that

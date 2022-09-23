@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.forasoft.androidutils.platform.android.findActivity
+import com.forasoft.androidutils.platform.android.getActivity
 
 /**
  * Effect for hiding system bars. When the effect leaves the composition, the system bars
@@ -23,7 +23,7 @@ fun HiddenSystemBars(
     behavior: Int = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE,
 ) {
     val view = LocalView.current
-    val activity = LocalContext.current.findActivity()
+    val activity = LocalContext.current.getActivity()
     val window = activity?.window
 
     DisposableEffect(view, window) {

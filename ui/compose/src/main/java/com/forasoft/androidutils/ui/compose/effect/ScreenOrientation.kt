@@ -6,7 +6,7 @@ import android.content.pm.ActivityInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.platform.LocalContext
-import com.forasoft.androidutils.platform.android.findActivity
+import com.forasoft.androidutils.platform.android.getActivity
 
 /**
  * Effect for screen orientation setup. When the effect leaves the composition, the
@@ -18,7 +18,7 @@ import com.forasoft.androidutils.platform.android.findActivity
 fun ScreenOrientation(orientation: Int) {
     val context = LocalContext.current
     DisposableEffect(context, orientation) {
-        val activity = context.findActivity() ?: return@DisposableEffect onDispose {}
+        val activity = context.getActivity() ?: return@DisposableEffect onDispose {}
         val previousOrientation = activity.requestedOrientation
         activity.requestedOrientation = orientation
         onDispose {

@@ -9,8 +9,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.forasoft.androidutils.platform.android.getActivity
 
 /**
- * Effect for keeping the screen on. When the effect leaves the composition, the screen
- * is no longer kept turned on.
+ * Effect that keeps the screen on while is in composition.
  */
 @Composable
 fun AlwaysOnScreen() {

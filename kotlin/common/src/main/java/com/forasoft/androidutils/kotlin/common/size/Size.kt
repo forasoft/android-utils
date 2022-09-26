@@ -89,7 +89,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
 
     override fun toString(): String {
         val (prefix, value) = getPrefixedBinaryValue(SizeUnit.BYTE, 1024.toBigDecimal())
-        return "${"%.2f".format(value.toFloat())}${prefix?.abbreviation ?: ""}${SizeUnit.BYTE.abbreviation}"
+        return "${"%.2f".format(value.toDouble())}${prefix?.abbreviation ?: ""}${SizeUnit.BYTE.abbreviation}"
     }
 
     companion object {

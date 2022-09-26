@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.getAndUpdate
 
 /**
- * Class that handles [Job] and provides **thread-safe** methods to interact with it.
+ * Class that holds [Job] and provides **thread-safe** methods to interact with it.
  *
  * Underlying read-only [Job] can be retrieved with [job] property.
  */

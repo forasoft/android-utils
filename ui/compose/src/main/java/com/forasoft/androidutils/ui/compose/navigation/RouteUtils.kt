@@ -1,5 +1,3 @@
-@file:Suppress("Unused")
-
 package com.forasoft.androidutils.ui.compose.navigation
 
 /**

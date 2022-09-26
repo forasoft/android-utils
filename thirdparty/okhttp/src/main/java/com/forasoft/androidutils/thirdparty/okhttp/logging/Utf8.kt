@@ -1,5 +1,3 @@
-@file:Suppress("all")
-
 package com.forasoft.androidutils.thirdparty.okhttp.logging
 
 import java.io.EOFException

@@ -1,5 +1,3 @@
-@file:Suppress("Unused")
-
 package com.forasoft.androidutils.ui.compose
 
 import android.content.Context
@@ -23,6 +21,7 @@ sealed interface Text {
     /**
      * Represents an empty text with a value of empty [String].
      */
+    @Suppress("Unused")
     object Empty : Text {
         override fun getString(context: Context): kotlin.String = ""
     }
@@ -33,6 +32,7 @@ sealed interface Text {
      * @property resourceId id of the resource string.
      * @property args parameters for the parametrized string.
      */
+    @Suppress("Unused")
     class Resource(
         @StringRes val resourceId: Int,
         private vararg val args: Any = emptyArray(),
@@ -68,6 +68,7 @@ sealed interface Text {
      * @property count the number used to get the correct string for the plural rules.
      * @property args parameters for the parametrized string.
      */
+    @Suppress("Unused")
     class PluralsResource(
         @PluralsRes val resourceId: Int,
         private val count: Int,

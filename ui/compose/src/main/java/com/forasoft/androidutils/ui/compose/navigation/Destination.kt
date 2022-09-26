@@ -1,5 +1,3 @@
-@file:Suppress("Unused")
-
 package com.forasoft.androidutils.ui.compose.navigation
 
 import androidx.navigation.NamedNavArgument
@@ -19,6 +17,7 @@ abstract class Destination<P>(val routeSchema: String) {
      *
      * @param args destination's arguments.
      */
+    @Suppress("Unused")
     abstract fun createRoute(args: P): String
 
     /**

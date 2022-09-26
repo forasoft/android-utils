@@ -1,5 +1,3 @@
-@file:Suppress("Unused")
-
 package com.forasoft.androidutils.ui.compose.animation
 
 import androidx.compose.animation.core.AnimationSpec
@@ -25,6 +23,7 @@ private val DefaultAnimation = spring<Float>()
  * @param finishedListener An optional end listener to get notified when the animation is finished.
  * @return
  */
+@Suppress("Unused")
 @Composable
 fun animateAlignmentAsState(
     targetAlignment: BiasAlignment,

@@ -1,5 +1,3 @@
-@file:Suppress("Unused")
-
 package com.forasoft.androidutils.ui.compose.navigation
 
 import androidx.compose.runtime.Composable
@@ -39,6 +37,7 @@ fun NavGraphBuilder.composableDestination(
  * @param destination destination to add.
  * @param content composable content for the destination that will be hosted within the Dialog.
  */
+@Suppress("Unused")
 fun NavGraphBuilder.dialogDestination(
     destination: Destination<*>,
     content: @Composable (NavBackStackEntry) -> Unit,

@@ -1,5 +1,3 @@
-@file:Suppress("unused")
-
 package com.forasoft.androidutils.ui.view
 
 import android.view.View
@@ -11,6 +9,7 @@ import androidx.core.content.getSystemService
  *
  * @param flags additional operating flags required by [InputMethodManager.showSoftInput].
  */
+@Suppress("Unused")
 fun View.showKeyboard(flags: Int = InputMethodManager.SHOW_IMPLICIT) {
     val inputMethodManager = this.context.getSystemService<InputMethodManager>()
     inputMethodManager?.showSoftInput(this, flags)
@@ -21,6 +20,7 @@ fun View.showKeyboard(flags: Int = InputMethodManager.SHOW_IMPLICIT) {
  *
  * @param flags additional operating flags required by [InputMethodManager.hideSoftInputFromWindow].
  */
+@Suppress("Unused")
 fun View.hideKeyboard(flags: Int = 0) {
     val inputMethodManager = this.context.getSystemService<InputMethodManager>()
     inputMethodManager?.hideSoftInputFromWindow(this.windowToken, flags)

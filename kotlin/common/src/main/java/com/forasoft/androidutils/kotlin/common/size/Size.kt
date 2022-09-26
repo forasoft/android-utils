@@ -91,7 +91,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
     }
 
     companion object {
-        fun of(
+        internal fun of(
             amount: Number = 1,
             prefix: SizePrefix? = null,
             unit: SizeUnit = SizeUnit.BYTE,

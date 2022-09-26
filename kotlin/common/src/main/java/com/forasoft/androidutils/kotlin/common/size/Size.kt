@@ -63,6 +63,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
     ): Pair<SizePrefix.SiPrefix?, BigDecimal> =
         getPrefixedValue(unit, threshold, SizePrefix.siPrefixes)
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun getPrefixedBinaryValue(
         unit: SizeUnit,
         threshold: BigDecimal,
@@ -81,7 +82,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
         var value = unitCount
         while (value > threshold && prefixIterator.hasNext()) {
             prefix = prefixIterator.next()
-            value = prefix.multiplier.let { unitCount / it.toBigDecimal() }
+            value = prefix.multiplier.let { unitCount.divide(it.toBigDecimal()) }
         }
         return prefix to value
     }

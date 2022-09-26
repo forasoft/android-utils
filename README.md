@@ -2,16 +2,21 @@
 
 ### Clean
 
-Contains components that implement Clean Architecture patterns, like
-[UseCase](clean/src/main/java/com/forasoft/androidutils/clean/usecase/UseCase.kt)
-and
-[FlowUseCase](clean/src/main/java/com/forasoft/androidutils/clean/usecase/FlowUseCase.kt).
+Contains components that implement Clean Architecture patterns.
+Notable examples:
 
-**Min SDK**: 14
+* [UseCase](clean/src/main/java/com/forasoft/androidutils/clean/usecase/UseCase.kt)
+* [FlowUseCase](clean/src/main/java/com/forasoft/androidutils/clean/usecase/FlowUseCase.kt)
+
+Min SDK: 14
 
 ### Kotlin Common
 
 Contains helpers related to Kotlin language.
+Notable examples:
+
+* [valueOrNull](kotlin/common/src/main/java/com/forasoft/androidutils/kotlin/common/nullability/ValueOrNull.kt)
+  for running operations and handling expected exceptions
 
 ### Kotlin Coroutines
 

@@ -50,8 +50,8 @@ value class Size internal constructor(val bitCount: BigInteger) {
     }
 
     fun getValue(prefix: SizePrefix? = null, unit: SizeUnit): BigDecimal {
-        var unitCount = this.bitCount.toBigDecimal() / unit.bitCount.toBigDecimal()
-        if (prefix != null) unitCount /= prefix.multiplier.toBigDecimal()
+        var unitCount = this.bitCount.toBigDecimal().divide(unit.bitCount.toBigDecimal())
+        if (prefix != null) unitCount = unitCount.divide(prefix.multiplier.toBigDecimal())
         return unitCount
     }
 

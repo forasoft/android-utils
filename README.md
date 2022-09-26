@@ -25,6 +25,9 @@ Notable examples:
 
 * [valueOrNull](kotlin/common/src/main/java/com/forasoft/androidutils/kotlin/common/nullability/ValueOrNull.kt)
   runs operation and returns its result catching expected exception.
+* [Size](kotlin/common/src/main/java/com/forasoft/androidutils/kotlin/common/size)
+  information size units abstraction, allowing for basic arithmetic operations, conversions and
+  formatting
 
 ## Kotlin Coroutines
 

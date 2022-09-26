@@ -1,5 +1,3 @@
-@file:Suppress("all")
-
 package com.forasoft.androidutils.thirdparty.okhttp.logging
 
 import java.io.EOFException
@@ -11,6 +9,7 @@ import okio.Buffer
  * signatures.
  */
 // Source: https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/src/main/kotlin/okhttp3/logging/internal/utf8.kt
+@Suppress("ReturnCount")
 internal fun Buffer.isProbablyUtf8(): Boolean {
     try {
         val prefix = Buffer()

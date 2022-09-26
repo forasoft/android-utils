@@ -1,5 +1,3 @@
-@file:Suppress("Unused", "FunctionNaming")
-
 package com.forasoft.androidutils.ui.compose.effect
 
 import android.view.WindowManager
@@ -11,6 +9,7 @@ import com.forasoft.androidutils.platform.android.getActivity
 /**
  * Effect that keeps the screen on while is in composition.
  */
+@Suppress("Unused", "FunctionNaming")
 @Composable
 fun AlwaysOnScreen() {
     val context = LocalContext.current

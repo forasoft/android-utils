@@ -71,6 +71,23 @@ Notable examples:
 
 Min SDK: 21
 
+### WebRTC
+
+Contains helpers related to Android WebRTC library.
+
+Min SDK: 14
+
+### OkHttp
+
+Contains helpers related to OkHttp.
+
+Notable examples:
+
+* [LoggingInterceptor](thirdparty/okhttp/src/main/java/com/forasoft/androidutils/thirdparty/okhttp/logging/LoggingInterceptor.kt)
+  for logging HTTP requests, responses and request exceptions in an opinionated way.
+
+Min SDK: 14
+
 ## Download
 
 Write when the library is published on GitHub.

@@ -1,14 +1,23 @@
 package com.forasoft.androidutils.kotlin.common.size
 
 
+/**
+ * Returns the [Size] equal to the sum of the sizes in the iterable
+ */
 @Suppress("unused")
 fun Iterable<Size>.sumOf() = Size(this.sumOf { it.bitCount })
 
+/**
+ * Ensures that the size is not less than the passed [minimumValue]
+ */
 @Suppress("unused")
 fun Size.coerceAtLeast(minimumValue: Size): Size {
     return if (this < minimumValue) minimumValue else this
 }
 
+/**
+ * Ensures that the size is not greater than the passed [maximumValue]
+ */
 @Suppress("unused")
 fun Size.coerceAtMost(maximumValue: Size): Size {
     return if (this > maximumValue) maximumValue else this

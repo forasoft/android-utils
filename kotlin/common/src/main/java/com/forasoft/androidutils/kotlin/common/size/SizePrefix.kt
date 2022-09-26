@@ -1,13 +1,41 @@
 package com.forasoft.androidutils.kotlin.common.size
 
+import com.forasoft.androidutils.kotlin.common.size.SizePrefix.BinaryPrefix
+import com.forasoft.androidutils.kotlin.common.size.SizePrefix.Kibi
+import com.forasoft.androidutils.kotlin.common.size.SizePrefix.Kilo
+import com.forasoft.androidutils.kotlin.common.size.SizePrefix.Mebi
+import com.forasoft.androidutils.kotlin.common.size.SizePrefix.Mega
+import com.forasoft.androidutils.kotlin.common.size.SizePrefix.SiPrefix
 import java.math.BigInteger
 
+/**
+ * Units of information multiplication prefix
+ *
+ * [SiPrefix]es are the prefixes from the SI system ([Kilo], [Mega], etc), having a multiplication base of 1000
+ * [BinaryPrefix] are the prefixes based on the binary system ([Kibi], [Mebi], etc), having a multiplication base of 1024
+ */
 sealed interface SizePrefix {
 
+    /**
+     * Standard representation, used in the abbreviations
+     */
     val abbreviation: String
+
+    /**
+     * Standard prefix for power, how many base units the prefix denotes
+     */
     val multiplier: BigInteger
 
+    /**
+     * The prefix from the SI system ([Kilo], [Mega], etc), having a multiplication base of 1000
+     */
     interface SiPrefix : SizePrefix
+
+    /**
+     * The prefixe based on the binary system ([Kibi], [Mebi], etc), having a multiplication base of 1024
+     *
+     * @constructor Create empty Binary prefix
+     */
     interface BinaryPrefix : SizePrefix
 
     object Kilo : SiPrefix {
@@ -84,9 +112,15 @@ sealed interface SizePrefix {
         private val binaryMultiplier = 1024.toBigInteger()
         private val siMultiplier = 1000.toBigInteger()
 
+        /**
+         * List of all [SiPrefix], sorted in ascending order
+         */
         val siPrefixes
             get() = listOf(Kilo, Mega, Giga, Tera, Peta, Exa, Zetta, Yotta)
 
+        /**
+         * List of all [BinaryPrefix], sorted in ascending order
+         */
         val binaryPrefixes
             get() = listOf(Kibi, Mebi, Gibi, Tebi, Pebi, Exbi)
     }

@@ -7,6 +7,11 @@ import java.math.BigInteger
 import java.math.MathContext
 import java.math.RoundingMode
 
+/**
+ * Represents a size of the information
+ *
+ * @property bitCount size in bits
+ */
 @JvmInline
 value class Size internal constructor(val bitCount: BigInteger) {
 
@@ -49,20 +54,65 @@ value class Size internal constructor(val bitCount: BigInteger) {
         return this.bitCount.compareTo(another.bitCount)
     }
 
+    /**
+     * Returns the this size in passed units ([prefix] and [unit])
+     *
+     * Example:
+     * ```
+     * val size = 8.kilobytes
+     * size.getValue(SizePrefix.Mega, SizeUnit.bits) # 0.001
+     * ```
+     *
+     * @param prefix prefix to be used in size calculation
+     * @param unit output units
+     */
     fun getValue(prefix: SizePrefix? = null, unit: SizeUnit): BigDecimal {
         var unitCount = this.bitCount.toBigDecimal().divide(unit.bitCount.toBigDecimal())
         if (prefix != null) unitCount = unitCount.divide(prefix.multiplier.toBigDecimal())
         return unitCount
     }
 
+    /**
+     * Returns the this size in passed units
+     *
+     * Example:
+     * ```
+     * val size = 8.kilobytes
+     * size.getValue(SizeUnit.bits) # 8000
+     * ```
+     *
+     * @param unit output units
+     */
     fun getValue(unit: SizeUnit) = getValue(null, unit)
 
+    /**
+     * Returns a [SizePrefix] and amount of [unit] that corresponds to this [Size].
+     *
+     * The returned prefix is the smallest [SizePrefix.SiPrefix] with which the amount of units
+     * doesn't exceed passed [threshold]
+     *
+     * @see getPrefixedBinaryValue
+     *
+     * @param unit output units
+     * @param threshold largest unit amount allowed without moving to the next (bigger) prefix
+     */
     fun getPrefixedSiValue(
         unit: SizeUnit,
         threshold: BigDecimal,
     ): Pair<SizePrefix.SiPrefix?, BigDecimal> =
         getPrefixedValue(unit, threshold, SizePrefix.siPrefixes)
 
+    /**
+     * Returns a [SizePrefix] and amount of [unit] that corresponds to this [Size].
+     *
+     * The returned prefix is the smallest [SizePrefix.BinaryPrefix] with which the amount of units
+     * doesn't exceed passed [threshold]
+     *
+     * @see getPrefixedSiValue
+     *
+     * @param unit output units
+     * @param threshold largest unit amount allowed without moving to the next (bigger) prefix
+     */
     @Suppress("MemberVisibilityCanBePrivate")
     fun getPrefixedBinaryValue(
         unit: SizeUnit,

@@ -54,6 +54,23 @@ Notable examples:
 
 Min SDK: 16
 
+### UI Compose
+
+Contains helpers related to Jetpack Compose framework.
+
+Notable examples:
+
+* [Text](ui/compose/src/main/java/com/forasoft/androidutils/ui/compose/Text.kt) allows to present 
+  text in different forms.
+* [Navigation helpers](ui/compose/src/main/java/com/forasoft/androidutils/ui/compose/navigation)
+  constructs abstraction layer over Jetpack Navigation providing components such as
+  `Destination` and `NavGraphBuilder` extensions.
+* [Side-effects](ui/compose/src/main/java/com/forasoft/androidutils/ui/compose/effect)
+  for frequently used actions such as observing Lifecycle events, requesting screen orientation,
+  controlling system bars state, etc.
+
+Min SDK: 21
+
 ## Download
 
 Write when the library is published on GitHub.

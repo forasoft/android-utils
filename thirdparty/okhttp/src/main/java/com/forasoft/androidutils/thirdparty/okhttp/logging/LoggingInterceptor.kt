@@ -37,7 +37,7 @@ import java.nio.charset.StandardCharsets
  * <-- HTTP FAILED: java.net.SocketTimeoutException: timeout
  * ```
  */
-@Suppress("Unused")
+@Suppress("Unused", "TooManyFunctions")
 object LoggingInterceptor : Interceptor() {
 
     override fun onRequest(info: RequestInfo): Request {

@@ -132,7 +132,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
         var value = unitCount
         while (value > threshold && prefixIterator.hasNext()) {
             prefix = prefixIterator.next()
-            value = prefix.multiplier.let { unitCount.divide(it.toBigDecimal()) }
+            value = unitCount.divide(prefix.multiplier.toBigDecimal())
         }
         return prefix to value
     }

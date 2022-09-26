@@ -1,6 +1,12 @@
-## Modules
+# Android Utils
 
-### Clean
+Android Utils is a library of useful helpers that allow to decrease amount of
+boilerplate code in Android development. Helpers are divided into modules according to
+their specifics.
+
+# Modules
+
+## Clean
 
 Contains components that implement Clean Architecture patterns.
 
@@ -11,7 +17,7 @@ Notable examples:
 
 Min SDK: 14
 
-### Kotlin Common
+## Kotlin Common
 
 Contains helpers related to Kotlin language.
 
@@ -20,7 +26,7 @@ Notable examples:
 * [valueOrNull](kotlin/common/src/main/java/com/forasoft/androidutils/kotlin/common/nullability/ValueOrNull.kt)
   runs operation and returns its result catching expected exception.
 
-### Kotlin Coroutines
+## Kotlin Coroutines
 
 Contains helpers related to Kotlin Coroutines library.
 
@@ -31,7 +37,7 @@ Notable examples:
 * [OperationTracker](kotlin/coroutines/src/main/java/com/forasoft/androidutils/kotlin/coroutines/operationtracker/OperationTracker.kt)
   tracks ongoing operations.
 
-### Platform Android
+## Platform Android
 
 Contains helpers related to Android platform.
 
@@ -41,7 +47,7 @@ Notable examples:
 
 Min SDK: 14
 
-### UI View
+## UI View
 
 Contains helpers related to Android View framework.
 
@@ -54,7 +60,7 @@ Notable examples:
 
 Min SDK: 16
 
-### UI Compose
+## UI Compose
 
 Contains helpers related to Jetpack Compose framework.
 
@@ -71,13 +77,13 @@ Notable examples:
 
 Min SDK: 21
 
-### WebRTC
+## WebRTC
 
 Contains helpers related to Android WebRTC library.
 
 Min SDK: 14
 
-### OkHttp
+## OkHttp
 
 Contains helpers related to OkHttp.
 
@@ -88,6 +94,6 @@ Notable examples:
 
 Min SDK: 21
 
-## Download
+# Download
 
 Write when the library is published on GitHub.

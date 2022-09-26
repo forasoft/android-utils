@@ -149,32 +149,18 @@ value class Size internal constructor(val bitCount: BigInteger) {
             unit: SizeUnit = SizeUnit.BYTE,
         ): Size {
 
-            val applyMultipliers: BigDecimal.() -> BigInteger = {
-                this
-                    .times(unit.bitCount.toBigDecimal())
-                    .times(prefix?.multiplier?.toBigDecimal() ?: BigDecimal.ONE)
-                    .round(MathContext.UNLIMITED)
-                    .toBigInteger()
-            }
-
-            val bitCount = when (amount) {
-                is Double, is Float -> amount
-                    .toDouble()
-                    .toBigDecimal()
-                    .applyMultipliers()
-
-                is BigInteger -> amount
-                    .toBigDecimal()
-                    .applyMultipliers()
-
+            val amountBigDecimal = when (amount) {
+                is Double, is Float -> amount.toDouble().toBigDecimal()
+                is BigInteger -> amount.toBigDecimal()
                 is BigDecimal -> amount
-                    .applyMultipliers()
-
-                else -> amount
-                    .toLong()
-                    .toBigDecimal()
-                    .applyMultipliers()
+                else -> amount.toLong().toBigDecimal()
             }
+
+            val bitCount = amountBigDecimal
+                .times(unit.bitCount.toBigDecimal())
+                .times(prefix?.multiplier?.toBigDecimal() ?: BigDecimal.ONE)
+                .round(MathContext.UNLIMITED)
+                .toBigInteger()
 
             return Size(bitCount)
         }

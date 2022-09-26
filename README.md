@@ -33,7 +33,26 @@ Notable examples:
 
 ### Platform Android
 
-Contains helpers related to Kotlin Coroutines library.
+Contains helpers related to Android platform.
+
+Notable examples:
+
+* [Context extensions](platform/android/src/main/java/com/forasoft/androidutils/platform/android/Context.kt)
+
+Min SDK: 14
+
+### UI View
+
+Contains helpers related to Android View framework.
+
+Notable examples:
+
+* [Text](ui/view/src/main/java/com/forasoft/androidutils/ui/view/Text.kt) allows to present text
+  in different forms.
+* [View.fade*](ui/view/src/main/java/com/forasoft/androidutils/ui/view/visibility/Fade.kt)
+  extensions allow to show and hide views with fade effect.
+
+Min SDK: 16
 
 ## Download
 

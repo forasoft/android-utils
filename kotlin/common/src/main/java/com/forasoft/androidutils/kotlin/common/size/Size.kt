@@ -5,6 +5,7 @@ package com.forasoft.androidutils.kotlin.common.size
 import java.math.BigDecimal
 import java.math.BigInteger
 import java.math.MathContext
+import java.math.RoundingMode
 
 @JvmInline
 value class Size internal constructor(val bitCount: BigInteger) {
@@ -38,7 +39,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
 
         val bitCount = this.bitCount
             .toBigDecimal()
-            .div(otherBigDecimal)
+            .divide(otherBigDecimal, RoundingMode.CEILING)
             .toBigInteger()
 
         return Size(bitCount)

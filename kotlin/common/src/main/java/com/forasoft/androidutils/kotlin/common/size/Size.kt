@@ -49,10 +49,6 @@ value class Size internal constructor(val bitCount: BigInteger) {
         return this.bitCount.compareTo(another.bitCount)
     }
 
-    fun coerceAtLeast(minimumValue: Size): Size {
-        return if (this < minimumValue) minimumValue else this
-    }
-
     fun getValue(prefix: SizePrefix? = null, unit: SizeUnit): BigDecimal {
         var unitCount = this.bitCount.toBigDecimal() / unit.bitCount.toBigDecimal()
         if (prefix != null) unitCount /= prefix.multiplier.toBigDecimal()

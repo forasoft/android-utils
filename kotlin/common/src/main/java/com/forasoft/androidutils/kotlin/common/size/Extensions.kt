@@ -5,6 +5,16 @@ package com.forasoft.androidutils.kotlin.common.size
 fun Iterable<Size>.sumOf() = Size(this.sumOf { it.bitCount })
 
 @Suppress("unused")
+fun Size.coerceAtLeast(minimumValue: Size): Size {
+    return if (this < minimumValue) minimumValue else this
+}
+
+@Suppress("unused")
+fun Size.coerceAtMost(maximumValue: Size): Size {
+    return if (this > maximumValue) maximumValue else this
+}
+
+@Suppress("unused")
 val Number.bytes: Size
     get() = Size.of(this, null, SizeUnit.BYTE)
 

@@ -86,7 +86,7 @@ Notable examples:
 * [LoggingInterceptor](thirdparty/okhttp/src/main/java/com/forasoft/androidutils/thirdparty/okhttp/logging/LoggingInterceptor.kt)
   for logging HTTP requests, responses and request exceptions in an opinionated way.
 
-Min SDK: 14
+Min SDK: 21
 
 ## Download
 

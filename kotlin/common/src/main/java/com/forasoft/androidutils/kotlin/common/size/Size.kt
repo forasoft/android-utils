@@ -55,7 +55,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
     }
 
     /**
-     * Returns the this size in passed units ([prefix] and [unit])
+     * Returns this size in passed units ([prefix] and [unit])
      *
      * Example:
      * ```
@@ -73,7 +73,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
     }
 
     /**
-     * Returns the this size in passed units
+     * Returns this size in passed units
      *
      * Example:
      * ```

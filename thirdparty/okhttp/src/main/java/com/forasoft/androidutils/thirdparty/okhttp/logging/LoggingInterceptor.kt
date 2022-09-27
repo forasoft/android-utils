@@ -1,11 +1,6 @@
-package com.forasoft.androidutils.thirdparty.okhttp.logging.interceptors
+package com.forasoft.androidutils.thirdparty.okhttp.logging
 
-import okhttp3.Headers
-import okhttp3.MediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
-import okhttp3.Response
+import okhttp3.*
 import okhttp3.internal.http.promisesBody
 import okio.Buffer
 import okio.GzipSource
@@ -109,11 +104,7 @@ object LoggingInterceptor : Interceptor() {
                 add(getHeaderString(key, value))
             }
         }
-        if (headerStrings.isNotEmpty()) builder.appendLine(
-            headerStrings.joinToString(
-                HEADER_ENTRY_SEPARATOR
-            )
-        )
+        if (headerStrings.isNotEmpty()) builder.appendLine(headerStrings.joinToString(HEADER_ENTRY_SEPARATOR))
     }
 
     private fun getHeaderString(key: String, value: String): String {

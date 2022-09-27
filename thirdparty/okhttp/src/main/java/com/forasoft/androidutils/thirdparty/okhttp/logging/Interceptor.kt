@@ -1,4 +1,4 @@
-package com.forasoft.androidutils.thirdparty.okhttp.logging.interceptors
+package com.forasoft.androidutils.thirdparty.okhttp.logging
 
 import okhttp3.Connection
 import okhttp3.Interceptor

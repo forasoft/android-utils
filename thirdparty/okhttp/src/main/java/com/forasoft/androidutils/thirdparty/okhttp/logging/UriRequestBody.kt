@@ -7,6 +7,13 @@ import okhttp3.RequestBody
 import okio.BufferedSink
 import okio.source
 
+/**
+ * Request body of the content provided [uri] points to
+ *
+ * @property contentType content type to be sent with the request
+ * @property contentResolver [ContentResolver] to be used to get [uri] contents
+ * @property uri content to wrap
+ */
 @Suppress("unused")
 class UriRequestBody(
     private val contentType: MediaType?,

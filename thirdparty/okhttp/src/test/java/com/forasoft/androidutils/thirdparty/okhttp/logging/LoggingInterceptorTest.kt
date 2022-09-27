@@ -1,6 +1,7 @@
 package com.forasoft.androidutils.thirdparty.okhttp.logging
 
 import android.util.Log
+import com.forasoft.androidutils.thirdparty.okhttp.logging.interceptors.LoggingInterceptor
 import com.google.common.truth.Truth
 import okhttp3.FormBody
 import okhttp3.OkHttpClient

@@ -1,4 +1,4 @@
-package com.forasoft.androidutils.thirdparty.okhttp.logging
+package com.forasoft.androidutils.thirdparty.okhttp
 
 import android.content.ContentResolver
 import android.net.Uri

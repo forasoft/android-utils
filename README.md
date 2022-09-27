@@ -94,6 +94,8 @@ Notable examples:
 
 * [LoggingInterceptor](thirdparty/okhttp/src/main/java/com/forasoft/androidutils/thirdparty/okhttp/logging/LoggingInterceptor.kt)
   for logging HTTP requests, responses and request exceptions in an opinionated way.
+* [UriRequestBody](thirdparty/okhttp/src/main/java/com/forasoft/androidutils/thirdparty/okhttp/UriRequestBody.kt)
+  quick way to convert the Uri's content to RequestBody
 
 Min SDK: 21
 

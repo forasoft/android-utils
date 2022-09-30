@@ -13,17 +13,20 @@ import java.lang.ref.WeakReference
  *
  * @see TimberUiTree
  */
-class ToastLogger(private val context: Context) {
+class ToastLogger(context: Context) {
+
+    private val contextRef = WeakReference(context)
 
     private val handler = Handler(Looper.getMainLooper())
 
-    private var currentToast: WeakReference<Toast>? = null
+    private var currentToastRef: WeakReference<Toast>? = null
 
     fun log(message: String) {
         handler.post {
-            currentToast?.get()?.cancel()
+            val context = contextRef.get() ?: return@post
+            currentToastRef?.get()?.cancel()
             val toast = Toast.makeText(context, message, Toast.LENGTH_LONG)
-            currentToast = WeakReference(toast)
+            currentToastRef = WeakReference(toast)
             toast.show()
         }
     }

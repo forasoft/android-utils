@@ -47,6 +47,8 @@ Contains helpers related to Android platform.
 Notable examples:
 
 * [Context extensions](platform/android/src/main/java/com/forasoft/androidutils/platform/android/Context.kt)
+* [TimberUiTree](platform/android/src/main/java/com/forasoft/androidutils/platform/android/toastlogger/TimberUiTree.kt)
+  displays all `Timber.d` logs with `Toast`s.
 
 Min SDK: 14
 

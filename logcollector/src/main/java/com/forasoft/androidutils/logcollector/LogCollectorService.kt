@@ -69,7 +69,7 @@ class LogCollectorService : Service() {
         val body = getString(R.string.log_collector_notification_body, appName)
         return NotificationCompat.Builder(this, channelId)
             .setPriority(NotificationCompat.PRIORITY_LOW)
-            .setSmallIcon(R.drawable.ic_launcher_foreground) // TODO: Change icon
+            .setSmallIcon(android.R.drawable.ic_menu_save) // TODO: Change icon
             .setContentTitle(title)
             .setContentText(body)
             .build()

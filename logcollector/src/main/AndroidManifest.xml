@@ -8,13 +8,13 @@
     <application>
 
         <activity
-            android:name=".LogAggregatorActivity"
+            android:name=".LogCollectorActivity"
             android:exported="true"
             android:icon="@mipmap/ic_launcher"
-            android:label="@string/activity_label"
+            android:label="@string/log_collector_activity_label"
             android:roundIcon="@mipmap/ic_launcher_round"
-            android:taskAffinity="com.forasoft.androidutils.logaggregator.${applicationId}"
-            android:theme="@style/LogAggregatorTheme">
+            android:taskAffinity="com.forasoft.androidutils.logcollector.${applicationId}"
+            android:theme="@style/LogCollectorTheme">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
         </activity>
 
         <service
-            android:name=".LogAggregatorService"
+            android:name=".LogCollectorService"
             android:exported="false" />
 
         <provider
@@ -34,7 +34,7 @@
             tools:node="merge">
 
             <meta-data
-                android:name="com.forasoft.androidutils.logaggregator.LogAggregatorServiceInitializer"
+                android:name="com.forasoft.androidutils.logcollector.LogCollectorServiceInitializer"
                 android:value="androidx.startup" />
 
         </provider>

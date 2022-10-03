@@ -1,4 +1,4 @@
-package com.forasoft.androidutils.logaggregator
+package com.forasoft.androidutils.logcollector
 
 import android.app.Notification
 import android.app.Service
@@ -10,7 +10,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import timber.log.Timber
 
-class LogAggregatorService : Service() {
+class LogCollectorService : Service() {
 
     private val notificationManager by lazy {
         NotificationManagerCompat.from(this)
@@ -22,14 +22,14 @@ class LogAggregatorService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        Timber.v("LogAggregatorService created")
+        Timber.v("LogCollectorService created")
 
         startForeground()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Timber.v("LogAggregatorService destroyed")
+        Timber.v("LogCollectorService destroyed")
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
@@ -52,8 +52,8 @@ class LogAggregatorService : Service() {
 
     private fun createNotificationChannel() {
         val importance = NotificationManagerCompat.IMPORTANCE_LOW
-        val id = getString(R.string.log_aggregator_notification_channel_id)
-        val name = getString(R.string.log_aggregator_notification_channel_name)
+        val id = getString(R.string.log_collector_notification_channel_id)
+        val name = getString(R.string.log_collector_notification_channel_name)
         val channel = NotificationChannelCompat.Builder(id, importance)
             .setName(name)
             .setLightsEnabled(false)
@@ -63,10 +63,10 @@ class LogAggregatorService : Service() {
     }
 
     private fun createNotification(): Notification {
-        val channelId = getString(R.string.log_aggregator_notification_channel_id)
-        val title = getString(R.string.log_aggregator_notification_title)
+        val channelId = getString(R.string.log_collector_notification_channel_id)
+        val title = getString(R.string.log_collector_notification_title)
         val appName = getString(applicationInfo.labelRes)
-        val body = getString(R.string.log_aggregator_notification_body, appName)
+        val body = getString(R.string.log_collector_notification_body, appName)
         return NotificationCompat.Builder(this, channelId)
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .setSmallIcon(R.drawable.ic_launcher_foreground) // TODO: Change icon

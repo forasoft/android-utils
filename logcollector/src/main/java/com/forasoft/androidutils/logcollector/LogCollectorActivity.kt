@@ -1,13 +1,13 @@
-package com.forasoft.androidutils.logaggregator
+package com.forasoft.androidutils.logcollector
 
 import android.app.Activity
 import android.os.Bundle
 
-class LogAggregatorActivity : Activity() {
+class LogCollectorActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_log_aggregator)
+        setContentView(R.layout.activity_log_collector)
     }
 
 }

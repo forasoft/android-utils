@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="log_collector_activity_label">Logs</string>
+
+    <string name="log_collector_notification_channel_id">
+        log_collector_notification_channel_id
+    </string>
+    <string name="log_collector_notification_channel_name">Log Collector</string>
+    <string name="log_collector_notification_title">Logs are collecting…</string>
+    <string name="log_collector_notification_body">Log Collector is running for %1$s</string>
+
+</resources>

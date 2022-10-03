@@ -12,7 +12,7 @@ detekt {
 }
 
 android {
-    namespace = "com.forasoft.androidutils.logaggregator"
+    namespace = "com.forasoft.androidutils.logcollector"
     compileSdk = 33
 
     defaultConfig {

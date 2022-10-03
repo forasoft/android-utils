@@ -3,4 +3,11 @@
 
     <string name="activity_label">Logs</string>
 
+    <string name="log_aggregator_notification_channel_id">
+        log_aggregator_notification_channel_id
+    </string>
+    <string name="log_aggregator_notification_channel_name">Log Aggregator</string>
+    <string name="log_aggregator_notification_title">Logs are collecting…</string>
+    <string name="log_aggregator_notification_body">Log Aggregator is working for %1$s</string>
+
 </resources>

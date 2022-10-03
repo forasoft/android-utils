@@ -14,6 +14,8 @@ object Dependencies {
 
     const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigation}"
 
+    const val startup = "androidx.startup:startup-runtime:${Versions.startup}"
+
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
 
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"

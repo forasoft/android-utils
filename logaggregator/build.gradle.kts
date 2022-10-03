@@ -54,5 +54,6 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 }
 
 dependencies {
-
+    implementation(Dependencies.startup)
+    implementation(Dependencies.timber)
 }

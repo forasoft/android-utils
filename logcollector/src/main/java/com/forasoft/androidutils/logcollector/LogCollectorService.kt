@@ -8,6 +8,9 @@ import android.os.IBinder
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class LogCollectorService : Service() {
@@ -15,6 +18,10 @@ class LogCollectorService : Service() {
     private val notificationManager by lazy {
         NotificationManagerCompat.from(this)
     }
+
+    private val coroutineScope = CoroutineScope(SupervisorJob())
+
+    private val logCollector = LogCollector(this)
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int = START_NOT_STICKY
 
@@ -25,6 +32,7 @@ class LogCollectorService : Service() {
         Timber.v("LogCollectorService created")
 
         startForeground()
+        coroutineScope.launch { logCollector.launch() }
     }
 
     override fun onDestroy() {

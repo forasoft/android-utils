@@ -6,7 +6,9 @@
         <activity
             android:name=".LogAggregatorActivity"
             android:exported="true"
+            android:icon="@mipmap/ic_launcher"
             android:label="@string/activity_label"
+            android:roundIcon="@mipmap/ic_launcher_round"
             android:taskAffinity="com.forasoft.androidutils.logaggregator.${applicationId}"
             android:theme="@style/LogAggregatorTheme">
 

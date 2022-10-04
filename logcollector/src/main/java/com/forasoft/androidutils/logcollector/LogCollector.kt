@@ -10,7 +10,7 @@ import java.util.*
 class LogCollector(private val context: Context) {
 
     suspend fun launch() = withContext(Dispatchers.IO) {
-        val directory = getDirectory()
+        val directory = getLogsDirectory()
         val fileName = getFileName()
         val file = File(directory, "$fileName.txt")
         val writer = file.bufferedWriter()
@@ -27,11 +27,11 @@ class LogCollector(private val context: Context) {
             }
     }
 
-    private fun getDirectory(): File {
-        val baseDir = context.externalCacheDir ?: context.cacheDir
-        val dir = File("${baseDir.absolutePath}/$DIRECTORY")
-        dir.mkdir()
-        return dir
+    private fun getLogsDirectory(): File {
+        val cacheDir = context.externalCacheDir ?: context.cacheDir
+        val logDir = File("${cacheDir.absolutePath}/$LOGS_DIRECTORY")
+        logDir.mkdir()
+        return logDir
     }
 
     private fun getFileName(): String {
@@ -41,7 +41,7 @@ class LogCollector(private val context: Context) {
     }
 
     companion object {
-        private const val DIRECTORY = "log_collector"
+        private const val LOGS_DIRECTORY = "log_collector"
         private const val DATE_TIME_PATTERN = "dd.MM.yyyy-HH:mm.SSS"
 
         private const val COMMAND_CLEAR_LOGCAT = "logcat -c"

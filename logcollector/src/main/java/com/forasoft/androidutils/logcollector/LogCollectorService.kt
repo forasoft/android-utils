@@ -32,7 +32,7 @@ class LogCollectorService : Service() {
         Timber.v("LogCollectorService created")
 
         startForeground()
-        coroutineScope.launch { logCollector.launch() }
+        coroutineScope.launch { logCollector.start() }
     }
 
     override fun onDestroy() {

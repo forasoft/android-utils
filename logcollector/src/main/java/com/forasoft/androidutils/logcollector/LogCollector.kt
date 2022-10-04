@@ -23,7 +23,7 @@ class LogCollector(context: Context) {
 
     private var linesWritten = 0
 
-    suspend fun launch() = withContext(Dispatchers.IO) {
+    suspend fun start() = withContext(Dispatchers.IO) {
         collectLogs()
     }
 

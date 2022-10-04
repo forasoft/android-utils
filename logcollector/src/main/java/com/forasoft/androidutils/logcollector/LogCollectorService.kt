@@ -3,7 +3,6 @@ package com.forasoft.androidutils.logcollector
 import android.app.Notification
 import android.app.Service
 import android.content.Intent
-import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
@@ -46,12 +45,6 @@ class LogCollectorService : Service() {
     override fun onTaskRemoved(rootIntent: Intent?) {
         super.onTaskRemoved(rootIntent)
         Timber.v("onTaskRemoved")
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            stopForeground(STOP_FOREGROUND_REMOVE)
-        } else {
-            stopForeground(true)
-        }
         stopSelf()
     }
 

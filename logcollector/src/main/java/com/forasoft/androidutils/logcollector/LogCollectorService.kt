@@ -10,6 +10,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -38,6 +39,8 @@ class LogCollectorService : Service() {
     override fun onDestroy() {
         super.onDestroy()
         Timber.v("LogCollectorService destroyed")
+
+        coroutineScope.cancel()
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {

@@ -15,13 +15,13 @@ import timber.log.Timber
 
 class LogCollectorService : Service() {
 
+    private val coroutineScope = CoroutineScope(SupervisorJob())
+
     private val notificationManager by lazy {
         NotificationManagerCompat.from(this)
     }
 
-    private val coroutineScope = CoroutineScope(SupervisorJob())
-
-    private val logCollector = LogCollector(this)
+    private val logCollector by lazy { LogCollector(this) }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int = START_NOT_STICKY
 

@@ -12,6 +12,7 @@
             android:exported="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/log_collector_activity_label"
+            android:process=":logcollector"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:taskAffinity="com.forasoft.androidutils.logcollector.${applicationId}"
             android:theme="@style/LogCollectorTheme">

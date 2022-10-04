@@ -69,7 +69,6 @@ class LogCollector(context: Context) {
     private suspend fun writeLines(lines: Sequence<String>) {
         val job = coroutineContext.job
         lines.forEach { line ->
-            job.ensureActive()
             currentFileWriter?.appendLine(line)
             linesWritten += 1
 
@@ -81,6 +80,8 @@ class LogCollector(context: Context) {
                 }
                 linesWritten = 0
             }
+
+            job.ensureActive()
         }
     }
 

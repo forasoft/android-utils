@@ -2,11 +2,14 @@ package com.forasoft.androidutils.logcollector
 
 import android.content.Context
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.job
 import kotlinx.coroutines.withContext
 import java.io.BufferedWriter
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.coroutines.coroutineContext
 
 class LogCollector(context: Context) {
 
@@ -37,7 +40,7 @@ class LogCollector(context: Context) {
         return formatter.format(date)
     }
 
-    private fun collectLogs() {
+    private suspend fun collectLogs() {
         createNewFile()
         clearLogcat()
         getLogcatProcess()
@@ -63,8 +66,10 @@ class LogCollector(context: Context) {
         return Runtime.getRuntime().exec(COMMAND_RUN_LOGCAT)
     }
 
-    private fun writeLines(lines: Sequence<String>) {
+    private suspend fun writeLines(lines: Sequence<String>) {
+        val job = coroutineContext.job
         lines.forEach { line ->
+            job.ensureActive()
             currentFileWriter?.appendLine(line)
             linesWritten += 1
 

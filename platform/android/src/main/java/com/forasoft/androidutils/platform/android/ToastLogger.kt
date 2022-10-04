@@ -1,4 +1,4 @@
-package com.forasoft.androidutils.platform.android.toastlogger
+package com.forasoft.androidutils.platform.android
 
 import android.content.Context
 import android.os.Handler

@@ -3,6 +3,7 @@ package com.forasoft.androidutils.platform.android.toastlogger
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import com.forasoft.androidutils.platform.android.ToastLogger
 import timber.log.Timber
 
 /**

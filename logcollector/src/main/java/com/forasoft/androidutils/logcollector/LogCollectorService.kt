@@ -36,7 +36,12 @@ class LogCollectorService : Service() {
     override fun onTaskRemoved(rootIntent: Intent?) {
         super.onTaskRemoved(rootIntent)
         Timber.v("onTaskRemoved")
-        stopSelf()
+        val removedActivityComponentName = rootIntent?.component
+        val logCollectorActivityComponentName =
+            ComponentName(this, LogCollectorActivity::class.java)
+        if (removedActivityComponentName != logCollectorActivityComponentName) {
+            stopSelf()
+        }
     }
 
 }

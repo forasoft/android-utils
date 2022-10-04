@@ -1,4 +1,4 @@
-package com.forasoft.androidutils.platform.android.toastlogger
+package com.forasoft.androidutils.platform.android
 
 import android.content.Context
 import android.os.Handler
@@ -7,11 +7,7 @@ import android.widget.Toast
 import java.lang.ref.WeakReference
 
 /**
- * Displays logged messages with [Toast]s.
- *
- * This class was designed to be used in conjunction with [TimberUiTree].
- *
- * @see TimberUiTree
+ * Displays messages with [Toast]s.
  */
 class ToastLogger(context: Context) {
 

@@ -15,9 +15,6 @@ class LogCollector(context: Context) {
 
     private val directory = createDirectory(context)
 
-    private val fileBaseName = createFileBaseName()
-    private var filePart = 0
-
     private var currentFile: File? = null
     private var currentFileWriter: BufferedWriter? = null
 
@@ -33,12 +30,6 @@ class LogCollector(context: Context) {
         val logDir = File("${cacheDir.absolutePath}/$LOGS_DIRECTORY")
         logDir.mkdir()
         return logDir
-    }
-
-    private fun createFileBaseName(): String {
-        val date = Date()
-        val formatter = SimpleDateFormat(FILE_DATE_TIME_FORMAT, Locale.US)
-        return formatter.format(date)
     }
 
     private fun deleteOldFiles() {
@@ -61,7 +52,6 @@ class LogCollector(context: Context) {
     }
 
     private fun createNewFile() {
-        filePart += 1
         val fileName = createFileName()
         val file = File(directory, "$fileName.txt")
         val fileWriter = file.bufferedWriter()
@@ -98,16 +88,13 @@ class LogCollector(context: Context) {
     }
 
     private fun createFileName(): String {
-        return if (filePart == 1) {
-            fileBaseName
-        } else {
-            "$fileBaseName-$FILE_PART_SUFFIX$filePart"
-        }
+        val date = Date()
+        val formatter = SimpleDateFormat(FILE_DATE_TIME_FORMAT, Locale.US)
+        return formatter.format(date)
     }
 
     companion object {
         const val FILE_DATE_TIME_FORMAT = "dd.MM.yyyy-HH:mm:ss"
-        const val FILE_PART_SUFFIX = "part"
 
         private const val LOGS_DIRECTORY = "logs"
 

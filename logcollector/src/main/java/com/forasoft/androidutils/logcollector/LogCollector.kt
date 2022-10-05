@@ -24,6 +24,7 @@ class LogCollector(context: Context) {
     private var linesWritten = 0
 
     suspend fun start() = withContext(Dispatchers.IO) {
+        deleteOldFiles()
         collectLogs()
     }
 
@@ -38,6 +39,16 @@ class LogCollector(context: Context) {
         val date = Date()
         val formatter = SimpleDateFormat(FILE_DATE_TIME_FORMAT, Locale.US)
         return formatter.format(date)
+    }
+
+    private fun deleteOldFiles() {
+        val files = directory.listFiles()
+        if (files == null || files.size <= MAX_FILE_COUNT) return
+
+        files.sortBy(File::lastModified)
+        repeat(files.size - MAX_FILE_COUNT) { index ->
+            files[index].delete()
+        }
     }
 
     private suspend fun collectLogs() {
@@ -77,6 +88,7 @@ class LogCollector(context: Context) {
                 if (currentFileSize == null || currentFileSize > FILE_MAX_SIZE) {
                     currentFileWriter?.close()
                     createNewFile()
+                    deleteOldFiles()
                 }
                 linesWritten = 0
             }
@@ -104,6 +116,8 @@ class LogCollector(context: Context) {
 
         private const val WRITTEN_LINE_COUNT_PER_FILE_SIZE_CHECK = 100
         private const val FILE_MAX_SIZE = 10_000_000L
+
+        private const val MAX_FILE_COUNT = 10
     }
 
 }

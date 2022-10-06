@@ -54,7 +54,6 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 }
 
 dependencies {
-    implementation(Dependencies.jetpackCore)
     implementation(Dependencies.startup)
     implementation(Dependencies.coroutines)
     implementation(Dependencies.timber)

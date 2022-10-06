@@ -9,6 +9,7 @@ object Versions {
     const val coroutines = "1.6.4"
 
     const val jetpackCore = "1.8.0"
+    const val appCompat = "1.5.1"
 
     const val composeCompiler = "1.3.1"
     const val compose = "1.2.1"

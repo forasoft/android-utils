@@ -7,6 +7,7 @@ object Dependencies {
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 
     const val jetpackCore = "androidx.core:core-ktx:${Versions.jetpackCore}"
+    const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
 
     const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"

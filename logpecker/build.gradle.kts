@@ -54,6 +54,8 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 }
 
 dependencies {
+    implementation(Dependencies.jetpackCore)
+    implementation(Dependencies.appCompat)
     implementation(Dependencies.recyclerView)
     implementation(Dependencies.startup)
     implementation(Dependencies.coroutines)

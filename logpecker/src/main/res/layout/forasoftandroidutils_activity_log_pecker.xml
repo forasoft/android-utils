@@ -17,4 +17,13 @@
         android:textSize="20sp"
         tools:text="My application logs" />
 
+    <ListView
+        android:id="@+id/forasoftandroidutils_log_pecker_file_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        tools:listitem="@layout/forasoftandroidutils_log_pecker_file_item" />
+
 </LinearLayout>

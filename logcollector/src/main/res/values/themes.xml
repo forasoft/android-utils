@@ -2,7 +2,7 @@
 <resources>
 
     <style name="LogCollectorTheme" parent="android:Theme.Holo.NoActionBar">
-        <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowBackground">@color/log_collector_activity_background</item>
     </style>
 
 </resources>

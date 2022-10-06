@@ -34,7 +34,7 @@
             tools:node="merge">
 
             <meta-data
-                android:name="com.forasoft.androidutils.logcollector.LogCollectorServiceInitializer"
+                android:name="com.forasoft.androidutils.logcollector.LogCollectorInitializer"
                 android:value="androidx.startup" />
 
         </provider>

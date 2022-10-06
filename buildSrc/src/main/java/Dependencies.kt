@@ -14,6 +14,8 @@ object Dependencies {
 
     const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigation}"
 
+    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
+
     const val startup = "androidx.startup:startup-runtime:${Versions.startup}"
 
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"

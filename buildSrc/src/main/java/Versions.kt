@@ -15,6 +15,8 @@ object Versions {
 
     const val navigation = "2.5.2"
 
+    const val recyclerView = "1.2.1"
+
     const val startup = "1.1.1"
 
     const val okHttp = "4.10.0"

@@ -7,7 +7,7 @@ internal class LogPeckerActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_log_pecker)
+        setContentView(R.layout.forasoftandroidutils_activity_log_pecker)
     }
 
 }

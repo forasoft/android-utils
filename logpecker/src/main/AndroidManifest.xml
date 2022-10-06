@@ -11,7 +11,7 @@
             android:label="@string/log_pecker_activity_label"
             android:process=":logpeckeractivity"
             android:taskAffinity="com.forasoft.androidutils.logpecker.${applicationId}"
-            android:theme="@style/LogPeckerTheme">
+            android:theme="@style/forasoftandroidutils_LogPeckerActivityTheme">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

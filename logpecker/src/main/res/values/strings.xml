@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="log_pecker_activity_label">Logs</string>
+    <string name="forasoftandroidutils_log_pecker_activity_label">Logs</string>
 
 </resources>

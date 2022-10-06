@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <bool name="log_collector_add_launcher_icon">false</bool>
+    <bool name="log_collector_is_enabled">false</bool>
     
 </resources>

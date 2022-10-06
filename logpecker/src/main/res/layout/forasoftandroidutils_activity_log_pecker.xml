@@ -14,6 +14,7 @@
         android:gravity="center_vertical"
         android:maxLines="1"
         android:paddingHorizontal="16dp"
+        android:textColor="@android:color/white"
         android:textSize="20sp"
         tools:text="My application logs" />
 
@@ -22,8 +23,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
+        android:divider="@drawable/forasoftandroidutils_log_pecker_file_divider"
+        android:listSelector="@android:color/transparent"
+        android:padding="16dp"
+        android:scrollbars="none"
         tools:listitem="@layout/forasoftandroidutils_log_pecker_file_item" />
 
 </LinearLayout>

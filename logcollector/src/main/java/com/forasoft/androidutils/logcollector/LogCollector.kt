@@ -61,11 +61,11 @@ internal class LogCollector(context: Context) {
     }
 
     private fun clearLogcat() {
-        Runtime.getRuntime().exec(RuntimeCommand.CLEAR_LOGCAT)
+        Runtime.getRuntime().exec(RuntimeCommand.LOGCAT_CLEAR)
     }
 
     private fun getLogcatProcess(): Process {
-        return Runtime.getRuntime().exec(RuntimeCommand.RUN_LOGCAT)
+        return Runtime.getRuntime().exec(RuntimeCommand.LOGCAT_RUN)
     }
 
     private suspend fun writeLines(lines: Sequence<String>) {

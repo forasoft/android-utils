@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.coroutines.coroutineContext
 
-class LogCollector(context: Context) {
+internal class LogCollector(context: Context) {
 
     private val coroutineScope = CoroutineScope(SupervisorJob())
 

@@ -1,10 +1,7 @@
 package com.forasoft.androidutils.logcollector
 
 import android.content.Context
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ensureActive
-import kotlinx.coroutines.job
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import java.io.BufferedWriter
 import java.io.File
 import java.text.SimpleDateFormat
@@ -13,6 +10,8 @@ import kotlin.coroutines.coroutineContext
 
 class LogCollector(context: Context) {
 
+    private val coroutineScope = CoroutineScope(SupervisorJob())
+
     private val directory = createDirectory(context)
 
     private var currentFile: File? = null
@@ -20,9 +19,11 @@ class LogCollector(context: Context) {
 
     private var linesWritten = 0
 
-    suspend fun start() = withContext(Dispatchers.IO) {
-        deleteOldFiles()
-        collectLogs()
+    fun start() {
+        coroutineScope.launch {
+            deleteOldFiles()
+            collectLogs()
+        }
     }
 
     private fun createDirectory(context: Context): File {

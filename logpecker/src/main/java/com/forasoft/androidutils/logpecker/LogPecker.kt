@@ -5,6 +5,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.io.BufferedWriter
 import java.io.File
 import java.text.SimpleDateFormat
@@ -28,6 +29,7 @@ internal class LogPecker(context: Context) {
 
     fun start() {
         coroutineScope.launch(Dispatchers.IO) {
+            Timber.v("LogPecker is running")
             createNewFile()
             deleteOldFiles()
 

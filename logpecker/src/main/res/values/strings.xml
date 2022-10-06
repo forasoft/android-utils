@@ -3,4 +3,6 @@
 
     <string name="forasoftandroidutils_log_pecker_activity_label">Logs</string>
 
+    <string name="forasoftandroidutils_log_pecker_activity_title">%1$s logs</string>
+
 </resources>

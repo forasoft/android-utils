@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/forasoftandroidutils_log_pecker_activity_title"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingHorizontal="16dp"
+        android:textSize="20sp"
+        tools:text="My application logs" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forasoftandroidutils_log_pecker_activity_file_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </LinearLayout>

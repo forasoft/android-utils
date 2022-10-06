@@ -61,11 +61,11 @@ class LogCollector(context: Context) {
     }
 
     private fun clearLogcat() {
-        Runtime.getRuntime().exec(COMMAND_CLEAR_LOGCAT)
+        Runtime.getRuntime().exec(RuntimeCommand.CLEAR_LOGCAT)
     }
 
     private fun getLogcatProcess(): Process {
-        return Runtime.getRuntime().exec(COMMAND_RUN_LOGCAT)
+        return Runtime.getRuntime().exec(RuntimeCommand.RUN_LOGCAT)
     }
 
     private suspend fun writeLines(lines: Sequence<String>) {
@@ -98,9 +98,6 @@ class LogCollector(context: Context) {
         const val FILE_DATE_TIME_FORMAT = "dd.MM.yyyy-HH:mm:ss"
 
         private const val LOGS_DIRECTORY = "logs"
-
-        private const val COMMAND_CLEAR_LOGCAT = "logcat -c"
-        private const val COMMAND_RUN_LOGCAT = "logcat"
 
         private const val WRITTEN_LINE_COUNT_PER_FILE_SIZE_CHECK = 100
         private const val FILE_MAX_SIZE = 10_000_000L

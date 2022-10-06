@@ -5,15 +5,15 @@
     <application>
 
         <activity
-            android:name=".LogCollectorActivity"
-            android:enabled="@bool/log_collector_is_enabled"
+            android:name=".LogPeckerActivity"
+            android:enabled="@bool/forasoftandroidutils_log_pecker_enabled"
             android:exported="true"
             android:icon="@mipmap/ic_launcher"
-            android:label="@string/log_collector_activity_label"
-            android:process=":logcollectoractivity"
+            android:label="@string/log_pecker_activity_label"
+            android:process=":logpeckeractivity"
             android:roundIcon="@mipmap/ic_launcher_round"
-            android:taskAffinity="com.forasoft.androidutils.logcollector.${applicationId}"
-            android:theme="@style/LogCollectorTheme">
+            android:taskAffinity="com.forasoft.androidutils.logpecker.${applicationId}"
+            android:theme="@style/LogPeckerTheme">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +29,7 @@
             tools:node="merge">
 
             <meta-data
-                android:name="com.forasoft.androidutils.logcollector.LogCollectorInitializer"
+                android:name="com.forasoft.androidutils.logpecker.LogPeckerInitializer"
                 android:value="androidx.startup" />
 
         </provider>

@@ -1,4 +1,4 @@
-package com.forasoft.androidutils.logcollector
+package com.forasoft.androidutils.logpecker
 
 import android.content.Context
 import kotlinx.coroutines.*
@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.coroutines.coroutineContext
 
-internal class LogCollector(context: Context) {
+internal class LogPecker(context: Context) {
 
     private val coroutineScope = CoroutineScope(SupervisorJob())
 

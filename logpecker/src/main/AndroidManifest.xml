@@ -5,10 +5,10 @@
     <application>
 
         <activity
-            android:name=".LogPeckerActivity"
+            android:name=".ui.LogPeckerActivity"
             android:enabled="@bool/forasoftandroidutils_log_pecker_enabled"
             android:exported="true"
-            android:label="@string/log_pecker_activity_label"
+            android:label="@string/forasoftandroidutils_log_pecker_activity_label"
             android:process=":logpeckeractivity"
             android:taskAffinity="com.forasoft.androidutils.logpecker.${applicationId}"
             android:theme="@style/forasoftandroidutils_LogPeckerActivityTheme">

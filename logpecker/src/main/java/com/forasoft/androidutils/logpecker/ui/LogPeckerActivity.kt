@@ -1,7 +1,8 @@
-package com.forasoft.androidutils.logpecker
+package com.forasoft.androidutils.logpecker.ui
 
 import android.app.Activity
 import android.os.Bundle
+import com.forasoft.androidutils.logpecker.R
 
 internal class LogPeckerActivity : Activity() {
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="forasoftandroidutils_log_pecker_file_max_count">10</integer>
+    <integer name="forasoftandroidutils_log_pecker_file_max_size_bytes">10000000</integer>
+
+</resources>

@@ -1,14 +1,21 @@
 package com.forasoft.androidutils.logpecker
 
 import android.content.Context
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import java.io.BufferedWriter
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.coroutines.coroutineContext
 
 internal class LogPecker(context: Context) {
+
+    private val fileMaxCount =
+        context.resources.getInteger(R.integer.forasoftandroidutils_log_pecker_file_max_count)
+    private val fileMaxSize =
+        context.resources.getInteger(R.integer.forasoftandroidutils_log_pecker_file_max_size_bytes)
 
     private val coroutineScope = CoroutineScope(SupervisorJob())
 
@@ -17,39 +24,58 @@ internal class LogPecker(context: Context) {
     private var currentFile: File? = null
     private var currentFileWriter: BufferedWriter? = null
 
-    private var linesWritten = 0
+    private var linesLeftBeforeFileSizeCheck = WRITTEN_LINES_PER_FILE_SIZE_CHECK
 
     fun start() {
-        coroutineScope.launch {
+        coroutineScope.launch(Dispatchers.IO) {
+            createNewFile()
             deleteOldFiles()
-            collectLogs()
+
+            clearLogcat()
+            runLogcat()
+                .inputStream
+                .bufferedReader()
+                .useLines { writeLines(it) }
         }
     }
 
-    private fun createDirectory(context: Context): File {
-        val cacheDir = context.externalCacheDir ?: context.cacheDir
-        val logDir = File("${cacheDir.absolutePath}/$LOGS_DIRECTORY")
-        logDir.mkdir()
-        return logDir
+    private fun writeLines(lines: Sequence<String>) {
+        lines.forEach { line ->
+            writeLine(line)
+            if (linesLeftBeforeFileSizeCheck <= 0) checkCurrentFileSize()
+        }
+    }
+
+    private fun writeLine(line: String) {
+        currentFileWriter?.appendLine(line)
+        linesLeftBeforeFileSizeCheck -= 1
+    }
+
+    private fun clearLogcat() {
+        Runtime.getRuntime().exec(RuntimeCommand.LOGCAT_CLEAR)
+    }
+
+    private fun runLogcat(): Process {
+        return Runtime.getRuntime().exec(RuntimeCommand.LOGCAT_RUN)
+    }
+
+    private fun checkCurrentFileSize() {
+        val size = currentFile?.length()
+        if (size == null || size > fileMaxSize) {
+            currentFileWriter?.close()
+            createNewFile()
+            deleteOldFiles()
+        }
+        linesLeftBeforeFileSizeCheck = WRITTEN_LINES_PER_FILE_SIZE_CHECK
     }
 
     private fun deleteOldFiles() {
         val files = directory.listFiles()
-        if (files == null || files.size <= MAX_FILE_COUNT) return
-
+        if (files == null || files.size <= fileMaxCount) return
         files.sortBy(File::lastModified)
-        repeat(files.size - MAX_FILE_COUNT) { index ->
+        repeat(files.size - fileMaxCount) { index ->
             files[index].delete()
         }
-    }
-
-    private suspend fun collectLogs() {
-        createNewFile()
-        clearLogcat()
-        getLogcatProcess()
-            .inputStream
-            .bufferedReader()
-            .useLines { writeLines(it) }
     }
 
     private fun createNewFile() {
@@ -60,49 +86,23 @@ internal class LogPecker(context: Context) {
         currentFileWriter = fileWriter
     }
 
-    private fun clearLogcat() {
-        Runtime.getRuntime().exec(RuntimeCommand.LOGCAT_CLEAR)
-    }
-
-    private fun getLogcatProcess(): Process {
-        return Runtime.getRuntime().exec(RuntimeCommand.LOGCAT_RUN)
-    }
-
-    private suspend fun writeLines(lines: Sequence<String>) {
-        val job = coroutineContext.job
-        lines.forEach { line ->
-            currentFileWriter?.appendLine(line)
-            linesWritten += 1
-
-            if (linesWritten > WRITTEN_LINE_COUNT_PER_FILE_SIZE_CHECK) {
-                val currentFileSize = currentFile?.length()
-                if (currentFileSize == null || currentFileSize > FILE_MAX_SIZE) {
-                    currentFileWriter?.close()
-                    createNewFile()
-                    deleteOldFiles()
-                }
-                linesWritten = 0
-            }
-
-            job.ensureActive()
-        }
-    }
-
     private fun createFileName(): String {
         val date = Date()
         val formatter = SimpleDateFormat(FILE_DATE_TIME_FORMAT, Locale.US)
         return formatter.format(date)
     }
 
+    private fun createDirectory(context: Context): File {
+        val cacheDir = context.externalCacheDir ?: context.cacheDir
+        val logDir = File("${cacheDir.absolutePath}/$LOGS_DIRECTORY")
+        logDir.mkdir()
+        return logDir
+    }
+
     companion object {
         const val FILE_DATE_TIME_FORMAT = "dd.MM.yyyy-HH:mm:ss"
-
         private const val LOGS_DIRECTORY = "logs"
-
-        private const val WRITTEN_LINE_COUNT_PER_FILE_SIZE_CHECK = 100
-        private const val FILE_MAX_SIZE = 10_000_000L
-
-        private const val MAX_FILE_COUNT = 10
+        private const val WRITTEN_LINES_PER_FILE_SIZE_CHECK = 100
     }
 
 }

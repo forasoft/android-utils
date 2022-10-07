@@ -20,7 +20,7 @@ internal class LogPecker(context: Context) {
 
     private val coroutineScope = CoroutineScope(SupervisorJob())
 
-    private val directory = createDirectory(context)
+    private val directory = getLogsDirectory(context)
 
     private var currentFile: File? = null
     private var currentFileWriter: BufferedWriter? = null
@@ -94,16 +94,8 @@ internal class LogPecker(context: Context) {
         return formatter.format(date)
     }
 
-    private fun createDirectory(context: Context): File {
-        val cacheDir = context.externalCacheDir ?: context.cacheDir
-        val logDir = File("${cacheDir.absolutePath}/$LOGS_DIRECTORY")
-        logDir.mkdir()
-        return logDir
-    }
-
     companion object {
         const val FILE_DATE_TIME_FORMAT = "dd.MM.yyyy-HH:mm:ss"
-        private const val LOGS_DIRECTORY = "logs"
         private const val WRITTEN_LINES_PER_FILE_SIZE_CHECK = 100
     }
 

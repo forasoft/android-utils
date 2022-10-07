@@ -10,6 +10,7 @@
             android:exported="true"
             android:label="@string/forasoftandroidutils_log_pecker_activity_label"
             android:process=":logpeckeractivity"
+            android:screenOrientation="portrait"
             android:taskAffinity="com.forasoft.androidutils.logpecker.${applicationId}"
             android:theme="@style/forasoftandroidutils_LogPeckerActivityTheme">
 

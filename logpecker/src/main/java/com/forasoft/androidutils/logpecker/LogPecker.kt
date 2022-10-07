@@ -8,6 +8,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import java.io.BufferedWriter
 import java.io.File
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -43,8 +44,14 @@ internal class LogPecker(context: Context) {
 
     private fun writeLines(lines: Sequence<String>) {
         lines.forEach { line ->
-            writeLine(line)
-            if (linesLeftBeforeFileSizeCheck <= 0) checkCurrentFileSize()
+            try {
+                writeLine(line)
+                if (linesLeftBeforeFileSizeCheck <= 0) checkCurrentFileSize()
+            } catch (_: IOException) {
+                closeCurrentFile()
+                createNewFile()
+                deleteOldFiles()
+            }
         }
     }
 
@@ -64,11 +71,19 @@ internal class LogPecker(context: Context) {
     private fun checkCurrentFileSize() {
         val size = currentFile?.length()
         if (size == null || size > fileMaxSize) {
-            currentFileWriter?.close()
+            closeCurrentFile()
             createNewFile()
             deleteOldFiles()
         }
         linesLeftBeforeFileSizeCheck = WRITTEN_LINES_PER_FILE_SIZE_CHECK
+    }
+
+    private fun closeCurrentFile() {
+        try {
+            currentFileWriter?.close()
+        } catch (_: IOException) {}
+        currentFile = null
+        currentFileWriter = null
     }
 
     private fun deleteOldFiles() {

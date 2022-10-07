@@ -5,14 +5,16 @@
     android:layout_height="56dp"
     android:layout_marginHorizontal="16dp"
     android:background="@drawable/forasoftandroidutils_log_pecker_file_item_background"
-    android:orientation="horizontal"
-    android:padding="16dp">
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/forasoftandroidutils_log_pecker_file_item_title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="16dp"
+        android:layout_weight="1"
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="@android:color/white"

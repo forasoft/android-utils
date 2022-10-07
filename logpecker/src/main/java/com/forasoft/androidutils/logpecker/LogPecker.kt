@@ -5,7 +5,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.io.BufferedWriter
 import java.io.File
 import java.text.SimpleDateFormat
@@ -29,7 +28,6 @@ internal class LogPecker(context: Context) {
 
     fun start() {
         coroutineScope.launch(Dispatchers.IO) {
-            Timber.v("LogPecker is running")
             createNewFile()
             deleteOldFiles()
 
@@ -95,7 +93,7 @@ internal class LogPecker(context: Context) {
     }
 
     companion object {
-        const val FILE_DATE_TIME_FORMAT = "dd.MM.yyyy-HH:mm:ss"
+        private const val FILE_DATE_TIME_FORMAT = "dd.MM.yyyy-HH:mm:ss"
         private const val WRITTEN_LINES_PER_FILE_SIZE_CHECK = 100
     }
 

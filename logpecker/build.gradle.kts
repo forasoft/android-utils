@@ -58,5 +58,4 @@ dependencies {
     implementation(Dependencies.appCompat)
     implementation(Dependencies.startup)
     implementation(Dependencies.coroutines)
-    implementation(Dependencies.timber)
 }

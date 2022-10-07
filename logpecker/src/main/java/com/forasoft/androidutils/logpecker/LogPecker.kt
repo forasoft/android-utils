@@ -95,7 +95,7 @@ internal class LogPecker(context: Context) {
     }
 
     companion object {
-        private const val FILE_DATE_TIME_FORMAT = "dd.MM.yyyy-HH:mm:ss"
+        private const val FILE_DATE_TIME_FORMAT = "dd.MM.yyyy--HH:mm:ss"
         private const val WRITTEN_LINES_PER_FILE_SIZE_CHECK = 100
         private const val TAG = "LogPecker"
     }

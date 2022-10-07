@@ -8,6 +8,7 @@ import android.widget.ListView
 import android.widget.TextView
 import com.forasoft.androidutils.logpecker.R
 import com.forasoft.androidutils.logpecker.getLogsDirectory
+import com.forasoft.androidutils.logpecker.shareFiles
 import java.io.File
 
 internal class LogPeckerActivity : Activity() {
@@ -59,10 +60,18 @@ internal class LogPeckerActivity : Activity() {
         fileListAdapter.submitList(files.toList())
     }
 
-    private fun bindFile(view: View, file: File) {
-        val title = view
-            .findViewById<TextView>(R.id.forasoftandroidutils_log_pecker_file_item_title)
+    private fun bindFile(view: View, file: File) = with(view) {
+        val title =
+            view.findViewById<TextView>(R.id.forasoftandroidutils_log_pecker_file_item_title)
+        val share =
+            view.findViewById<ImageButton>(R.id.forasoftandroidutils_log_pecker_file_item_share)
+        val delete =
+            view.findViewById<ImageButton>(R.id.forasoftandroidutils_log_pecker_file_item_delete)
+
         title.text = file.name
+        share.setOnClickListener {
+            shareFiles(listOf(file), application.packageName)
+        }
     }
 
 }

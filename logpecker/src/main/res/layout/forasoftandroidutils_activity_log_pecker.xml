@@ -30,8 +30,8 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginRight="4dp"
-            android:contentDescription="@string/forasoftandroidutils_refresh"
-            android:src="@drawable/forasoftandroidutils_ic_refresh_24"
+            android:contentDescription="@string/forasoftandroidutils_log_pecker_refresh"
+            android:src="@drawable/forasoftandroidutils_log_pecker_ic_refresh_24"
             android:tint="@android:color/white"
             tools:ignore="RtlHardcoded,UseAppTint" />
 

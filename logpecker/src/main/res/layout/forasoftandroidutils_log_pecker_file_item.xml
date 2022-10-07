@@ -28,8 +28,8 @@
         android:id="@+id/forasoftandroidutils_log_pecker_file_item_share"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:contentDescription="@string/forasoftandroidutils_share_file"
-        android:src="@drawable/forasoftandroidutils_ic_share_24"
+        android:contentDescription="@string/forasoftandroidutils_log_pecker_share_file"
+        android:src="@drawable/forasoftandroidutils_log_pecker_ic_share_24"
         android:tint="#FFFFFFFF"
         tools:ignore="UseAppTint" />
 
@@ -37,8 +37,8 @@
         android:id="@+id/forasoftandroidutils_log_pecker_file_item_delete"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:contentDescription="@string/forasoftandroidutils_delete_file"
-        android:src="@drawable/forasoftandroidutils_ic_delete_24"
+        android:contentDescription="@string/forasoftandroidutils_log_pecker_delete_file"
+        android:src="@drawable/forasoftandroidutils_log_pecker_ic_delete_24"
         android:tint="#FFFF4444"
         tools:ignore="UseAppTint" />
 

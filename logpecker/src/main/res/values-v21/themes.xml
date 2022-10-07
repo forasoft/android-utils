@@ -5,6 +5,11 @@
         <item name="android:windowBackground">
             @color/forasoftandroidutils_log_pecker_activity_background
         </item>
+        <item name="android:statusBarColor">
+            @color/forasoftandroidutils_log_pecker_activity_background
+        </item>
+        <item name="android:navigationBarColor">
+            @color/forasoftandroidutils_log_pecker_activity_background
+        </item>
     </style>
-
 </resources>

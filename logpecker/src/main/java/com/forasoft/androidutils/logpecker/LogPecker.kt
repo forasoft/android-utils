@@ -20,7 +20,7 @@ internal class LogPecker(context: Context) {
 
     private val coroutineScope = CoroutineScope(SupervisorJob())
 
-    private val directory = getLogsDirectory(context)
+    private val directory = context.getLogsDirectory()
 
     private var currentFile: File? = null
     private var currentFileWriter: BufferedWriter? = null

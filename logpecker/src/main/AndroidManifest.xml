@@ -33,6 +33,17 @@
 
         </provider>
 
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}"
+            android:exported="false"
+            android:process=":logpeckeractivity"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/forasoftandroidutils_log_pecker_log_paths" />
+        </provider>
+
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import com.forasoft.androidutils.logpecker.R
 import com.forasoft.androidutils.logpecker.getLogsDirectory
 import com.forasoft.androidutils.logpecker.shareFiles
+import com.forasoft.androidutils.logpecker.viewFile
 import java.io.File
 
 internal class LogPeckerActivity : Activity() {
@@ -70,6 +71,9 @@ internal class LogPeckerActivity : Activity() {
             view.findViewById<ImageButton>(R.id.forasoftandroidutils_log_pecker_file_item_delete)
 
         title.text = file.name
+        view.setOnClickListener {
+            viewFile(file, application.packageName, "text/plain")
+        }
         share.setOnClickListener {
             shareFiles(listOf(file), application.packageName)
         }

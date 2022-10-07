@@ -14,6 +14,21 @@ internal fun Context.getLogsDirectory(): File {
     return logDir
 }
 
+internal fun Context.viewFile(
+    file: File,
+    fileProviderAuthority: String,
+    mimeType: String = "*/*",
+    chooserTitle: String? = null,
+) {
+    val uri = FileProvider.getUriForFile(this, fileProviderAuthority, file)
+    val intent = Intent().apply {
+        action = Intent.ACTION_VIEW
+        setDataAndType(uri, mimeType)
+        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+    }
+    startActivity(Intent.createChooser(intent, chooserTitle))
+}
+
 internal fun Context.shareFiles(
     files: List<File>,
     fileProviderAuthority: String,

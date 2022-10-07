@@ -1,6 +1,7 @@
 package com.forasoft.androidutils.logpecker
 
 import android.content.Context
+import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -27,6 +28,7 @@ internal class LogPecker(context: Context) {
     private var linesLeftBeforeFileSizeCheck = WRITTEN_LINES_PER_FILE_SIZE_CHECK
 
     fun start() {
+        Log.v(TAG, "LogPecker is running")
         coroutineScope.launch(Dispatchers.IO) {
             createNewFile()
             deleteOldFiles()
@@ -95,6 +97,7 @@ internal class LogPecker(context: Context) {
     companion object {
         private const val FILE_DATE_TIME_FORMAT = "dd.MM.yyyy-HH:mm:ss"
         private const val WRITTEN_LINES_PER_FILE_SIZE_CHECK = 100
+        private const val TAG = "LogPecker"
     }
 
 }

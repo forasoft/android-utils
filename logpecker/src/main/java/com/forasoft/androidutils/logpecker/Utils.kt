@@ -3,7 +3,7 @@ package com.forasoft.androidutils.logpecker
 import android.content.Context
 import java.io.File
 
-private const val LOGS_DIRECTORY = "logs"
+private const val LOGS_DIRECTORY = "log_pecker"
 
 internal fun Context.getLogsDirectory(): File {
     val cacheDir = this.externalCacheDir ?: this.cacheDir

@@ -4,6 +4,8 @@
     <string name="forasoftandroidutils_log_pecker_activity_label">Logs</string>
 
     <string name="forasoftandroidutils_log_pecker_activity_title">%1$s logs</string>
-    <string name="forasoftandroidutils_refresh">Refresh</string>
+    <string name="forasoftandroidutils_refresh">Refresh list</string>
+    <string name="forasoftandroidutils_share_file">Share file</string>
+    <string name="forasoftandroidutils_delete_file">Delete file</string>
 
 </resources>

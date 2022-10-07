@@ -27,7 +27,7 @@ internal class LogPeckerActivity : Activity() {
     private val fileListAdapter by lazy {
         SimpleListAdapter(
             itemLayoutResId = R.layout.forasoftandroidutils_log_pecker_file_item,
-            bindView = { view, item -> bindFileItem(view, item) },
+            bindItem = { view, item -> bindFile(view, item) },
         )
     }
 
@@ -56,14 +56,13 @@ internal class LogPeckerActivity : Activity() {
     private fun refreshFileList() {
         val files = logsDirectory.listFiles() ?: return
         files.sortBy(File::lastModified)
-        val fileItems = files.map { FileItem.fromFile(it) }
-        fileListAdapter.submitList(fileItems)
+        fileListAdapter.submitList(files.toList())
     }
 
-    private fun bindFileItem(view: View, item: FileItem) {
+    private fun bindFile(view: View, file: File) {
         val title = view
             .findViewById<TextView>(R.id.forasoftandroidutils_log_pecker_file_item_title)
-        title.text = item.name
+        title.text = file.name
     }
 
 }

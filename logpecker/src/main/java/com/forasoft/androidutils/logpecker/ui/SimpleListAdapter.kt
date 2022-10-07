@@ -7,7 +7,7 @@ import android.widget.BaseAdapter
 
 internal class SimpleListAdapter<T>(
     private val itemLayoutResId: Int,
-    private val bindView: SimpleListAdapter<T>.(View, T) -> Unit,
+    private val bindItem: SimpleListAdapter<T>.(View, T) -> Unit,
 ) : BaseAdapter() {
 
     private var items: List<T> = emptyList()
@@ -16,7 +16,7 @@ internal class SimpleListAdapter<T>(
         val view = convertView ?: LayoutInflater.from(parent?.context)
             .inflate(itemLayoutResId, parent, false)!!
         val item = getItem(position)
-        bindView(view, item)
+        bindItem(view, item)
         return view
     }
 

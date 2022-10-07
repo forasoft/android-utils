@@ -110,12 +110,12 @@ fun Context.shareFiles(
     val intent = Intent().apply {
         if (uris.size == 1) {
             action = Intent.ACTION_SEND
-            setDataAndType(uris.firstOrNull(), mimeType)
+            putExtra(Intent.EXTRA_STREAM, uris.firstOrNull())
         } else {
             action = Intent.ACTION_SEND_MULTIPLE
             putParcelableArrayListExtra(Intent.EXTRA_STREAM, ArrayList(uris))
-            type = mimeType
         }
+        type = mimeType
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
     startActivity(Intent.createChooser(intent, null))

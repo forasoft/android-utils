@@ -2,10 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
     <application>
 
         <activity
-            android:name=".ui.LogPeckerActivity"
+            android:name="com.forasoft.androidutils.logpecker.ui.LogPeckerActivity"
             android:enabled="@bool/forasoftandroidutils_log_pecker_enabled"
             android:exported="true"
             android:label="@string/forasoftandroidutils_log_pecker_activity_label"

@@ -2,5 +2,6 @@
 <resources>
     
     <bool name="forasoftandroidutils_log_pecker_enabled">true</bool>
+    <bool name="forasoftandroidutils_log_pecker_add_dynamic_shortcut">true</bool>
     
 </resources>

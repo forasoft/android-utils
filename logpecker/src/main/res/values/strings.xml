@@ -9,4 +9,8 @@
     <string name="forasoftandroidutils_log_pecker_delete_file">Delete file</string>
     <string name="forasoftandroidutils_log_pecker_delete_file_question">Delete file?</string>
 
+    <string name="forasoftandroidutils_log_pecker_dynamic_shortcut_id">logpecker_shortcut</string>
+    <string name="forasoftandroidutils_log_pecker_dynamic_shortcut_short_label">Logs</string>
+    <string name="forasoftandroidutils_log_pecker_dynamic_shortcut_long_label">%1$s logs</string>
+
 </resources>

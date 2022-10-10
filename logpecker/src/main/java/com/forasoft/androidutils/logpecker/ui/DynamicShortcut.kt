@@ -52,7 +52,10 @@ private fun createShortcut(context: Context, targetActivity: ComponentName): Sho
         R.string.forasoftandroidutils_log_pecker_dynamic_shortcut_long_label,
         applicationName,
     )
-    val icon = IconCompat.createWithResource(context, context.applicationInfo.icon)
+    val icon = IconCompat.createWithResource(
+        context,
+        R.drawable.forasoftandroidutils_log_pecker_ic_logo_24,
+    )
     val intent = createLogPeckerActivityIntent(context)
 
     return ShortcutInfoCompat.Builder(context, id)

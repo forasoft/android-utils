@@ -30,7 +30,7 @@ internal class LogPecker(context: Context) {
     private var linesLeftBeforeFileSizeCheck = WRITTEN_LINES_PER_FILE_SIZE_CHECK
 
     fun start() {
-        Log.v(TAG, "LogPecker is running")
+        Log.d(TAG, "LogPecker is running")
         coroutineScope.launch(Dispatchers.IO) {
             createNewFile()
             deleteOldFiles()

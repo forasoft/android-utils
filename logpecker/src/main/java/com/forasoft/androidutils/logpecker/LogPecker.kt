@@ -39,7 +39,7 @@ internal class LogPecker(context: Context) {
             runLogcat()
                 .inputStream
                 .bufferedReader()
-                .useLines { writeLines(it) }
+                .useLines(::writeLines)
         }
     }
 
@@ -61,17 +61,18 @@ internal class LogPecker(context: Context) {
         linesLeftBeforeFileSizeCheck -= 1
     }
 
-    private fun clearLogcat() {
-        Runtime.getRuntime().exec(RuntimeCommand.LOGCAT_CLEAR)
-    }
-
-    private fun runLogcat(): Process {
-        return Runtime.getRuntime().exec(RuntimeCommand.LOGCAT_RUN)
+    private fun createNewFile() {
+        val fileName = createFileName()
+        val file = File(directory, "$fileName.txt")
+        val fileWriter = file.bufferedWriter()
+        currentFile = file
+        currentFileWriter = fileWriter
     }
 
     private fun checkCurrentFileSize() {
         val size = currentFile?.length()
-        if (size == null || size == 0L || size > fileMaxSize) {
+        val fileDoesNotExist = size == 0L
+        if (size == null || fileDoesNotExist || size > fileMaxSize) {
             closeCurrentFile()
             createNewFile()
             deleteOldFiles()
@@ -87,6 +88,12 @@ internal class LogPecker(context: Context) {
         currentFileWriter = null
     }
 
+    private fun createFileName(): String {
+        val date = Date()
+        val formatter = SimpleDateFormat(FILE_DATE_TIME_FORMAT, Locale.US)
+        return formatter.format(date)
+    }
+
     private fun deleteOldFiles() {
         val files = directory.listFiles()
         if (files == null || files.size <= fileMaxCount) return
@@ -95,18 +102,12 @@ internal class LogPecker(context: Context) {
         files.take(overflow).forEach { it.delete() }
     }
 
-    private fun createNewFile() {
-        val fileName = createFileName()
-        val file = File(directory, "$fileName.txt")
-        val fileWriter = file.bufferedWriter()
-        currentFile = file
-        currentFileWriter = fileWriter
+    private fun clearLogcat() {
+        Runtime.getRuntime().exec(RuntimeCommand.LOGCAT_CLEAR)
     }
 
-    private fun createFileName(): String {
-        val date = Date()
-        val formatter = SimpleDateFormat(FILE_DATE_TIME_FORMAT, Locale.US)
-        return formatter.format(date)
+    private fun runLogcat(): Process {
+        return Runtime.getRuntime().exec(RuntimeCommand.LOGCAT_RUN)
     }
 
     companion object {

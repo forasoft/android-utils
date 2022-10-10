@@ -25,7 +25,8 @@
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.forasoft.androidutils.logpecker.startup.${applicationId}"
             android:exported="false"
-            tools:node="merge">
+            tools:node="merge"
+            tools:replace="android:authorities">
 
             <meta-data
                 android:name="com.forasoft.androidutils.logpecker.LogPeckerInitializer"

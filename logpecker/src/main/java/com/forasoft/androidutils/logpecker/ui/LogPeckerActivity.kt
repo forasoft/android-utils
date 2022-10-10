@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.forasoft.androidutils.logpecker.R
 import com.forasoft.androidutils.logpecker.utils.fileProviderAuthority
+import com.forasoft.androidutils.logpecker.utils.getLogsDirectory
 import com.forasoft.androidutils.logpecker.utils.shareFiles
 import com.forasoft.androidutils.logpecker.utils.viewFile
 import java.io.File

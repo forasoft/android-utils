@@ -71,7 +71,7 @@ internal class LogPecker(context: Context) {
 
     private fun checkCurrentFileSize() {
         val size = currentFile?.length()
-        if (size == null || size > fileMaxSize) {
+        if (size == null || size == 0L || size > fileMaxSize) {
             closeCurrentFile()
             createNewFile()
             deleteOldFiles()

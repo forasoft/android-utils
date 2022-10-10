@@ -5,8 +5,8 @@ import java.io.File
 
 private const val LOGS_DIRECTORY = "log_pecker"
 
-internal fun Context.getLogsDirectory(): File {
-    val cacheDir = this.externalCacheDir ?: this.cacheDir
+internal fun getLogsDirectory(context: Context): File {
+    val cacheDir = context.externalCacheDir ?: context.cacheDir
     val logDir = File("${cacheDir.absolutePath}/$LOGS_DIRECTORY")
     logDir.mkdir()
     return logDir

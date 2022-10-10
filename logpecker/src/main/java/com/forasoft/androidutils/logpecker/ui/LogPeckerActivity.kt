@@ -16,7 +16,7 @@ import java.io.File
 
 internal class LogPeckerActivity : Activity() {
 
-    private val logsDirectory by lazy { getLogsDirectory() }
+    private val logsDirectory by lazy { getLogsDirectory(this) }
 
     private val title: TextView by lazy {
         findViewById(R.id.forasoftandroidutils_log_pecker_activity_title)

@@ -35,7 +35,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}"
+            android:authorities="${applicationId}.FileProvider"
             android:exported="false"
             android:process=":logpeckeractivity"
             android:grantUriPermissions="true">

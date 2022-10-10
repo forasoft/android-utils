@@ -63,7 +63,7 @@ internal class LogPecker(context: Context) {
 
     private fun createNewFile() {
         val fileName = createFileName()
-        val file = File(directory, "$fileName.txt")
+        val file = File(directory, "$fileName.$FILE_EXTENSION")
         val fileWriter = file.bufferedWriter()
         currentFile = file
         currentFileWriter = fileWriter
@@ -111,8 +111,10 @@ internal class LogPecker(context: Context) {
     }
 
     companion object {
+        private const val FILE_EXTENSION = "txt"
         private const val FILE_DATE_TIME_FORMAT = "dd.MM.yyyy--HH:mm:ss"
         private const val WRITTEN_LINES_PER_FILE_SIZE_CHECK = 100
+
         private const val TAG = "LogPecker"
     }
 

@@ -2,6 +2,7 @@ package com.forasoft.androidutils.logpecker
 
 import android.content.Context
 import android.util.Log
+import com.forasoft.androidutils.logpecker.ui.getLogsDirectory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

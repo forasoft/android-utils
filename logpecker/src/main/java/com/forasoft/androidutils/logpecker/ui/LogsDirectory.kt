@@ -1,4 +1,4 @@
-package com.forasoft.androidutils.logpecker
+package com.forasoft.androidutils.logpecker.ui
 
 import android.content.Context
 import java.io.File

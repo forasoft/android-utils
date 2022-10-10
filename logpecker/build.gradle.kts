@@ -55,6 +55,9 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 }
 
 dependencies {
+    // TODO
+//    implementation(project(Dependencies.Modules.platformAndroid))
+
     implementation(Dependencies.jetpackCore)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.startup)

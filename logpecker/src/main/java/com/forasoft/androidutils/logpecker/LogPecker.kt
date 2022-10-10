@@ -91,9 +91,8 @@ internal class LogPecker(context: Context) {
         val files = directory.listFiles()
         if (files == null || files.size <= fileMaxCount) return
         files.sortBy(File::lastModified)
-        repeat(files.size - fileMaxCount) { index ->
-            files[index].delete()
-        }
+        val overflow = files.size - fileMaxCount
+        files.take(overflow).forEach { it.delete() }
     }
 
     private fun createNewFile() {

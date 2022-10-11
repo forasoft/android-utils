@@ -69,6 +69,7 @@ private fun createShortcut(context: Context, targetActivity: ComponentName): Sho
 
 private fun createLogPeckerActivityIntent(context: Context): Intent {
     return Intent(context, LogPeckerActivity::class.java).apply {
+        // Source: https://github.com/square/leakcanary/blob/c7a0ae90063b8e33013f64e5c0907f60852b9f83/leakcanary-android-core/src/main/java/leakcanary/internal/InternalLeakCanary.kt#L286
         action = "Dummy Action because Android is stupid. Thanks to LeakCanary."
         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
     }

@@ -12,8 +12,8 @@ import androidx.core.graphics.drawable.IconCompat
 import com.forasoft.androidutils.logpecker.R
 
 internal fun addDynamicShortcut(context: Context) {
-    val addDynamicShortcut =
-        context.resources.getBoolean(R.bool.forasoftandroidutils_log_pecker_add_dynamic_shortcut)
+    val addDynamicShortcut = context.resources
+        .getBoolean(R.bool.forasoftandroidutils_log_pecker_is_dynamic_shortcut_enabled)
     if (!addDynamicShortcut) return
 
     val firstMainActivity = getFirstMainActivity(context) ?: return

@@ -9,7 +9,7 @@ internal class LogPeckerInitializer : Initializer<Unit> {
 
     override fun create(context: Context) {
         val isEnabled =
-            context.resources.getBoolean(R.bool.forasoftandroidutils_log_pecker_enabled)
+            context.resources.getBoolean(R.bool.forasoftandroidutils_log_pecker_is_enabled)
         if (isEnabled) {
             val logPecker = LogPecker(context)
             logPecker.start()

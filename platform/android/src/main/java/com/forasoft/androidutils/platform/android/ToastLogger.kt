@@ -9,6 +9,7 @@ import java.lang.ref.WeakReference
 /**
  * Displays messages with [Toast]s.
  */
+@Suppress("Unused")
 class ToastLogger(context: Context) {
 
     private val contextRef = WeakReference(context)

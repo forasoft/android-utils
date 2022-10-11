@@ -17,7 +17,7 @@ internal class LogPecker(context: Context) {
 
     private val fileMaxCount =
         context.resources.getInteger(R.integer.forasoftandroidutils_log_pecker_file_max_count)
-    private val fileMaxSize =
+    private val fileMaxSizeBytes =
         context.resources.getInteger(R.integer.forasoftandroidutils_log_pecker_file_max_size_bytes)
 
     private val coroutineScope = CoroutineScope(SupervisorJob())
@@ -72,7 +72,7 @@ internal class LogPecker(context: Context) {
     private fun checkCurrentFileSize() {
         val size = currentFile?.length()
         val fileDoesNotExist = size == 0L
-        if (size == null || fileDoesNotExist || size > fileMaxSize) {
+        if (size == null || fileDoesNotExist || size > fileMaxSizeBytes) {
             closeCurrentFile()
             createNewFile()
             deleteOldFiles()

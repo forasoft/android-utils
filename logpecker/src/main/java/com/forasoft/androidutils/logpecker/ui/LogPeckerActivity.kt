@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.forasoft.androidutils.logpecker.LogPecker
 import com.forasoft.androidutils.logpecker.R
 import com.forasoft.androidutils.logpecker.utils.fileProviderAuthority
 import com.forasoft.androidutils.logpecker.utils.getLogsDirectory
@@ -73,7 +74,7 @@ internal class LogPeckerActivity : Activity() {
 
         title.text = file.name
         view.setOnClickListener {
-            viewFile(file, fileProviderAuthority, "text/plain")
+            viewFile(file, fileProviderAuthority, LogPecker.MIME_TYPE)
         }
         share.setOnClickListener {
             shareFiles(listOf(file), fileProviderAuthority)

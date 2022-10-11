@@ -12,6 +12,11 @@ internal class SimpleListAdapter<T>(
 
     private var items: List<T> = emptyList()
 
+    fun submitList(items: List<T>) {
+        this.items = items
+        notifyDataSetChanged()
+    }
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view = convertView ?: LayoutInflater.from(parent?.context)
             .inflate(itemLayoutResId, parent, false)!!
@@ -25,10 +30,5 @@ internal class SimpleListAdapter<T>(
     override fun getItemId(position: Int): Long = position.toLong()
 
     override fun getCount(): Int = items.size
-
-    fun submitList(items: List<T>) {
-        this.items = items
-        notifyDataSetChanged()
-    }
 
 }

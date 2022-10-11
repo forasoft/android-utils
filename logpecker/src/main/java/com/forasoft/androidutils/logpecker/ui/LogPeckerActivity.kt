@@ -1,12 +1,14 @@
 package com.forasoft.androidutils.logpecker.ui
 
 import android.app.Activity
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.forasoft.androidutils.logpecker.LogFileListObserver
 import com.forasoft.androidutils.logpecker.LogPecker
 import com.forasoft.androidutils.logpecker.R
 import com.forasoft.androidutils.logpecker.utils.fileProviderAuthority
@@ -18,6 +20,14 @@ import java.io.File
 internal class LogPeckerActivity : Activity() {
 
     private val logsDirectory by lazy { getLogsDirectory(this) }
+
+    private val fileObserver by lazy {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            LogFileListObserver(logsDirectory, ::refreshFileList)
+        } else {
+            LogFileListObserver(logsDirectory.absolutePath, ::refreshFileList)
+        }
+    }
 
     private val title: TextView by lazy {
         findViewById(R.id.forasoftandroidutils_log_pecker_activity_title)
@@ -46,6 +56,12 @@ internal class LogPeckerActivity : Activity() {
     override fun onStart() {
         super.onStart()
         refreshFileList()
+        fileObserver.startWatching()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        fileObserver.stopWatching()
     }
 
     private fun setUpTitle() {
@@ -56,12 +72,6 @@ internal class LogPeckerActivity : Activity() {
 
     private fun setUpFileList() {
         fileList.adapter = fileListAdapter
-    }
-
-    private fun refreshFileList() {
-        val files = logsDirectory.listFiles() ?: return
-        files.sortBy(File::lastModified)
-        fileListAdapter.submitList(files.toList())
     }
 
     private fun bindFile(view: View, file: File) {
@@ -84,11 +94,18 @@ internal class LogPeckerActivity : Activity() {
                 .setMessage(R.string.forasoftandroidutils_log_pecker_delete_file_question)
                 .setPositiveButton(android.R.string.ok) { dialog, _ ->
                     file.delete()
-                    refreshFileList()
                     dialog.dismiss()
                 }
                 .setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.cancel() }
                 .show()
+        }
+    }
+
+    private fun refreshFileList() {
+        val files = logsDirectory.listFiles() ?: return
+        files.sortBy(File::lastModified)
+        runOnUiThread {
+            fileListAdapter.submitList(files.toList())
         }
     }
 

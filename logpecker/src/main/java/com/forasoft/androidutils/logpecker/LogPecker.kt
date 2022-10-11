@@ -33,7 +33,6 @@ internal class LogPecker(context: Context) {
         Log.d(TAG, "LogPecker is running")
         coroutineScope.launch(Dispatchers.IO) {
             switchToNewFile()
-
             clearLogcat()
             runLogcat()
                 .inputStream
@@ -59,9 +58,8 @@ internal class LogPecker(context: Context) {
     }
 
     private fun checkCurrentFileSize() {
-        val size = currentFile?.length()
-        val fileDoesNotExist = size == 0L
-        if (size == null || fileDoesNotExist || size > fileMaxSizeBytes) {
+        val file = currentFile
+        if (file == null || !file.isFile || file.length() > fileMaxSizeBytes) {
             switchToNewFile()
         }
         linesLeftBeforeFileSizeCheck = WRITTEN_LINES_PER_FILE_SIZE_CHECK

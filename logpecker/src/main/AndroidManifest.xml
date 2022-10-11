@@ -17,6 +17,7 @@
             android:exported="true"
             android:icon="@mipmap/forasoftandroidutils_log_pecker_ic_launcher"
             android:label="@string/forasoftandroidutils_log_pecker_activity_label"
+            android:launchMode="singleTop"
             android:process=":logpeckeractivity"
             android:roundIcon="@mipmap/forasoftandroidutils_log_pecker_ic_launcher_round"
             android:screenOrientation="portrait"

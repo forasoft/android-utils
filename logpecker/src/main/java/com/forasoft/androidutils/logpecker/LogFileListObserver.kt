@@ -20,9 +20,13 @@ class LogFileListObserver : FileObserver {
     }
 
     override fun onEvent(event: Int, path: String?) {
-        if (event == CREATE || event == DELETE || event == MOVED_TO || event == MOVED_FROM) {
+        if (event and FILE_LIST_CHANGED_EVENTS != 0) {
             onFileListChanged()
         }
+    }
+
+    companion object {
+        private const val FILE_LIST_CHANGED_EVENTS = CREATE or DELETE or MOVED_TO or MOVED_FROM
     }
 
 }

@@ -32,8 +32,7 @@ internal class LogPecker(context: Context) {
     fun start() {
         Log.d(TAG, "LogPecker is running")
         coroutineScope.launch(Dispatchers.IO) {
-            createNewFile()
-            deleteOldFiles()
+            switchToNewFile()
 
             clearLogcat()
             runLogcat()
@@ -49,9 +48,7 @@ internal class LogPecker(context: Context) {
                 writeLine(line)
                 if (linesLeftBeforeFileSizeCheck <= 0) checkCurrentFileSize()
             } catch (_: IOException) {
-                closeCurrentFile()
-                createNewFile()
-                deleteOldFiles()
+                switchToNewFile()
             }
         }
     }
@@ -61,23 +58,19 @@ internal class LogPecker(context: Context) {
         linesLeftBeforeFileSizeCheck -= 1
     }
 
-    private fun createNewFile() {
-        val fileName = createFileName()
-        val file = File(directory, "$fileName.$FILE_EXTENSION")
-        val fileWriter = file.bufferedWriter()
-        currentFile = file
-        currentFileWriter = fileWriter
-    }
-
     private fun checkCurrentFileSize() {
         val size = currentFile?.length()
         val fileDoesNotExist = size == 0L
         if (size == null || fileDoesNotExist || size > fileMaxSizeBytes) {
-            closeCurrentFile()
-            createNewFile()
-            deleteOldFiles()
+            switchToNewFile()
         }
         linesLeftBeforeFileSizeCheck = WRITTEN_LINES_PER_FILE_SIZE_CHECK
+    }
+
+    private fun switchToNewFile() {
+        closeCurrentFile()
+        createNewFile()
+        deleteOldFiles()
     }
 
     private fun closeCurrentFile() {
@@ -88,10 +81,12 @@ internal class LogPecker(context: Context) {
         currentFileWriter = null
     }
 
-    private fun createFileName(): String {
-        val date = Date()
-        val formatter = SimpleDateFormat(FILE_DATE_TIME_FORMAT, Locale.US)
-        return formatter.format(date)
+    private fun createNewFile() {
+        val fileName = createFileName()
+        val file = File(directory, "$fileName.$FILE_EXTENSION")
+        val fileWriter = file.bufferedWriter()
+        currentFile = file
+        currentFileWriter = fileWriter
     }
 
     private fun deleteOldFiles() {
@@ -100,6 +95,12 @@ internal class LogPecker(context: Context) {
         files.sortBy(File::lastModified)
         val overflow = files.size - fileMaxCount
         files.take(overflow).forEach { it.delete() }
+    }
+
+    private fun createFileName(): String {
+        val date = Date()
+        val formatter = SimpleDateFormat(FILE_DATE_TIME_FORMAT, Locale.US)
+        return formatter.format(date)
     }
 
     private fun clearLogcat() {

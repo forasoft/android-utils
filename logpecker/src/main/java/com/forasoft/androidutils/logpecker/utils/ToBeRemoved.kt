@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.core.content.FileProvider
 import java.io.File
 
-// TODO: Replace with platform.android module implementation
+// TODO: Replace with platform.android module implementation when publishing the library
 
 internal fun Context.viewFile(
     file: File,

@@ -84,9 +84,11 @@ internal class LogPeckerActivity : Activity() {
 
         title.text = file.name
         view.setOnClickListener {
-            viewFile(file, fileProviderAuthority, LogPecker.MIME_TYPE)
+            if (!file.isFile) return@setOnClickListener
+            viewFile(file, fileProviderAuthority, LogPecker.FILE_MIME_TYPE)
         }
         share.setOnClickListener {
+            if (!file.isFile) return@setOnClickListener
             shareFiles(listOf(file), fileProviderAuthority)
         }
         delete.setOnClickListener {

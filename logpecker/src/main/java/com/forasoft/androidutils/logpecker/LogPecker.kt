@@ -2,6 +2,7 @@ package com.forasoft.androidutils.logpecker
 
 import android.content.Context
 import android.util.Log
+import com.forasoft.androidutils.logpecker.utils.ensureDirectory
 import com.forasoft.androidutils.logpecker.utils.getLogsDirectory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -80,8 +81,10 @@ internal class LogPecker(context: Context) {
     }
 
     private fun createNewFile() {
+        ensureDirectory(directory)
         val fileName = createFileName()
         val file = File(directory, "$fileName.$FILE_EXTENSION")
+        if (file.exists()) file.delete()
         val fileWriter = file.bufferedWriter()
         currentFile = file
         currentFileWriter = fileWriter
@@ -110,7 +113,7 @@ internal class LogPecker(context: Context) {
     }
 
     companion object {
-        const val MIME_TYPE = "text/plain"
+        const val FILE_MIME_TYPE = "text/plain"
 
         private const val FILE_EXTENSION = "txt"
         private const val FILE_DATE_TIME_FORMAT = "dd.MM.yyyy--HH:mm:ss"

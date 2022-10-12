@@ -114,7 +114,8 @@ Default limits:
 * 20 — the maximum number of log files that can be stored on the device at the same time. 
   When the limit is reached, the oldest file will be deleted to free space for a new one.
 
-Default limits can be overridden with resources. See "Customization" paragraph for more information.
+Default limits can be overridden with resources. See [Customization](/README.md#customization) 
+paragraph for more information.
 
 ### Usage
 

@@ -73,30 +73,32 @@ internal class LogPeckerActivity : Activity() {
     }
 
     private fun bindFile(view: View, file: File) {
-        val title =
-            view.findViewById<TextView>(R.id.forasoftandroidutils_log_pecker_file_item_title)
-        val share =
-            view.findViewById<ImageButton>(R.id.forasoftandroidutils_log_pecker_file_item_share)
-        val delete =
-            view.findViewById<ImageButton>(R.id.forasoftandroidutils_log_pecker_file_item_delete)
+        val title: TextView? =
+            view.findViewById(R.id.forasoftandroidutils_log_pecker_file_item_title)
+        val share: ImageButton? =
+            view.findViewById(R.id.forasoftandroidutils_log_pecker_file_item_share)
+        val delete: ImageButton? =
+            view.findViewById(R.id.forasoftandroidutils_log_pecker_file_item_delete)
 
-        title.text = file.name
+        title?.text = file.name
         view.setOnClickListener {
             if (!file.isFile) return@setOnClickListener
             viewFile(file, fileProviderAuthority, LogPecker.FILE_MIME_TYPE)
         }
-        share.setOnClickListener {
+        share?.setOnClickListener {
             if (!file.isFile) return@setOnClickListener
             shareFiles(listOf(file), fileProviderAuthority)
         }
-        delete.setOnClickListener {
+        delete?.setOnClickListener {
             AlertDialog.Builder(this)
                 .setMessage(R.string.forasoftandroidutils_log_pecker_delete_file_question)
                 .setPositiveButton(android.R.string.ok) { dialog, _ ->
                     file.delete()
                     dialog.dismiss()
                 }
-                .setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.cancel() }
+                .setNegativeButton(android.R.string.cancel) { dialog, _ ->
+                    dialog.cancel()
+                }
                 .show()
         }
     }

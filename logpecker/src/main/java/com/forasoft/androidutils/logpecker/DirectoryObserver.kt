@@ -7,26 +7,26 @@ import java.io.File
 
 class DirectoryObserver : FileObserver {
 
-    private var onFileListChanged: () -> Unit
+    private val onFileListChanged: () -> Unit
 
     @RequiresApi(Build.VERSION_CODES.Q)
-    constructor(file: File, onFileListChanged: () -> Unit) : super(file) {
+    constructor(directory: File, onFileListChanged: () -> Unit) :
+            super(directory, FILE_LIST_CHANGED_MASK) {
         this.onFileListChanged = onFileListChanged
     }
 
     @Suppress("Deprecation")
-    constructor(path: String, onFileListChanged: () -> Unit) : super(path) {
+    constructor(directoryPath: String, onFileListChanged: () -> Unit) :
+            super(directoryPath, FILE_LIST_CHANGED_MASK) {
         this.onFileListChanged = onFileListChanged
     }
 
     override fun onEvent(event: Int, path: String?) {
-        if (event and FILE_LIST_CHANGED_EVENTS != 0) {
-            onFileListChanged()
-        }
+        onFileListChanged()
     }
 
     companion object {
-        private const val FILE_LIST_CHANGED_EVENTS = CREATE or DELETE or MOVED_TO or MOVED_FROM
+        private const val FILE_LIST_CHANGED_MASK = CREATE or DELETE or MOVED_TO or MOVED_FROM
     }
 
 }

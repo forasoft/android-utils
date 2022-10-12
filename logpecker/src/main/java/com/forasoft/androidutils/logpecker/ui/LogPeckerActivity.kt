@@ -49,8 +49,7 @@ internal class LogPeckerActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.forasoftandroidutils_activity_log_pecker)
-        setUpTitle()
-        setUpFileList()
+        setUpUi()
     }
 
     override fun onStart() {
@@ -65,13 +64,11 @@ internal class LogPeckerActivity : Activity() {
         logsDirectoryObserver.stopWatching()
     }
 
-    private fun setUpTitle() {
+    private fun setUpUi() {
         val appName = getString(applicationInfo.labelRes)
         title.text = getString(R.string.forasoftandroidutils_log_pecker_activity_title, appName)
         refresh.setOnClickListener { refreshFileList() }
-    }
 
-    private fun setUpFileList() {
         fileList.adapter = fileListAdapter
     }
 

@@ -8,13 +8,9 @@ import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import com.forasoft.androidutils.logpecker.DirectoryObserver
 import com.forasoft.androidutils.logpecker.LogPecker
 import com.forasoft.androidutils.logpecker.R
-import com.forasoft.androidutils.logpecker.utils.fileProviderAuthority
-import com.forasoft.androidutils.logpecker.utils.getLogsDirectory
-import com.forasoft.androidutils.logpecker.utils.shareFiles
-import com.forasoft.androidutils.logpecker.utils.viewFile
+import com.forasoft.androidutils.logpecker.utils.*
 import java.io.File
 
 /**

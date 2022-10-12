@@ -1,4 +1,4 @@
-package com.forasoft.androidutils.logpecker
+package com.forasoft.androidutils.logpecker.utils
 
 import android.os.Build
 import android.os.FileObserver

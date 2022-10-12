@@ -155,14 +155,14 @@ internal class LogPecker(context: Context) {
      * Clears logcat buffer.
      */
     private fun clearLogcat() {
-        Runtime.getRuntime().exec(ShellCommand.LOGCAT_CLEAR)
+        Runtime.getRuntime().exec(LogcatCommand.CLEAR)
     }
 
     /**
      * Runs logcat and returns its [Process].
      */
     private fun runLogcat(): Process {
-        return Runtime.getRuntime().exec(ShellCommand.LOGCAT_RUN)
+        return Runtime.getRuntime().exec(LogcatCommand.RUN)
     }
 
     companion object {

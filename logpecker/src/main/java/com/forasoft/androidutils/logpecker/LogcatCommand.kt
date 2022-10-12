@@ -1,16 +1,16 @@
 package com.forasoft.androidutils.logpecker
 
 /**
- * Set of shell commands.
+ * Set of shell logcat commands.
  */
-internal object ShellCommand {
+internal object LogcatCommand {
     /**
      * Clears logcat buffer.
      */
-    const val LOGCAT_CLEAR = "logcat -c"
+    const val CLEAR = "logcat -c"
 
     /**
      * Runs logcat.
      */
-    const val LOGCAT_RUN = "logcat"
+    const val RUN = "logcat"
 }

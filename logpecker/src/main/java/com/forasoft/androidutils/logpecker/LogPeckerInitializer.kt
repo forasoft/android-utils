@@ -2,7 +2,7 @@ package com.forasoft.androidutils.logpecker
 
 import android.content.Context
 import androidx.startup.Initializer
-import com.forasoft.androidutils.logpecker.ui.addDynamicShortcut
+import com.forasoft.androidutils.logpecker.ui.addLogPeckerDynamicShortcut
 
 @Suppress("Unused")
 internal class LogPeckerInitializer : Initializer<Unit> {
@@ -14,7 +14,7 @@ internal class LogPeckerInitializer : Initializer<Unit> {
             val logPecker = LogPecker(context)
             logPecker.start()
 
-            addDynamicShortcut(context)
+            addLogPeckerDynamicShortcut(context)
         }
     }
 

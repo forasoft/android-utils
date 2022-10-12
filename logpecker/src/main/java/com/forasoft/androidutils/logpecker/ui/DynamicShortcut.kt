@@ -11,7 +11,7 @@ import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
 import com.forasoft.androidutils.logpecker.R
 
-internal fun addDynamicShortcut(context: Context) {
+internal fun addLogPeckerDynamicShortcut(context: Context) {
     val addDynamicShortcut = context.resources
         .getBoolean(R.bool.forasoftandroidutils_log_pecker_is_dynamic_shortcut_enabled)
     if (!addDynamicShortcut) return

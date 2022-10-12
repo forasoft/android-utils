@@ -55,6 +55,7 @@ internal class LogPeckerActivity : Activity() {
 
     override fun onStart() {
         super.onStart()
+        removeEmptyFiles()
         refreshFileList()
         fileObserver.startWatching()
     }
@@ -108,6 +109,13 @@ internal class LogPeckerActivity : Activity() {
         files.sortBy(File::lastModified)
         runOnUiThread {
             fileListAdapter.submitList(files.toList())
+        }
+    }
+
+    private fun removeEmptyFiles() {
+        val files = logsDirectory.listFiles() ?: return
+        files.forEach {
+            if (it.length() == 0L) it.delete()
         }
     }
 

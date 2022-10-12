@@ -13,6 +13,9 @@ import com.forasoft.androidutils.logpecker.R
 
 private const val LogPeckerActivityName = "com.forasoft.androidutils.logpecker.ui.LogPeckerActivity"
 
+/**
+ * Adds a dynamic shortcut that leads to LogPecker activity to the application main activity.
+ */
 internal fun addLogPeckerDynamicShortcut(context: Context) {
     val addDynamicShortcut = context.resources
         .getBoolean(R.bool.forasoftandroidutils_log_pecker_is_dynamic_shortcut_enabled)
@@ -25,6 +28,10 @@ internal fun addLogPeckerDynamicShortcut(context: Context) {
     ShortcutManagerCompat.pushDynamicShortcut(context, shortcut)
 }
 
+/**
+ * Returns [ActivityInfo] of the first application main activity or `null` if such activity
+ * is not found.
+ */
 private fun getFirstMainActivity(context: Context): ActivityInfo? {
     val packageManager = context.packageManager
 
@@ -44,6 +51,11 @@ private fun getFirstMainActivity(context: Context): ActivityInfo? {
     return activities.firstOrNull()?.activityInfo
 }
 
+/**
+ * Returns [ShortcutInfoCompat] that leads to LogPecker activity.
+ *
+ * @param targetActivity [ComponentName] of the activity that shortcut will be added to.
+ */
 private fun createShortcut(context: Context, targetActivity: ComponentName): ShortcutInfoCompat {
     val applicationName = context.getString(context.applicationInfo.labelRes)
 
@@ -69,6 +81,9 @@ private fun createShortcut(context: Context, targetActivity: ComponentName): Sho
         .build()
 }
 
+/**
+ * Returns [Intent] for opening LogPecker activity from a shortcut.
+ */
 private fun createLogPeckerActivityIntent(context: Context): Intent {
     return Intent(context, LogPeckerActivity::class.java).apply {
         // Source: https://github.com/square/leakcanary/blob/c7a0ae90063b8e33013f64e5c0907f60852b9f83/leakcanary-android-core/src/main/java/leakcanary/internal/InternalLeakCanary.kt#L286

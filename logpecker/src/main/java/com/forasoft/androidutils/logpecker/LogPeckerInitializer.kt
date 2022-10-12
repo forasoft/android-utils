@@ -4,6 +4,9 @@ import android.content.Context
 import androidx.startup.Initializer
 import com.forasoft.androidutils.logpecker.ui.addLogPeckerDynamicShortcut
 
+/**
+ * Initializes LogPecker at application startup.
+ */
 @Suppress("Unused")
 internal class LogPeckerInitializer : Initializer<Unit> {
 

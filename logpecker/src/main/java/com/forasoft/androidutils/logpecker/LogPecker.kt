@@ -14,10 +14,22 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * LogPecker writes the application logs and saves them on the device.
+ *
+ * Use [start] method to start the process.
+ */
 internal class LogPecker(context: Context) {
 
+    /**
+     * The maximum number of files that can be stored on the device at the same time.
+     */
     private val fileMaxCount =
         context.resources.getInteger(R.integer.forasoftandroidutils_log_pecker_file_max_count)
+
+    /**
+     * The maximum size of a single file in bytes.
+     */
     private val fileMaxSizeBytes =
         context.resources.getInteger(R.integer.forasoftandroidutils_log_pecker_file_max_size_bytes)
 
@@ -28,8 +40,15 @@ internal class LogPecker(context: Context) {
     private var currentFile: File? = null
     private var currentFileWriter: BufferedWriter? = null
 
+    /**
+     * Indicates how many lines are left to write before checking if the current file is larger
+     * than the [fileMaxSizeBytes] limit.
+     */
     private var linesLeftBeforeFileSizeCheck = WRITTEN_LINES_PER_FILE_SIZE_CHECK
 
+    /**
+     * Starts to write the application logs and save them on the device.
+     */
     fun start() {
         Log.d(TAG, "LogPecker is running")
         coroutineScope.launch(Dispatchers.IO) {
@@ -42,6 +61,10 @@ internal class LogPecker(context: Context) {
         }
     }
 
+    /**
+     * Writes lines to the current file and switches to a new one when the current file size
+     * exceeds the [fileMaxSizeBytes] limit.
+     */
     private fun writeLines(lines: Sequence<String>) {
         lines.forEach { line ->
             try {
@@ -53,11 +76,19 @@ internal class LogPecker(context: Context) {
         }
     }
 
+    /**
+     * Writes the given line to the current file.
+     */
     private fun writeLine(line: String) {
         currentFileWriter?.appendLine(line)
         linesLeftBeforeFileSizeCheck -= 1
     }
 
+    /**
+     * Checks if the current file size is larger than the [fileMaxSizeBytes] limit.
+     *
+     * If the file size exceeds the limit (or the file is missing), a new file is created.
+     */
     private fun checkCurrentFileSize() {
         val file = currentFile
         if (file == null || !file.isFile || file.length() > fileMaxSizeBytes) {
@@ -66,12 +97,19 @@ internal class LogPecker(context: Context) {
         linesLeftBeforeFileSizeCheck = WRITTEN_LINES_PER_FILE_SIZE_CHECK
     }
 
+    /**
+     * Closes the current file and creates a new one. Also removes old files if the number of
+     * file exceeds [fileMaxCount] limit.
+     */
     private fun switchToNewFile() {
         closeCurrentFile()
         createNewFile()
         deleteOldFiles()
     }
 
+    /**
+     * Closes the current file.
+     */
     private fun closeCurrentFile() {
         try {
             currentFileWriter?.close()
@@ -80,6 +118,9 @@ internal class LogPecker(context: Context) {
         currentFileWriter = null
     }
 
+    /**
+     * Creates a new file for saving logs.
+     */
     private fun createNewFile() {
         ensureDirectory(directory)
         val fileName = createFileName()
@@ -90,6 +131,9 @@ internal class LogPecker(context: Context) {
         currentFileWriter = fileWriter
     }
 
+    /**
+     * Removes the oldest files if the number of log files exceeds [fileMaxCount] limit.
+     */
     private fun deleteOldFiles() {
         val files = directory.listFiles()
         if (files == null || files.size <= fileMaxCount) return
@@ -98,21 +142,33 @@ internal class LogPecker(context: Context) {
         files.take(overflow).forEach { it.delete() }
     }
 
+    /**
+     * Generates a new log file name based on the current date and time.
+     */
     private fun createFileName(): String {
         val date = Date()
         val formatter = SimpleDateFormat(FILE_DATE_TIME_FORMAT, Locale.US)
         return formatter.format(date)
     }
 
+    /**
+     * Clears logcat buffer.
+     */
     private fun clearLogcat() {
         Runtime.getRuntime().exec(ShellCommand.LOGCAT_CLEAR)
     }
 
+    /**
+     * Runs logcat and returns its [Process].
+     */
     private fun runLogcat(): Process {
         return Runtime.getRuntime().exec(ShellCommand.LOGCAT_RUN)
     }
 
     companion object {
+        /**
+         * Log file MIME type.
+         */
         const val FILE_MIME_TYPE = "text/plain"
 
         private const val FILE_EXTENSION = "txt"

@@ -4,7 +4,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ListView
 
+/**
+ * Basic adapter for [ListView].
+ *
+ * Use [submitList] for updating the underlying data.
+ *
+ * @param T item type.
+ * @property itemLayoutResId item layout resource ID.
+ * @property bindItem callback to be invoked when binding view to the item.
+ */
 internal class SimpleListAdapter<T>(
     private val itemLayoutResId: Int,
     private val bindItem: SimpleListAdapter<T>.(View, T) -> Unit,
@@ -12,6 +22,11 @@ internal class SimpleListAdapter<T>(
 
     private var items: List<T> = emptyList()
 
+    /**
+     * Updates the underlying data with the given [items].
+     *
+     * Note: this method uses [notifyDataSetChanged] under the hood.
+     */
     fun submitList(items: List<T>) {
         this.items = items
         notifyDataSetChanged()

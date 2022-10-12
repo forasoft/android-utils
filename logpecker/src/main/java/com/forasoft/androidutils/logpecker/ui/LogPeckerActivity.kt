@@ -17,10 +17,16 @@ import com.forasoft.androidutils.logpecker.utils.shareFiles
 import com.forasoft.androidutils.logpecker.utils.viewFile
 import java.io.File
 
+/**
+ * Main LogPecker activity that presents a list of stored log files.
+ */
 internal class LogPeckerActivity : Activity() {
 
     private val logsDirectory by lazy { getLogsDirectory(this) }
 
+    /**
+     * [DirectoryObserver] observes changes in the list of log files.
+     */
     private val logsDirectoryObserver by lazy {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             DirectoryObserver(logsDirectory, onFileListChanged = ::refreshFileList)
@@ -72,6 +78,9 @@ internal class LogPeckerActivity : Activity() {
         fileList.adapter = fileListAdapter
     }
 
+    /**
+     * Binds the given log file item view to the log file.
+     */
     private fun bindFile(view: View, file: File) {
         val title: TextView? =
             view.findViewById(R.id.forasoftandroidutils_log_pecker_file_item_title)
@@ -103,6 +112,9 @@ internal class LogPeckerActivity : Activity() {
         }
     }
 
+    /**
+     * Refresh the list of log files.
+     */
     private fun refreshFileList() {
         val files = logsDirectory.listFiles() ?: return
         files.sortBy(File::lastModified)
@@ -111,6 +123,12 @@ internal class LogPeckerActivity : Activity() {
         }
     }
 
+    /**
+     * Removes empty log files.
+     *
+     * Used mostly for deleting files that were created when the application was started due
+     * to launch of LogPecker activity.
+     */
     private fun removeEmptyFiles() {
         val files = logsDirectory.listFiles() ?: return
         files.forEach {

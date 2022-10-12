@@ -5,16 +5,32 @@ import android.os.FileObserver
 import androidx.annotation.RequiresApi
 import java.io.File
 
-class DirectoryObserver : FileObserver {
+/**
+ * Observes changes in a list of files in the given directory.
+ *
+ * Note: this class uses combination of [FileObserver.CREATE], [FileObserver.DELETE],
+ * [FileObserver.MOVED_TO] and [FileObserver.MOVED_FROM] flags as event mask.
+ */
+internal class DirectoryObserver : FileObserver {
 
     private val onFileListChanged: () -> Unit
 
+    /**
+     * Creates [DirectoryObserver] for the given directory.
+     *
+     * @param onFileListChanged callback to be invoked when the file list changed.
+     */
     @RequiresApi(Build.VERSION_CODES.Q)
     constructor(directory: File, onFileListChanged: () -> Unit) :
             super(directory, FILE_LIST_CHANGED_MASK) {
         this.onFileListChanged = onFileListChanged
     }
 
+    /**
+     * Creates [DirectoryObserver] for the given directory path.
+     *
+     * @param onFileListChanged callback to be invoked when the file list changed.
+     */
     @Suppress("Deprecation")
     constructor(directoryPath: String, onFileListChanged: () -> Unit) :
             super(directoryPath, FILE_LIST_CHANGED_MASK) {

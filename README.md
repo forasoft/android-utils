@@ -117,6 +117,8 @@ Default limits:
 Default limits can be overridden with resources. See [Customization](#customization) 
 paragraph for more information.
 
+Log files are stored in the cache directory.
+
 ### Usage
 
 * Add the dependency for build types you need, for example, using `debugImplementation`.

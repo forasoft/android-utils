@@ -73,7 +73,7 @@ Contains helpers related to Jetpack Compose framework.
 
 Notable examples:
 
-* [Text](ui/compose/src/main/java/com/forasoft/androidutils/ui/compose/Text.kt) allows to present 
+* [Text](ui/compose/src/main/java/com/forasoft/androidutils/ui/compose/Text.kt) allows to present
   text in different forms.
 * [Navigation helpers](ui/compose/src/main/java/com/forasoft/androidutils/ui/compose/navigation)
   constructs abstraction layer over Jetpack Navigation providing components such as
@@ -102,6 +102,43 @@ Notable examples:
   quick way to convert the Uri's content to RequestBody
 
 Min SDK: 21
+
+## LogPecker
+
+Library that automatically saves application logs on the device.
+
+Default limits:
+
+* Maximum size of a single log file - 5 MB. When the limit is reached, the current file is closed
+  and a new one is created.
+* Maximum number of log files that can be stored on the device at the same time - 20. 
+  When the limit is reached, the oldest file will be deleted to free space for a new one.
+
+Default limits can be overridden with resources. See "Customization" paragraph for more information.
+
+### Usage
+
+* Add the dependency for build types you need, for example, using `debugImplementation`.
+* Run the application.
+* Open Logs activity either via launcher icon or application main activity shortcut.
+
+### Customization
+
+Override the following resources within your application to change LogPecker default behavior:
+
+* `forasoftandroidutils_log_pecker_is_enabled` — boolean resource that specifies if LogPecker 
+  is enabled and should write logs. Default value is `true`.
+* `forasoftandroidutils_log_pecker_is_dynamic_shortcut_enabled` — boolean resource that specifies
+  if a dynamic shortcut that leads to LogPecker activity should be added to the application 
+  main activity. Default value is `true`.
+* `forasoftandroidutils_log_pecker_file_max_size_bytes` — integer resource that specifies the 
+  maximum size of a single log file in bytes. When the limit is reached, the current file is closed
+  and a new one is created. Default value is `5000000`, which corresponds to 5 MB.
+* `forasoftandroidutils_log_pecker_file_max_count` — integer resource that specifies the maximum
+  number of log files that can be stored on the device at the same time. When the limit is reached, 
+  the oldest file will be deleted to free space for a new one. Default value is `20`.
+
+Min SDK: 14
 
 # Download
 

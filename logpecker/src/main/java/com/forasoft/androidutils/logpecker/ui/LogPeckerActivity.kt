@@ -8,7 +8,7 @@ import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import com.forasoft.androidutils.logpecker.LogFileListObserver
+import com.forasoft.androidutils.logpecker.DirectoryObserver
 import com.forasoft.androidutils.logpecker.LogPecker
 import com.forasoft.androidutils.logpecker.R
 import com.forasoft.androidutils.logpecker.utils.fileProviderAuthority
@@ -21,11 +21,11 @@ internal class LogPeckerActivity : Activity() {
 
     private val logsDirectory by lazy { getLogsDirectory(this) }
 
-    private val fileObserver by lazy {
+    private val logsDirectoryObserver by lazy {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            LogFileListObserver(logsDirectory, ::refreshFileList)
+            DirectoryObserver(logsDirectory, onFileListChanged = ::refreshFileList)
         } else {
-            LogFileListObserver(logsDirectory.absolutePath, ::refreshFileList)
+            DirectoryObserver(logsDirectory.absolutePath, onFileListChanged = ::refreshFileList)
         }
     }
 
@@ -57,12 +57,12 @@ internal class LogPeckerActivity : Activity() {
         super.onStart()
         removeEmptyFiles()
         refreshFileList()
-        fileObserver.startWatching()
+        logsDirectoryObserver.startWatching()
     }
 
     override fun onStop() {
         super.onStop()
-        fileObserver.stopWatching()
+        logsDirectoryObserver.stopWatching()
     }
 
     private fun setUpTitle() {

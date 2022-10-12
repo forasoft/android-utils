@@ -5,7 +5,7 @@ import android.os.FileObserver
 import androidx.annotation.RequiresApi
 import java.io.File
 
-class LogFileListObserver : FileObserver {
+class DirectoryObserver : FileObserver {
 
     private var onFileListChanged: () -> Unit
 

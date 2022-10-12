@@ -11,6 +11,8 @@ import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
 import com.forasoft.androidutils.logpecker.R
 
+private const val LogPeckerActivityName = "com.forasoft.androidutils.logpecker.ui.LogPeckerActivity"
+
 internal fun addLogPeckerDynamicShortcut(context: Context) {
     val addDynamicShortcut = context.resources
         .getBoolean(R.bool.forasoftandroidutils_log_pecker_is_dynamic_shortcut_enabled)
@@ -37,7 +39,7 @@ private fun getFirstMainActivity(context: Context): ActivityInfo? {
         @Suppress("Deprecation")
         packageManager.queryIntentActivities(mainIntent, 0)
     }
-        .filter { it.activityInfo.name != "com.forasoft.androidutils.logpecker.ui.LogPeckerActivity" }
+        .filter { it.activityInfo.name != LogPeckerActivityName }
 
     return activities.firstOrNull()?.activityInfo
 }

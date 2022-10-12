@@ -23,7 +23,6 @@
             android:icon="@mipmap/forasoftandroidutils_log_pecker_ic_launcher"
             android:label="@string/forasoftandroidutils_log_pecker_activity_label"
             android:launchMode="singleTop"
-            android:process=":logpeckeractivity"
             android:roundIcon="@mipmap/forasoftandroidutils_log_pecker_ic_launcher_round"
             android:screenOrientation="portrait"
             android:taskAffinity="com.forasoft.androidutils.logpecker.${applicationId}"
@@ -53,8 +52,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.forasoft.androidutils.logpecker.fileprovider.${applicationId}"
             android:exported="false"
-            android:grantUriPermissions="true"
-            android:process=":logpeckeractivity">
+            android:grantUriPermissions="true">
 
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"

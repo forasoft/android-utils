@@ -109,9 +109,9 @@ Library that automatically saves application logs on the device.
 
 Default limits:
 
-* Maximum size of a single log file - 5 MB. When the limit is reached, the current file is closed
-  and a new one is created.
-* Maximum number of log files that can be stored on the device at the same time - 20. 
+* 5 MB — the maximum size of a single log file. When the limit is reached, the current file is
+  closed and a new one is created.
+* 20 — the maximum number of log files that can be stored on the device at the same time. 
   When the limit is reached, the oldest file will be deleted to free space for a new one.
 
 Default limits can be overridden with resources. See "Customization" paragraph for more information.

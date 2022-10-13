@@ -7,12 +7,15 @@ object Dependencies {
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 
     const val jetpackCore = "androidx.core:core-ktx:${Versions.jetpackCore}"
+    const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
 
     const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
     const val composeAnimation = "androidx.compose.animation:animation:${Versions.compose}"
 
     const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigation}"
+
+    const val startup = "androidx.startup:startup-runtime:${Versions.startup}"
 
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
 

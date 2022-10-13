@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <bool name="forasoftandroidutils_log_pecker_is_enabled">true</bool>
+    <bool name="forasoftandroidutils_log_pecker_is_dynamic_shortcut_enabled">true</bool>
+    
+</resources>

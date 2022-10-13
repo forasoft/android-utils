@@ -273,17 +273,17 @@ class FadeKtTest {
     @Suppress("EmptyFunctionBlock")
     private fun onAnimationEndListener(onEnd: () -> Unit): Animator.AnimatorListener {
         return object : Animator.AnimatorListener {
-            override fun onAnimationStart(animation: Animator?) {
+            override fun onAnimationStart(animation: Animator) {
                 println("onAnimationStart")
             }
 
-            override fun onAnimationEnd(animation: Animator?) {
+            override fun onAnimationEnd(animation: Animator) {
                 println("onAnimationEnd")
                 onEnd()
             }
 
-            override fun onAnimationCancel(animation: Animator?) {}
-            override fun onAnimationRepeat(animation: Animator?) {}
+            override fun onAnimationCancel(animation: Animator) {}
+            override fun onAnimationRepeat(animation: Animator) {}
         }
     }
 

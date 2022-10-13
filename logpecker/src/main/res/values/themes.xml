@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="forasoftandroidutils_LogPeckerActivityTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">
+            @color/forasoftandroidutils_log_pecker_activity_background
+        </item>
+    </style>
+
+</resources>

@@ -3,6 +3,7 @@ plugins {
     id(Plugins.kotlinAndroid)
 
     id(Plugins.detekt) version (Versions.detektPlugin)
+    id(Plugins.checkDependencyUpdates) version(Versions.checkDependencyUpdatesPlugin)
 }
 
 detekt {
@@ -26,7 +27,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        minSdk = 14
+        minSdk = 21
         targetSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

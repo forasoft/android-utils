@@ -3,6 +3,7 @@ plugins {
     id(Plugins.kotlinJvm)
 
     id(Plugins.detekt) version (Versions.detektPlugin)
+    id(Plugins.checkDependencyUpdates) version(Versions.checkDependencyUpdatesPlugin)
 }
 
 detekt {

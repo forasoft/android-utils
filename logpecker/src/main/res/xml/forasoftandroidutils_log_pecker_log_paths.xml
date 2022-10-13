@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-cache-path
+        name="forasoftandroidutils_log_pecker_external"
+        path="log_pecker" />
+    <cache-path
+        name="forasoftandroidutils_log_pecker_internal"
+        path="log_pecker" />
+</paths>

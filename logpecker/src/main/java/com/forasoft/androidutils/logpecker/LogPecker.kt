@@ -19,6 +19,7 @@ import java.util.*
  *
  * Use [start] method to start the process.
  */
+@Suppress("TooManyFunctions")
 internal class LogPecker(context: Context) {
 
     /**

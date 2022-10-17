@@ -5,6 +5,7 @@ import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Stable
 
+@Suppress("ForbiddenComment")
 // TODO: Issue. Find a way to combine with ui.view.Text to avoid duplicating?
 
 /**

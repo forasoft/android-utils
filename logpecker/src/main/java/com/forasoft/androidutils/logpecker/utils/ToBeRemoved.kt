@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.core.content.FileProvider
 import java.io.File
 
+@Suppress("ForbiddenComment")
 // TODO: Replace with platform.android module implementation when publishing the library
 
 internal fun Context.viewFile(

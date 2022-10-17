@@ -11,9 +11,13 @@ import java.math.BigInteger
 /**
  * Units of information multiplication prefix
  *
- * [SiPrefix]es are the prefixes from the SI system ([Kilo], [Mega], etc), having a multiplication base of 1000
- * [BinaryPrefix] are the prefixes based on the binary system ([Kibi], [Mebi], etc), having a multiplication base of 1024
+ * [SiPrefix]es are the prefixes from the SI system ([Kilo], [Mega], etc), having a
+ * multiplication base of 1000
+ *
+ * [BinaryPrefix] are the prefixes based on the binary system ([Kibi], [Mebi], etc), having
+ * a multiplication base of 1024
  */
+@Suppress("MagicNumber")
 sealed interface SizePrefix {
 
     /**
@@ -32,7 +36,7 @@ sealed interface SizePrefix {
     interface SiPrefix : SizePrefix
 
     /**
-     * The prefixe based on the binary system ([Kibi], [Mebi], etc), having a multiplication base of 1024
+     * The prefix based on the binary system ([Kibi], [Mebi], etc), having a multiplication base of 1024
      *
      * @constructor Create empty Binary prefix
      */

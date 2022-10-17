@@ -12,6 +12,7 @@ import java.math.RoundingMode
  *
  * @property bitCount size in bits
  */
+@Suppress("TooManyFunctions")
 @JvmInline
 value class Size internal constructor(val bitCount: BigInteger) {
 

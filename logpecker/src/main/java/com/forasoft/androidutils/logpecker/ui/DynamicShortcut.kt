@@ -11,7 +11,8 @@ import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
 import com.forasoft.androidutils.logpecker.R
 
-private const val LogPeckerActivityName = "com.forasoft.androidutils.logpecker.ui.LogPeckerActivity"
+private const val LOG_PECKER_ACTIVITY_NAME =
+    "com.forasoft.androidutils.logpecker.ui.LogPeckerActivity"
 
 /**
  * Adds a dynamic shortcut that leads to LogPecker activity to the application main activity.
@@ -46,7 +47,7 @@ private fun getFirstMainActivity(context: Context): ActivityInfo? {
         @Suppress("Deprecation")
         packageManager.queryIntentActivities(mainIntent, 0)
     }
-        .filter { it.activityInfo.name != LogPeckerActivityName }
+        .filter { it.activityInfo.name != LOG_PECKER_ACTIVITY_NAME }
 
     return activities.firstOrNull()?.activityInfo
 }

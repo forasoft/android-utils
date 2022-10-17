@@ -9,7 +9,7 @@ plugins {
 detekt {
     parallel = true
     buildUponDefaultConfig = true
-    config = files("../../config/detekt-config.yml")
+    config = files("../config/detekt-config.yml")
 }
 
 android {

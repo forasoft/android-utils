@@ -14,4 +14,6 @@ object Plugins {
     const val detekt = "io.gitlab.arturbosch.detekt"
     const val checkDependencyUpdates = "name.remal.check-dependency-updates"
 
+    const val mavenPublish = "maven-publish"
+
 }

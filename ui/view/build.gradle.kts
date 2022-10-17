@@ -6,6 +6,8 @@ plugins {
 
     id(Plugins.detekt) version (Versions.detektPlugin)
     id(Plugins.checkDependencyUpdates) version(Versions.checkDependencyUpdatesPlugin)
+
+    id(Plugins.mavenPublish)
 }
 
 detekt {
@@ -66,4 +68,14 @@ dependencies {
     androidTestImplementation(Dependencies.androidJunit)
     androidTestImplementation(Dependencies.espresso)
     androidTestImplementation(Dependencies.truth)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                from(components.findByName("release"))
+            }
+        }
+    }
 }

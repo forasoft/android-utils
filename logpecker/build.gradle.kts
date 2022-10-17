@@ -6,6 +6,8 @@ plugins {
 
     id(Plugins.detekt) version (Versions.detektPlugin)
     id(Plugins.checkDependencyUpdates) version(Versions.checkDependencyUpdatesPlugin)
+
+    id(Plugins.mavenPublish)
 }
 
 detekt {
@@ -64,4 +66,14 @@ dependencies {
     implementation(Dependencies.appCompat)
     implementation(Dependencies.startup)
     implementation(Dependencies.coroutines)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                from(components.findByName("release"))
+            }
+        }
+    }
 }

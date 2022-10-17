@@ -4,6 +4,8 @@ plugins {
 
     id(Plugins.detekt) version (Versions.detektPlugin)
     id(Plugins.checkDependencyUpdates) version(Versions.checkDependencyUpdatesPlugin)
+
+    id(Plugins.mavenPublish)
 }
 
 detekt {
@@ -34,4 +36,14 @@ tasks.test {
 dependencies {
     testImplementation(Dependencies.junit)
     testImplementation(Dependencies.truth)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                from(components.findByName("java"))
+            }
+        }
+    }
 }

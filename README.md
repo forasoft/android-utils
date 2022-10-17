@@ -65,7 +65,7 @@ Notable examples:
 * [View.fade*](ui/view/src/main/java/com/forasoft/androidutils/ui/view/visibility/Fade.kt)
   extensions allow to show and hide views with fade effect.
 
-Min SDK: 14
+Min SDK: 16
 
 ## UI Compose
 

@@ -59,8 +59,7 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 }
 
 dependencies {
-    // TODO: Add when publishing the library
-//    implementation(project(Dependencies.Modules.platformAndroid))
+    implementation(project(Dependencies.Modules.platformAndroid))
 
     implementation(Dependencies.jetpackCore)
     implementation(Dependencies.appCompat)

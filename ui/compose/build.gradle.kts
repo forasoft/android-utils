@@ -84,15 +84,14 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 }
 
 dependencies {
+    implementation(project(Dependencies.Modules.platformAndroid))
+
     implementation(Dependencies.jetpackCore)
+    implementation(Dependencies.navigationCompose)
 
     implementation(Dependencies.composeRuntime)
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeAnimation)
-
-    implementation(Dependencies.navigationCompose)
-
-    implementation(project(Dependencies.Modules.platformAndroid))
 
     testImplementation(Dependencies.junit)
     testImplementation(Dependencies.truth)

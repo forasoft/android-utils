@@ -18,11 +18,11 @@ detekt {
 
 android {
     namespace = "com.forasoft.androidutils.logpecker"
-    compileSdk = 33
+    compileSdk = Versions.compileSdk
 
     defaultConfig {
         minSdk = 14
-        targetSdk = 33
+        targetSdk = Versions.targetSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

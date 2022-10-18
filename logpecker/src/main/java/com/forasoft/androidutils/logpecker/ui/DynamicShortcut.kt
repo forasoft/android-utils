@@ -4,8 +4,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.content.pm.PackageManager
-import android.os.Build
 import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
@@ -41,12 +39,7 @@ private fun getFirstMainActivity(context: Context): ActivityInfo? {
         addCategory(Intent.CATEGORY_LAUNCHER)
         setPackage(context.packageName)
     }
-    val activities = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-        packageManager.queryIntentActivities(mainIntent, PackageManager.ResolveInfoFlags.of(0))
-    } else {
-        @Suppress("Deprecation")
-        packageManager.queryIntentActivities(mainIntent, 0)
-    }
+    val activities = packageManager.queryIntentActivities(mainIntent, 0)
         .filter { it.activityInfo.name != LOG_PECKER_ACTIVITY_NAME }
 
     return activities.firstOrNull()?.activityInfo

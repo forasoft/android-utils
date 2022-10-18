@@ -4,6 +4,8 @@ Android Utils is a library of useful helpers that allow to decrease amount of
 boilerplate code in Android development. Helpers are divided into modules according to
 their specifics.
 
+[![](https://jitpack.io/v/forasoft/android-utils.svg)](https://jitpack.io/#forasoft/android-utils)
+
 * [Android Utils](#android-utils)
 * [Modules](#modules)
   * [Kotlin Common](#kotlin-common)

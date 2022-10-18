@@ -46,6 +46,7 @@ afterEvaluate {
         publications {
             create<MavenPublication>("maven") {
                 from(components.findByName("java"))
+                artifactId = "kotlin-coroutines"
             }
         }
     }

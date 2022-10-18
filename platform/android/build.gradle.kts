@@ -68,6 +68,7 @@ afterEvaluate {
         publications {
             create<MavenPublication>("maven") {
                 from(components.findByName("release"))
+                groupId = "com.forasoft.android-utils"
                 artifactId = "platform-android"
             }
         }

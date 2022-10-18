@@ -31,7 +31,7 @@ Notable examples:
   information size units abstraction, allowing for basic arithmetic operations, conversions and
   formatting
 
-### Dependency
+#### Dependency
 
 ```kotlin
 implementation("com.github.forasoft.android-utils:kotlin-common:<version>")
@@ -48,7 +48,7 @@ Notable examples:
 * [OperationTracker](kotlin/coroutines/src/main/java/com/forasoft/androidutils/kotlin/coroutines/operationtracker/OperationTracker.kt)
   tracks ongoing operations.
 
-### Dependency
+#### Dependency
 
 ```kotlin
 implementation("com.github.forasoft.android-utils:kotlin-coroutines:<version>")
@@ -63,7 +63,7 @@ Notable examples:
 * [UseCase](clean/src/main/java/com/forasoft/androidutils/clean/usecase/UseCase.kt)
 * [FlowUseCase](clean/src/main/java/com/forasoft/androidutils/clean/usecase/FlowUseCase.kt)
 
-### Dependency
+#### Dependency
 
 ```kotlin
 implementation("com.github.forasoft.android-utils:clean:<version>")
@@ -83,7 +83,7 @@ Notable examples:
 * [Timber.plantTree](platform/android/src/main/java/com/forasoft/androidutils/platform/android/TimberTree.kt)
   allows to plant custom logging trees.
 
-### Dependency
+#### Dependency
 
 ```kotlin
 implementation("com.github.forasoft.android-utils:platform-android:<version>")
@@ -102,7 +102,7 @@ Notable examples:
 * [View.fade*](ui/view/src/main/java/com/forasoft/androidutils/ui/view/visibility/Fade.kt)
   extensions allow to show and hide views with fade effect.
 
-### Dependency
+#### Dependency
 
 ```kotlin
 implementation("com.github.forasoft.android-utils:ui-view:<version>")
@@ -125,7 +125,7 @@ Notable examples:
   for frequently used actions such as observing Lifecycle events, requesting screen orientation,
   controlling system bars state, etc.
 
-### Dependency
+#### Dependency
 
 ```kotlin
 implementation("com.github.forasoft.android-utils:ui-compose:<version>")
@@ -149,13 +149,13 @@ paragraph for more information.
 
 Log files are stored in the cache directory.
 
-### Usage
+#### Usage
 
 * Add the dependency for build types you need, for example, using `debugImplementation`.
 * Run the application.
 * Open Logs activity either via launcher icon or application main activity shortcut.
 
-### Customization
+#### Customization
 
 Override the following resources within your application to change LogPecker default behavior:
 
@@ -171,7 +171,7 @@ Override the following resources within your application to change LogPecker def
   number of log files that can be stored on the device at the same time. When the limit is reached,
   the oldest file will be deleted to free space for a new one. Default value is `20`.
 
-### Dependency
+#### Dependency
 
 ```kotlin
 debugImplementation("com.github.forasoft.android-utils:logpecker:<version>")
@@ -183,7 +183,7 @@ Min SDK: 14
 
 Contains helpers related to Android WebRTC library.
 
-### Dependency
+#### Dependency
 
 ```kotlin
 implementation("com.github.forasoft.android-utils:webrtc:<version>")
@@ -202,7 +202,7 @@ Notable examples:
 * [UriRequestBody](thirdparty/okhttp/src/main/java/com/forasoft/androidutils/thirdparty/okhttp/UriRequestBody.kt)
   quick way to convert the Uri's content to RequestBody
 
-### Dependency
+#### Dependency
 
 ```kotlin
 implementation("com.github.forasoft.android-utils:thirdparty-okhttp:<version>")

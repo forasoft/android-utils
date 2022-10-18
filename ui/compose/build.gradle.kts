@@ -65,10 +65,6 @@ android {
         kotlinCompilerExtensionVersion = Versions.composeCompiler
     }
 
-    testFixtures {
-        enable = true
-    }
-
     publishing {
         singleVariant("release") {
             withSourcesJar()

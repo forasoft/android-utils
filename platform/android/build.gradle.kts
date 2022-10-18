@@ -68,6 +68,7 @@ afterEvaluate {
         publications {
             create<MavenPublication>("maven") {
                 from(components.findByName("release"))
+                artifactId = "platform-android"
             }
         }
     }

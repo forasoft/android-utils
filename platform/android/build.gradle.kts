@@ -56,6 +56,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    testFixtures {
+        enable = true
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {

@@ -27,6 +27,9 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+
+    withSourcesJar()
+    withJavadocJar()
 }
 
 tasks.test {

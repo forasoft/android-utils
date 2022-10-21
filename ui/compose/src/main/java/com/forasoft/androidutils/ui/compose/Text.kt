@@ -26,6 +26,7 @@ fun textString(text: Text): String {
 /**
  * Abstraction that allows to present a text in different forms.
  */
+// Text is sealed class because the Compose compiler treats such a class as stable by default.
 sealed class Text {
 
     /**

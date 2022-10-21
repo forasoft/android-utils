@@ -2,9 +2,11 @@ package com.forasoft.androidutils.ui.compose.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavGraph
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.dialog
+import androidx.navigation.navigation
 
 /**
  * Adds the [Destination] to the [NavGraphBuilder].
@@ -47,5 +49,19 @@ fun NavGraphBuilder.dialogDestination(
         arguments = destination.arguments,
         deepLinks = destination.deepLinks,
         content = content,
+    )
+}
+
+/**
+ * Constructors a nested [NavGraph] based on the given [Graph].
+ *
+ * @param builder the builder used to construct the graph.
+ */
+@Suppress("Unused")
+inline fun NavGraphBuilder.navigationGraph(graph: Graph<*>, builder: NavGraphBuilder.() -> Unit) {
+    navigation(
+        route = graph.routeSchema,
+        startDestination = graph.startDestination.routeSchema,
+        builder = builder,
     )
 }

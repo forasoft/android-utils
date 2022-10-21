@@ -1,0 +1,9 @@
+name: Check pull request
+
+on:
+  pull_request:
+    branches: 'develop'
+
+jobs:
+  run-unit-tests:
+    uses: ./github/workflows/reusable_run_unit_tests.yml

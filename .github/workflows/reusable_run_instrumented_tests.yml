@@ -41,7 +41,7 @@ jobs:
           cd instrumented_test_reports_${{ matrix.api-level }}
           mkdir ui_view
           cd ..
-          mv ui\view\build\reports\androidTests\connected instrumented_test_reports_${{ matrix.api-level }}/ui_view
+          mv ui/view/build/reports/androidTests/connected instrumented_test_reports_${{ matrix.api-level }}/ui_view
 
       - name: Upload test reports
         uses: actions/upload-artifact@v3

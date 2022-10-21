@@ -15,6 +15,9 @@ jobs:
       - name: Checkout repository code
         uses: actions/checkout@v3
 
+      - name: Make gradlew commands executable
+        run: chmod +x gradlew
+
       - name: Run instrumented tests
         uses: reactivecircus/android-emulator-runner@v2
         with:

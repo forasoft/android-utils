@@ -39,7 +39,7 @@ jobs:
         run: |
           mkdir instrumented_test_reports_${{ matrix.api-level }}
           cd instrumented_test_reports_${{ matrix.api-level }}
-          mkdir {ui_view}
+          mkdir ui_view
           cd ..
           mv ui\view\build\reports\androidTests\connected instrumented_test_reports_${{ matrix.api-level }}/ui_view
 

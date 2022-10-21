@@ -18,6 +18,11 @@ abstract class Destination : Destination<Unit>() {
      */
     val route: String get() = routeSchema
 
+    @Deprecated(
+        message = "Use 'route' property instead",
+        replaceWith = ReplaceWith("route"),
+        level = DeprecationLevel.WARNING,
+    )
     override fun createRoute(args: Unit): String = route
 
 }

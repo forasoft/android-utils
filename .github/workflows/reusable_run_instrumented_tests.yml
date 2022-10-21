@@ -1,0 +1,24 @@
+name: Run instrumented tests
+
+on:
+  workflow_call:
+
+jobs:
+  run-instrumented-tests:
+    name: Run instrumented tests
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        api-level: [21, 29]
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v3
+
+      - name: Run instrumented tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          target: default
+          arch: x86-64
+          script: ./gradlew connectedCheck

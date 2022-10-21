@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up JDK 11
@@ -43,5 +43,5 @@ jobs:
       - name: Upload test reports
         uses: actions/upload-artifact@v3
         with:
-          name: test_reports
+          name: unit_test_reports
           path: test_reports

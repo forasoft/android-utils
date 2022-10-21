@@ -14,5 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Check the branch is develop
+        if: endsWith(github.ref, 'develop') == false
+        run: exit -1
+
       - name: Create release
         uses: softprops/action-gh-release@v1

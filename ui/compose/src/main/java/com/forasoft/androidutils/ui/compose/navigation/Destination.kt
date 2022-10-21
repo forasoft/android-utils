@@ -2,15 +2,23 @@ package com.forasoft.androidutils.ui.compose.navigation
 
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavDeepLink
+import com.forasoft.androidutils.ui.compose.navigation.parameterless.Destination
 
 /**
  * An abstraction for a Compose Navigation destination that encapsulates destination's
  * [routeSchema], [arguments] and [deepLinks].
  *
+ * Use parameterless version [Destination] if arguments not needed.
+ *
  * @param P type of destination's arguments.
- * @property routeSchema string that can be used as a route schema for a destination.
+ * @see [Destination].
  */
-abstract class Destination<P>(val routeSchema: String) {
+abstract class Destination<P> {
+
+    /**
+     * String that can be used as a route schema for a destination.
+     */
+    abstract val routeSchema: String
 
     /**
      * Returns a string that can be used as a route for NavController navigation.

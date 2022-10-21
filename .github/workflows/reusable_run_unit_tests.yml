@@ -29,6 +29,10 @@ jobs:
 
       - name: Rename and move test reports
         run: |
+          mkdir test_reports
+          cd test_reports
+          mkdir {clean,kotlin_common,kotlin_coroutines,thirdparty_okhttp,ui_compose,ui_view}
+          cd ..
           mv clean/build/reports/tests/testReleaseUnitTest test_reports/clean
           mv kotlin/common/build/reports/tests/test test_reports/kotlin_common
           mv kotlin/coroutines/build/reports/tests/test test_reports/kotlin_coroutines

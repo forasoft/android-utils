@@ -27,7 +27,7 @@ jobs:
       - name: Run unit tests
         run: ./gradlew test
 
-      - name: Rename and move test reports
+      - name: Move test reports
         run: |
           mkdir test_reports
           cd test_reports
@@ -43,5 +43,5 @@ jobs:
       - name: Upload test reports
         uses: actions/upload-artifact@v3
         with:
-          name: test_report_directory
+          name: test_reports
           path: test_reports

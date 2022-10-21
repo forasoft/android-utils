@@ -1,29 +1,44 @@
+@file:Suppress("ForbiddenComment")
+
 package com.forasoft.androidutils.ui.compose
 
 import android.content.Context
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
-import androidx.compose.runtime.Stable
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 
-@Suppress("ForbiddenComment")
 // TODO: Issue. Find a way to combine with ui.view.Text to avoid duplicating?
 
 /**
- * Interface that allows to present text in different forms.
+ * Returns String value of the given [Text].
  */
-@Stable
-sealed interface Text {
+@Suppress("Unused")
+@Composable
+fun textString(text: Text): String {
+    // Will be recomposed when Configuration gets updated.
+    LocalConfiguration.current
+    val context = LocalContext.current
+    return text.getString(context)
+}
+
+/**
+ * Abstraction that allows to present a text in different forms.
+ */
+// Text is sealed class because the Compose compiler treats such a class as stable by default.
+sealed class Text {
 
     /**
      * Returns a [String] value of the text.
      */
-    fun getString(context: Context): kotlin.String
+    abstract fun getString(context: Context): kotlin.String
 
     /**
      * Represents an empty text with a value of empty [String].
      */
     @Suppress("Unused")
-    object Empty : Text {
+    object Empty : Text() {
         override fun getString(context: Context): kotlin.String = ""
     }
 
@@ -37,7 +52,7 @@ sealed interface Text {
     class Resource(
         @StringRes val resourceId: Int,
         private vararg val args: Any = emptyArray(),
-    ) : Text {
+    ) : Text() {
 
         override fun getString(context: Context): kotlin.String {
             @Suppress("SpreadOperator")
@@ -74,7 +89,7 @@ sealed interface Text {
         @PluralsRes val resourceId: Int,
         private val count: Int,
         private vararg val args: Any = emptyArray(),
-    ) : Text {
+    ) : Text() {
 
         override fun getString(context: Context): kotlin.String {
             @Suppress("SpreadOperator")
@@ -104,7 +119,7 @@ sealed interface Text {
     /**
      * Represents the plain [String] text.
      */
-    class String(private val text: kotlin.String) : Text {
+    class String(private val text: kotlin.String) : Text() {
 
         override fun getString(context: Context): kotlin.String = text
 

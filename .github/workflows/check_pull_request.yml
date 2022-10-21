@@ -7,3 +7,7 @@ on:
 jobs:
   run-unit-tests:
     uses: ./.github/workflows/reusable_run_unit_tests.yml
+
+  run-instrumented-tests:
+    needs: run-unit-tests
+    uses: ./.github/workflows/reusable_run_instrumented_tests.yml

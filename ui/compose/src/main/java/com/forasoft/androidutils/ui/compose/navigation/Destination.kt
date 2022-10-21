@@ -2,12 +2,16 @@ package com.forasoft.androidutils.ui.compose.navigation
 
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavDeepLink
+import com.forasoft.androidutils.ui.compose.navigation.parameterless.Destination
 
 /**
  * An abstraction for a Compose Navigation destination that encapsulates destination's
  * [routeSchema], [arguments] and [deepLinks].
  *
+ * Use parameterless version [Destination] if arguments not needed.
+ *
  * @param P type of destination's arguments.
+ * @see [Destination].
  */
 abstract class Destination<P> {
 

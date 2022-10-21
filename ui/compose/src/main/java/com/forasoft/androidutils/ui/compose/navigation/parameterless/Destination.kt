@@ -7,6 +7,8 @@ import com.forasoft.androidutils.ui.compose.navigation.Destination
  * [routeSchema], [arguments] and [deepLinks].
  *
  * Parameterless version of [Destination].
+ *
+ * @see [Destination].
  */
 @Suppress("Unused")
 abstract class Destination : Destination<Unit>() {

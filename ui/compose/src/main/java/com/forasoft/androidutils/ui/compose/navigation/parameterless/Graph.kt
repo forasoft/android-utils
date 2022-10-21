@@ -7,6 +7,8 @@ import com.forasoft.androidutils.ui.compose.navigation.Graph
  * [routeSchema] and [startDestination].
  *
  * Parameterless version of [Graph].
+ *
+ * @see [Graph].
  */
 @Suppress("Unused")
 abstract class Graph : Graph<Unit>() {

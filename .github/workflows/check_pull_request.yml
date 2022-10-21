@@ -6,4 +6,4 @@ on:
 
 jobs:
   run-unit-tests:
-    uses: ./github/workflows/reusable_run_unit_tests.yml
+    uses: ./.github/workflows/reusable_run_unit_tests.yml

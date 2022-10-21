@@ -1,11 +1,27 @@
+@file:Suppress("ForbiddenComment")
+
 package com.forasoft.androidutils.ui.compose
 
 import android.content.Context
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 
-@Suppress("ForbiddenComment")
 // TODO: Issue. Find a way to combine with ui.view.Text to avoid duplicating?
+
+/**
+ * Returns String value of the given [Text].
+ */
+@Suppress("Unused")
+@Composable
+fun textString(text: Text): String {
+    // Will be recomposed when Configuration gets updated.
+    LocalConfiguration.current
+    val context = LocalContext.current
+    return text.getString(context)
+}
 
 /**
  * Abstraction that allows to present a text in different forms.

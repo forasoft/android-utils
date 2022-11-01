@@ -27,7 +27,7 @@ jobs:
       - name: Run Detekt
         run: ./gradlew detekt
 
-      - name: Move test reports
+      - name: Move Detekt reports
         run: |
           mkdir detekt_reports
           cd detekt_reports

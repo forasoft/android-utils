@@ -28,6 +28,7 @@ jobs:
         run: ./gradlew detekt
 
       - name: Move Detekt reports
+        if: always()
         run: |
           mkdir detekt_reports
           cd detekt_reports
@@ -44,12 +45,14 @@ jobs:
           mv webrtc/build/reports/detekt detekt_reports/webrtc
 
       - name: Upload Detekt reports
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: detekt_reports
           path: detekt_reports
 
       - name: Upload SARIF reports
+        if: always()
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: detekt_reports/clean/detekt/detekt.sarif

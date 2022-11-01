@@ -56,4 +56,3 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: detekt_reports/clean/detekt/detekt.sarif
-          category: Detekt analysis

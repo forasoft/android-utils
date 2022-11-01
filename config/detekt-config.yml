@@ -1,3 +1,7 @@
+build:
+  maxIssues: 100
+  excludeCorrectable: false
+
 style:
   WildcardImport:
     active: false

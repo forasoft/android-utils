@@ -50,9 +50,3 @@ jobs:
         with:
           name: detekt_reports
           path: detekt_reports
-
-      - name: Upload SARIF reports
-        if: always()
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: detekt_reports/clean/detekt/detekt.sarif

@@ -1,0 +1,47 @@
+name: Run unit tests
+
+on:
+  workflow_call:
+
+jobs:
+  run-unit-tests:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Make gradlew commands executable
+        run: chmod +x ./gradlew
+
+      - name: Run unit tests
+        run: ./gradlew test
+
+      - name: Move test reports
+        run: |
+          mkdir unit_test_reports
+          cd unit_test_reports
+          mkdir {clean,kotlin_common,kotlin_coroutines,thirdparty_okhttp,ui_compose,ui_view}
+          cd ..
+          mv clean/build/reports/tests/testReleaseUnitTest unit_test_reports/clean
+          mv kotlin/common/build/reports/tests/test unit_test_reports/kotlin_common
+          mv kotlin/coroutines/build/reports/tests/test unit_test_reports/kotlin_coroutines
+          mv thirdparty/okhttp/build/reports/tests/testReleaseUnitTest unit_test_reports/thirdparty_okhttp
+          mv ui/compose/build/reports/tests/testReleaseUnitTest unit_test_reports/ui_compose
+          mv ui/view/build/reports/tests/testReleaseUnitTest unit_test_reports/ui_view
+
+      - name: Upload test reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: unit_test_reports
+          path: unit_test_reports

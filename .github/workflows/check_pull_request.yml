@@ -1,0 +1,16 @@
+name: Check pull request
+
+on:
+  pull_request:
+    branches: 'develop'
+
+jobs:
+  run-unit-tests:
+    uses: ./.github/workflows/reusable_run_unit_tests.yml
+
+  run-instrumented-tests:
+    needs: run-unit-tests
+    uses: ./.github/workflows/reusable_run_instrumented_tests.yml
+
+  run-detekt:
+    uses: ./.github/workflows/reusable_run_detekt.yml

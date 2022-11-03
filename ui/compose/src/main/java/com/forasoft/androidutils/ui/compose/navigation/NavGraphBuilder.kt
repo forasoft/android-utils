@@ -1,6 +1,7 @@
 package com.forasoft.androidutils.ui.compose.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraph
 import androidx.navigation.NavGraphBuilder
@@ -37,17 +38,20 @@ fun NavGraphBuilder.composableDestination(
  * wants to show that dialog.
  *
  * @param destination destination to add.
+ * @param dialogProperties properties that should be passed to [androidx.compose.ui.window.Dialog].
  * @param content composable content for the destination that will be hosted within the Dialog.
  */
 @Suppress("Unused")
 fun NavGraphBuilder.dialogDestination(
     destination: Destination<*>,
+    dialogProperties: DialogProperties = DialogProperties(),
     content: @Composable (NavBackStackEntry) -> Unit,
 ) {
     dialog(
         route = destination.routeSchema,
         arguments = destination.arguments,
         deepLinks = destination.deepLinks,
+        dialogProperties = dialogProperties,
         content = content,
     )
 }

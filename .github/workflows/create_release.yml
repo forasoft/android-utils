@@ -1,0 +1,25 @@
+name: Create release
+
+on:
+  push:
+    tags: 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  run-unit-tests:
+    uses: ./.github/workflows/reusable_run_unit_tests.yml
+
+  run-instrumented-tests:
+    needs: run-unit-tests
+    uses: ./.github/workflows/reusable_run_instrumented_tests.yml
+
+  create-release:
+    name: Create release
+    needs: run-instrumented-tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create release
+        uses: softprops/action-gh-release@v1

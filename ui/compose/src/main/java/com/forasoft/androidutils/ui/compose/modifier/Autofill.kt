@@ -13,10 +13,17 @@ import androidx.compose.ui.platform.LocalAutofillTree
 
 // Courtesy of https://bryanherbst.com/2021/04/13/compose-autofill/
 
+/**
+ * Mark Composable as an autofill receiver
+ *
+ * @param autofillTypes autofill type markers
+ * @param onFill callback triggered when the autocomplete is performed. The parameter of the
+ * lambda is the value that has been provided by autofill
+ */
 @OptIn(ExperimentalComposeUiApi::class)
 fun Modifier.autofill(
     autofillTypes: List<AutofillType>,
-    onFill: (String) -> Unit,
+    onFill: (autofilledValue: String) -> Unit,
 ) = composed {
     val autofill = LocalAutofill.current
     val autofillNode = AutofillNode(onFill = onFill, autofillTypes = autofillTypes)

@@ -3,6 +3,8 @@ package com.forasoft.androidutils.clean.usecase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.milliseconds
 
 /**
  * Implementation of UseCase Clean Architecture pattern.
@@ -28,14 +30,21 @@ abstract class UseCase<in P, out R>(private val dispatcher: CoroutineDispatcher)
     @Suppress("TooGenericExceptionCaught")
     suspend operator fun invoke(params: P): Result<R> {
         return try {
-            withContext(dispatcher) {
-                execute(params).let {
-                    Result.success(it)
+            val result: Result<R>
+            val executionDuration = measureTimeMillis {
+                withContext(dispatcher) {
+                    execute(params).let {
+                        result = Result.success(it)
+                    }
                 }
-            }
+            }.milliseconds
+            Timber.v("Execution of ${this.javaClass.simpleName} took $executionDuration")
+            result
         } catch (e: Exception) {
-            Timber.e(e, "Exception occurred while executing ${this.javaClass.simpleName} " +
-                    "with parameters $params")
+            Timber.e(
+                e, "Exception occurred while executing ${this.javaClass.simpleName} " +
+                        "with parameters $params"
+            )
             Result.failure(e)
         }
     }

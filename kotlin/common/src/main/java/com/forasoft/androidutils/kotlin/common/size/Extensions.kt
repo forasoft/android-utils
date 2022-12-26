@@ -23,6 +23,9 @@ fun Size.coerceAtMost(maximumValue: Size): Size {
     return if (this > maximumValue) maximumValue else this
 }
 
+/**
+ * Ensures that this value lies in the specified range [minimumValue]..[maximumValue]
+ */
 fun Size.coerceIn(minimumValue: Size, maximumValue: Size): Size {
     require(minimumValue <= maximumValue) { "Lower bound can't be bigger than upper bound" }
     return when {

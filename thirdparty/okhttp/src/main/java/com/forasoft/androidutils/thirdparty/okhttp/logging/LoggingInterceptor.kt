@@ -56,7 +56,7 @@ object LoggingInterceptor : Interceptor() {
                 contentType = contentType,
                 contentLength = contentLength
             )
-            appendBody(this, request)
+            appendBody(this, request.body, request.headers)
             append("--> END ")
             append(request.method)
         }
@@ -91,10 +91,11 @@ object LoggingInterceptor : Interceptor() {
 
     private fun appendHeaders(
         builder: StringBuilder,
-        headers: Headers,
+        headers: Headers?,
         contentType: MediaType? = null,
         contentLength: Long? = null,
     ) {
+        if (headers == null) return
         val headerStrings = buildList(headers.size + 2) {
             if (contentType != null)
                 add(getHeaderString("Content-Type", contentType.toString()))
@@ -104,18 +105,22 @@ object LoggingInterceptor : Interceptor() {
                 add(getHeaderString(key, value))
             }
         }
-        if (headerStrings.isNotEmpty()) builder.appendLine(headerStrings.joinToString(HEADER_ENTRY_SEPARATOR))
+        if (headerStrings.isNotEmpty()) builder.appendLine(
+            headerStrings.joinToString(
+                HEADER_ENTRY_SEPARATOR
+            )
+        )
     }
 
     private fun getHeaderString(key: String, value: String): String {
         return "$key$HEADER_NAME_VALUE_SEPARATOR$value"
     }
 
-    private fun appendBody(builder: StringBuilder, request: Request) {
-        val body = request.body ?: return
+    private fun appendBody(builder: StringBuilder, body: RequestBody?, headers: Headers?) {
+        if (body == null) return
         builder.append(
             when {
-                bodyHasUnknownEncoding(request.headers) -> "(encoded body omitted)"
+                headers?.let { bodyHasUnknownEncoding(it) } == true -> "(encoded body omitted)"
                 body.isDuplex() -> "(duplex request body omitted)"
                 body.isOneShot() -> "(one-shot body omitted)"
                 else -> getBody(body)
@@ -125,17 +130,41 @@ object LoggingInterceptor : Interceptor() {
     }
 
     private fun getBody(body: RequestBody): String {
-        val buffer = Buffer()
-        body.writeTo(buffer)
+        if (body is MultipartBody) {
+            return buildString {
+                body.parts.forEach { part ->
+                    val buffer = Buffer()
+                    part.body.writeTo(buffer)
+                    appendHeaders(
+                        builder = this,
+                        headers = part.headers,
+                        contentType = part.body.contentType(),
+                        contentLength = part.body.contentLength()
+                    )
+                    appendBody(this, part.body, part.headers)
+                }
+            }
+        } else {
+            val buffer = Buffer()
+            body.writeTo(buffer)
+            var contentLength = body.contentLength()
+            if (contentLength == -1L) contentLength = buffer.size
+            return read(
+                buffer,
+                contentType = body.contentType(),
+                contentLength = contentLength
+            )
+        }
+    }
 
-        val contentType = body.contentType()
+    private fun read(buffer: Buffer, contentType: MediaType?, contentLength: Long): String {
         val charset: Charset =
             contentType?.charset(StandardCharsets.UTF_8) ?: StandardCharsets.UTF_8
 
         return if (buffer.isProbablyUtf8()) {
             buffer.readString(charset)
         } else {
-            "(binary ${body.contentLength()}-byte body omitted)"
+            "(binary ${contentLength}-byte body omitted)"
         }
     }
 

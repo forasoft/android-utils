@@ -1,6 +1,7 @@
 package com.forasoft.androidutils.kotlin.common.size
 
 import com.google.common.truth.Truth.assertThat
+import org.junit.Assert.assertThrows
 import org.junit.Test
 import java.math.BigInteger
 
@@ -201,6 +202,48 @@ class SizeTest {
         val maxSize = 0.bits
 
         val result = size.coerceAtMost(maxSize)
+
+        assertThat(result).isEqualTo(size)
+    }
+
+    @Test
+    fun coerceIn_withUpperBoundLessThanLowerBound_throws() {
+        val size = (-12).gigabytes
+        val minSize = 10.bits
+        val maxSize = 0.bits
+
+        assertThrows(IllegalArgumentException::class.java) { size.coerceIn(minSize, maxSize) }
+    }
+
+    @Test
+    fun coerceIn_withLesserValue_returnsLowerBound() {
+        val size = (-12).gigabytes
+        val minSize = 0.bits
+        val maxSize = 10.bits
+
+        val result = size.coerceIn(minSize, maxSize)
+
+        assertThat(result).isEqualTo(minSize)
+    }
+
+    @Test
+    fun coerceIn_withBiggerValue_returnsUpperBound() {
+        val size = (12).gigabytes
+        val minSize = 0.bits
+        val maxSize = 10.bits
+
+        val result = size.coerceIn(minSize, maxSize)
+
+        assertThat(result).isEqualTo(maxSize)
+    }
+
+    @Test
+    fun coerceIn_withValueBetween_returnOriginal() {
+        val size = (12).gigabytes
+        val minSize = 0.bits
+        val maxSize = 20.gibibytes
+
+        val result = size.coerceIn(minSize, maxSize)
 
         assertThat(result).isEqualTo(size)
     }

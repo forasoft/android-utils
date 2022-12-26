@@ -38,7 +38,8 @@ abstract class UseCase<in P, out R>(private val dispatcher: CoroutineDispatcher)
                     }
                 }
             }.milliseconds
-            Timber.v("Execution of ${this.javaClass.simpleName} took $executionDuration")
+            if (Timber.treeCount != 0)
+                Timber.v("Execution of ${this.javaClass.simpleName} took $executionDuration")
             result
         } catch (e: Exception) {
             Timber.e(

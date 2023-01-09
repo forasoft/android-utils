@@ -1,10 +1,13 @@
 package com.forasoft.androidutils.platform.android
 
 import android.app.Activity
+import android.content.ClipData
+import android.content.ClipData.Item
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.provider.Settings
 import androidx.core.content.FileProvider
 import timber.log.Timber
@@ -95,30 +98,42 @@ fun Context.viewFile(
  * @param fileProviderAuthority the authority of a FileProvider defined in a `<provider>`
  * element in your app's manifest.
  * @param mimeType optional files MIME type.
+ * @param label user-readable label for shared data
  */
 @Suppress("Unused")
 fun Context.shareFiles(
     files: List<File>,
     fileProviderAuthority: String,
     mimeType: String = "*/*",
+    label: String? = null,
 ) {
     if (files.isEmpty()) return
 
+    val contentResolver = this.contentResolver
     val uris = files.map {
         FileProvider.getUriForFile(this, fileProviderAuthority, it)
     }
+    val clipData = ClipData.newUri(
+        /* resolver = */ contentResolver,
+        /* label = */ label,
+        /* uri = */ uris.first()
+    )
     val intent = Intent().apply {
         if (uris.size == 1) {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_STREAM, uris.firstOrNull())
         } else {
             action = Intent.ACTION_SEND_MULTIPLE
+            uris.drop(1).forEach { clipData.addItem(Item(it)) }
             putParcelableArrayListExtra(Intent.EXTRA_STREAM, ArrayList(uris))
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            this.clipData = clipData
         }
         type = mimeType
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
-    startActivity(Intent.createChooser(intent, null))
+    startActivity(Intent.createChooser(intent, label))
 }
 
 private fun Context.tryStartActivity(intent: Intent): Boolean {

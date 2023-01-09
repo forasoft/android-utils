@@ -1,15 +1,15 @@
 package com.forasoft.androidutils.ui.compose.navigation
 
-import com.forasoft.androidutils.ui.compose.navigation.parameterless.Graph
+import com.forasoft.androidutils.ui.compose.navigation.parameterless.SimpleGraph
 
 /**
  * An abstraction for a Compose Navigation nested graph that encapsulates graph's
  * [routeSchema] and [startDestination].
  *
- * Use parameterless version [Graph] if arguments not needed.
+ * Use parameterless version [SimpleGraph] if arguments not needed.
  *
  * @param P type of graph's arguments.
- * @see [Graph].
+ * @see [SimpleGraph].
  */
 abstract class Graph<P> : Destination<P>() {
 

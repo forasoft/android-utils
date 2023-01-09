@@ -1,5 +1,6 @@
 package com.forasoft.androidutils.ui.compose.navigation.parameterless
 
+import androidx.navigation.NamedNavArgument
 import com.forasoft.androidutils.ui.compose.navigation.Graph
 
 /**
@@ -11,7 +12,7 @@ import com.forasoft.androidutils.ui.compose.navigation.Graph
  * @see [Graph].
  */
 @Suppress("Unused")
-abstract class Graph : Graph<Unit>() {
+abstract class SimpleGraph : Graph<Unit>() {
 
     abstract override val routeSchema: String
 
@@ -26,5 +27,8 @@ abstract class Graph : Graph<Unit>() {
         level = DeprecationLevel.WARNING,
     )
     override fun createRoute(args: Unit): String = route
+
+    final override val arguments: List<NamedNavArgument>
+        get() = super.arguments
 
 }

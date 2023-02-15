@@ -6,6 +6,10 @@ import kotlin.math.abs
 
 // Source: androidx.compose.material3.settleAppBar
 
+/**
+ * Settles the top bar by flinging, in case the given velocity is greater than zero, and snapping
+ * after the fling settles.
+ */
 @Suppress("MagicNumber")
 internal suspend fun settleTopBar(
     state: TopBarState,

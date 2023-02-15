@@ -9,6 +9,23 @@ import androidx.compose.ui.unit.Velocity
 
 // Source: androidx.compose.material3.ExitUntilCollapsedScrollBehavior
 
+/**
+ * A [TopBarScrollBehavior] that adjusts its properties to affect the colors and height of a top
+ * app bar.
+ *
+ * A top app bar that is set up with this [TopBarScrollBehavior] will immediately collapse when
+ * the nested content is pulled up, and will expand back the collapsed area when the content is
+ * pulled all the way down.
+ *
+ * @param state a [TopBarState]
+ * @param snapAnimationSpec an optional [AnimationSpec] that defines how the top app bar snaps to
+ * either fully collapsed or fully extended state when a fling or a drag scrolled it into an
+ * intermediate position
+ * @param flingAnimationSpec an optional [DecayAnimationSpec] that defined how to fling the top app
+ * bar when the user flings the app bar itself, or the content below it
+ * @param canScroll a callback used to determine whether scroll events are to be
+ * handled by this [ExitUntilCollapsedScrollBehavior]
+ */
 internal class ExitUntilCollapsedScrollBehavior(
     override val state: TopBarState,
     override val snapAnimationSpec: AnimationSpec<Float>?,

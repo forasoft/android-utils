@@ -4,10 +4,10 @@ import androidx.compose.animation.core.*
 import androidx.compose.ui.unit.Velocity
 import kotlin.math.abs
 
-// TODO: Add source link
+// Source: androidx.compose.material3.settleAppBar
 
 @Suppress("MagicNumber")
-internal suspend fun settleAppBar(
+internal suspend fun settleTopBar(
     state: TopBarState,
     velocity: Float,
     flingAnimationSpec: DecayAnimationSpec<Float>?,

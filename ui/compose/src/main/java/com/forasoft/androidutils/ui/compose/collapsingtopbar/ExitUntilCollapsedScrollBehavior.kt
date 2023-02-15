@@ -68,7 +68,7 @@ internal class ExitUntilCollapsedScrollBehavior(
 
         override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
             val superConsumed = super.onPostFling(consumed, available)
-            return superConsumed + settleAppBar(
+            return superConsumed + settleTopBar(
                 state = state,
                 velocity = available.y,
                 flingAnimationSpec = flingAnimationSpec,

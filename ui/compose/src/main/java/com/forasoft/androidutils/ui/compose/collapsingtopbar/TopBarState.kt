@@ -1,11 +1,9 @@
 package com.forasoft.androidutils.ui.compose.collapsingtopbar
 
-import androidx.compose.runtime.Stable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.listSaver
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 
 // Source: androidx.compose.material3.TopAppBarState
@@ -110,4 +108,31 @@ class TopBarState(
         )
     }
 
+}
+
+// Source: androidx.compose.material3.rememberTopAppBarState
+
+/**
+ * Creates a [TopBarState] that is remembered across compositions.
+ *
+ * @param initialHeightOffsetLimit the initial value for [TopBarState.heightOffsetLimit],
+ * which represents the pixel limit that a top app bar is allowed to collapse when the scrollable
+ * content is scrolled
+ * @param initialHeightOffset the initial value for [TopBarState.heightOffset]. The initial
+ * offset height offset should be between zero and [initialHeightOffsetLimit].
+ * @param initialContentOffset the initial value for [TopBarState.contentOffset]
+ */
+@Composable
+fun rememberTopBarState(
+    initialHeightOffsetLimit: Float = -Float.MAX_VALUE,
+    initialHeightOffset: Float = 0f,
+    initialContentOffset: Float = 0f
+): TopBarState {
+    return rememberSaveable(saver = TopBarState.Saver) {
+        TopBarState(
+            initialHeightOffsetLimit = initialHeightOffsetLimit,
+            initialHeightOffset = initialHeightOffset,
+            initialContentOffset = initialContentOffset,
+        )
+    }
 }

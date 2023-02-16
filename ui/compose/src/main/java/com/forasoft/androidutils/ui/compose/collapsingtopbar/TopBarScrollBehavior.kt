@@ -12,9 +12,9 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
  * A TopBarScrollBehavior defines how an app bar should behave when the content under it is
  * scrolled.
  *
- * @see [TopBarDefaults.pinnedScrollBehavior]
- * @see [TopBarDefaults.enterAlwaysScrollBehavior]
- * @see [TopBarDefaults.exitUntilCollapsedScrollBehavior]
+ * @see [TopBarDefaults.rememberPinnedScrollBehavior]
+ * @see [TopBarDefaults.rememberEnterAlwaysScrollBehavior]
+ * @see [TopBarDefaults.rememberExitUntilCollapsedScrollBehavior]
  */
 @Stable
 interface TopBarScrollBehavior {

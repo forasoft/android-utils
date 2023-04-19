@@ -1,15 +1,15 @@
-@file:Suppress("ForbiddenComment")
-
 package com.forasoft.androidutils.ui.compose
 
 import android.content.Context
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 
-// TODO: Issue. Find a way to combine with ui.view.Text to avoid duplicating?
+// TODO Issue. Find a way to combine with ui.view.Text to avoid duplicating?
 
 /**
  * Returns String value of the given [Text].
@@ -26,19 +26,20 @@ fun textString(text: Text): String {
 /**
  * Abstraction that allows to present a text in different forms.
  */
-// Text is sealed class because the Compose compiler treats such a class as stable by default.
-sealed class Text {
+@Stable
+sealed interface Text {
 
     /**
      * Returns a [String] value of the text.
      */
-    abstract fun getString(context: Context): kotlin.String
+    fun getString(context: Context): kotlin.String
 
     /**
      * Represents an empty text with a value of empty [String].
      */
     @Suppress("Unused")
-    object Empty : Text() {
+    @Immutable
+    object Empty : Text {
         override fun getString(context: Context): kotlin.String = ""
     }
 
@@ -49,10 +50,11 @@ sealed class Text {
      * @property args parameters for the parametrized string.
      */
     @Suppress("Unused")
+    @Immutable
     class Resource(
         @StringRes val resourceId: Int,
         private vararg val args: Any = emptyArray(),
-    ) : Text() {
+    ) : Text {
 
         override fun getString(context: Context): kotlin.String {
             @Suppress("SpreadOperator")
@@ -85,11 +87,12 @@ sealed class Text {
      * @property args parameters for the parametrized string.
      */
     @Suppress("Unused")
+    @Immutable
     class PluralsResource(
         @PluralsRes val resourceId: Int,
         private val count: Int,
         private vararg val args: Any = emptyArray(),
-    ) : Text() {
+    ) : Text {
 
         override fun getString(context: Context): kotlin.String {
             @Suppress("SpreadOperator")
@@ -119,21 +122,9 @@ sealed class Text {
     /**
      * Represents the plain [String] text.
      */
-    class String(private val text: kotlin.String) : Text() {
-
+    @Immutable
+    data class String(private val text: kotlin.String) : Text {
         override fun getString(context: Context): kotlin.String = text
-
-        override fun equals(other: Any?): Boolean {
-            if (this === other) return true
-            if (other !is String) return false
-
-            if (text != other.text) return false
-
-            return true
-        }
-
-        override fun hashCode(): Int = text.hashCode()
-
     }
 
 }

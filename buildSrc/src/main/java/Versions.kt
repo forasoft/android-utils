@@ -19,7 +19,7 @@ object Versions {
     const val coroutines = "1.6.4"
 
     const val okHttp = "4.10.0"
-    const val webRtc = "104.5112.05"
+    const val webRtc = "104.5112.08"
 
     const val timber = "5.0.1"
 

@@ -16,7 +16,7 @@ object Versions {
     const val composeCompiler = "1.4.7"
 
     const val kotlin = "1.8.21"
-    const val coroutines = "1.6.4"
+    const val coroutines = "1.7.0"
 
     const val okHttp = "4.10.0"
     const val webRtc = "104.5112.09"

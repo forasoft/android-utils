@@ -3,7 +3,7 @@ object Versions {
     const val compileSdk = 31
     const val targetSdk = 31
 
-    const val androidGradlePlugin = "7.3.1"
+    const val androidGradlePlugin = "7.4.1"
     const val detektPlugin = "1.21.0"
     const val checkDependencyUpdatesPlugin = "1.5.0"
 

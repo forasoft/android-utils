@@ -18,7 +18,7 @@ object Versions {
     const val kotlin = "1.8.21"
     const val coroutines = "1.7.0"
 
-    const val okHttp = "4.10.0"
+    const val okHttp = "4.11.0"
     const val webRtc = "104.5112.09"
 
     const val timber = "5.0.1"

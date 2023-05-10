@@ -12,10 +12,10 @@ object Versions {
     const val navigation = "2.5.2"
     const val startup = "1.1.1"
 
-    const val composeCompiler = "1.3.2"
+    const val composeCompiler = "1.4.7"
     const val compose = "1.1.1"
 
-    const val kotlin = "1.7.20"
+    const val kotlin = "1.8.21"
     const val coroutines = "1.6.4"
 
     const val okHttp = "4.10.0"

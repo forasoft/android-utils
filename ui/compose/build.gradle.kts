@@ -96,6 +96,7 @@ dependencies {
     implementation(Dependencies.jetpackCore)
     implementation(Dependencies.navigationCompose)
 
+    implementation(platform(Dependencies.composeBom))
     implementation(Dependencies.composeRuntime)
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeAnimation)

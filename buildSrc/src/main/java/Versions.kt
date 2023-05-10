@@ -1,7 +1,7 @@
 object Versions {
 
-    const val compileSdk = 31
-    const val targetSdk = 31
+    const val compileSdk = 33
+    const val targetSdk = 33
 
     const val androidGradlePlugin = "7.4.1"
     const val detektPlugin = "1.21.0"

@@ -9,9 +9,10 @@ object Dependencies {
     const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigation}"
     const val startup = "androidx.startup:startup-runtime:${Versions.startup}"
 
-    const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
-    const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
-    const val composeAnimation = "androidx.compose.animation:animation:${Versions.compose}"
+    const val composeBom = "androidx.compose:compose-bom:${Versions.composeBom}"
+    const val composeRuntime = "androidx.compose.runtime:runtime"
+    const val composeUi = "androidx.compose.ui:ui"
+    const val composeAnimation = "androidx.compose.animation:animation"
 
     const val coroutines =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"

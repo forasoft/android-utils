@@ -126,6 +126,8 @@ Notable examples:
 * [Side-effects](ui/compose/src/main/java/com/forasoft/androidutils/ui/compose/effect)
   for frequently used actions such as observing Lifecycle events, requesting screen orientation,
   controlling system bars state, etc.
+* [CollapsingTopBarLayout](ui/compose/src/main/java/com/forasoft/androidutils/ui/compose/collapsingtopbar/CollapsingTopBarLayout.kt)
+  is Jetpack Compose implementation of CollapsingTopBar layout.
 
 #### Dependency
 

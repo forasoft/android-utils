@@ -73,21 +73,22 @@ android {
     }
 }
 
-// Compose metrics
-// ./gradlew assembleRelease -P.enableComposeCompilerReports=true --rerun-tasks
+// Compose compiler metrics
+// Command: ./gradlew assembleRelease -P.enableComposeCompilerReports=true --rerun-tasks
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
-
-    kotlinOptions.freeCompilerArgs += listOf(
-        "-P",
-        "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
-                "${project.buildDir.absolutePath}/compose_metrics"
-    )
-    kotlinOptions.freeCompilerArgs += listOf(
-        "-P",
-        "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
-                "${project.buildDir.absolutePath}/compose_metrics"
-    )
+    // Fix for AGP 7.4.0 bug that doubles args
+    val isKaptGenerateStubsTask = this is org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask
+    if (!isKaptGenerateStubsTask) {
+        val path = "${project.buildDir.absolutePath}/compose_metrics"
+        kotlinOptions.freeCompilerArgs += listOf(
+            "-P",
+            "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=$path"
+        )
+        kotlinOptions.freeCompilerArgs += listOf(
+            "-P",
+            "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=$path"
+        )
+    }
 }
 
 dependencies {
@@ -96,6 +97,7 @@ dependencies {
     implementation(Dependencies.jetpackCore)
     implementation(Dependencies.navigationCompose)
 
+    implementation(platform(Dependencies.composeBom))
     implementation(Dependencies.composeRuntime)
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeAnimation)

@@ -4,7 +4,7 @@ object Versions {
     const val targetSdk = 33
 
     const val androidGradlePlugin = "7.4.1"
-    const val detektPlugin = "1.22.0"
+    const val detektPlugin = "1.23.0"
     const val checkDependencyUpdatesPlugin = "1.5.0"
 
     const val jetpackCore = "1.10.0"

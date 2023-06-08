@@ -26,7 +26,7 @@ object Versions {
     const val junit = "4.13.2"
     const val androidJunit = "1.1.5"
     const val espresso = "3.5.1"
-    const val truth = "1.1.3"
+    const val truth = "1.1.4"
     const val robolectric = "4.10.2"
 
 }

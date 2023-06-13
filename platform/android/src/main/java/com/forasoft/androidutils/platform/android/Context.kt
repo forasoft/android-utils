@@ -35,7 +35,7 @@ fun Context.getActivity(): Activity? {
  * @return `true` if the browser has been successfully opened, `false` otherwise.
  */
 @Suppress("Unused")
-fun Context.openBrowser(url: String): Boolean {
+fun Context.openUrl(url: String): Boolean {
     val uri = Uri.parse(url)
     val intent = Intent(Intent.ACTION_VIEW, uri)
     val isActivityStarted = this.tryStartActivity(intent)

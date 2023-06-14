@@ -40,8 +40,7 @@ abstract class UseCase<in P, out R>(private val dispatcher: CoroutineDispatcher)
                     }
                 }
             }.milliseconds
-            if (Timber.treeCount != 0)
-                Timber.tag(className).v("Execution of $className took $executionDuration")
+            Timber.tag(className).v("Execution of $className took $executionDuration")
             result
         } catch (e: Exception) {
             Timber.tag(className).e(e, "Exception occurred while executing $className with parameters $params")

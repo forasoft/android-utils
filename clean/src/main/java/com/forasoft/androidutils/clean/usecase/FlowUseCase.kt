@@ -18,6 +18,8 @@ import timber.log.Timber
  */
 abstract class FlowUseCase<in P, out R>(private val dispatcher: CoroutineDispatcher) {
 
+    private val className = if (Timber.treeCount != 0) this.javaClass.simpleName else TAG
+
     /**
      * Invokes the operation with given parameters and returns [Flow] of encapsulated result
      * if it is successful, catching any thrown [Exception] and encapsulating it as a failure.
@@ -28,12 +30,15 @@ abstract class FlowUseCase<in P, out R>(private val dispatcher: CoroutineDispatc
      */
     operator fun invoke(params: P): Flow<Result<R>> = execute(params)
         .catch { e ->
-            Timber.e(e, "Exception occurred while executing ${this@FlowUseCase.javaClass.simpleName} " +
-                    "with parameters $params")
+            Timber.tag(className).e(e, "Exception occurred while executing $className with parameters $params")
             emit(Result.failure(e))
         }
         .flowOn(dispatcher)
 
     protected abstract fun execute(params: P): Flow<Result<R>>
+
+    companion object {
+        private const val TAG = "FlowUseCase"
+    }
 
 }

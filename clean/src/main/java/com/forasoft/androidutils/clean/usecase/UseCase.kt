@@ -18,6 +18,8 @@ import kotlin.time.Duration.Companion.milliseconds
  */
 abstract class UseCase<in P, out R>(private val dispatcher: CoroutineDispatcher) {
 
+    private val className = if (Timber.treeCount != 0) this.javaClass.simpleName else TAG
+
     /**
      * Invokes the operation with given parameters and returns its encapsulated result
      * if the invocation was successful, catching any thrown [Exception] and
@@ -38,18 +40,18 @@ abstract class UseCase<in P, out R>(private val dispatcher: CoroutineDispatcher)
                     }
                 }
             }.milliseconds
-            if (Timber.treeCount != 0)
-                Timber.v("Execution of ${this.javaClass.simpleName} took $executionDuration")
+            Timber.tag(className).v("Execution of $className took $executionDuration")
             result
         } catch (e: Exception) {
-            Timber.e(
-                e, "Exception occurred while executing ${this.javaClass.simpleName} " +
-                        "with parameters $params"
-            )
+            Timber.tag(className).e(e, "Exception occurred while executing $className with parameters $params")
             Result.failure(e)
         }
     }
 
     protected abstract suspend fun execute(params: P): R
+
+    companion object {
+        private const val TAG = "UseCase"
+    }
 
 }

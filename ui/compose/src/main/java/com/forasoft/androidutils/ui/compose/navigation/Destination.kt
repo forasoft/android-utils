@@ -25,7 +25,6 @@ abstract class Destination<P> {
      *
      * @param args destination's arguments.
      */
-    @Suppress("Unused")
     abstract fun createRoute(args: P): String
 
     /**

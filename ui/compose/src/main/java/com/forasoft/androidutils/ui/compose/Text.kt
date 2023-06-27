@@ -9,12 +9,9 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 
-// TODO Issue. Find a way to combine with ui.view.Text to avoid duplicating?
-
 /**
  * Returns String value of the given [Text].
  */
-@Suppress("Unused")
 @Composable
 fun textString(text: Text): String {
     // Will be recomposed when Configuration gets updated.
@@ -37,7 +34,6 @@ sealed interface Text {
     /**
      * Represents an empty text with a value of empty [String].
      */
-    @Suppress("Unused")
     @Immutable
     object Empty : Text {
         override fun getString(context: Context): kotlin.String = ""
@@ -49,7 +45,6 @@ sealed interface Text {
      * @property resourceId id of the resource string.
      * @property args parameters for the parametrized string.
      */
-    @Suppress("Unused")
     @Immutable
     class Resource(
         @StringRes val resourceId: Int,
@@ -86,7 +81,6 @@ sealed interface Text {
      * @property count the number used to get the correct string for the plural rules.
      * @property args parameters for the parametrized string.
      */
-    @Suppress("Unused")
     @Immutable
     class PluralsResource(
         @PluralsRes val resourceId: Int,

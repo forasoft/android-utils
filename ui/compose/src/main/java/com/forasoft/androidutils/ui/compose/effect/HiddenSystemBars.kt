@@ -16,7 +16,6 @@ import com.forasoft.androidutils.platform.android.getActivity
  * @param behavior determines how the bars behave when being hidden.
  * Should be one of [WindowInsetsControllerCompat] behavior constants.
  */
-@Suppress("Unused", "FunctionNaming")
 @Composable
 fun HiddenSystemBars(
     behavior: Int = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE,

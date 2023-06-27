@@ -20,7 +20,6 @@ import androidx.compose.ui.platform.LocalAutofillTree
  * @param onFill callback triggered when the autocomplete is performed. The parameter of the
  * lambda is the value that has been provided by autofill
  */
-@Suppress("unused")
 @OptIn(ExperimentalComposeUiApi::class)
 fun Modifier.autofill(
     autofillTypes: List<AutofillType>,

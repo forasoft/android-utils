@@ -12,7 +12,6 @@ import com.forasoft.androidutils.platform.android.getActivity
  *
  * @param orientation one of [ActivityInfo.screenOrientation] constants.
  */
-@Suppress("Unused", "FunctionNaming")
 @Composable
 fun ScreenOrientation(orientation: Int) {
     val context = LocalContext.current

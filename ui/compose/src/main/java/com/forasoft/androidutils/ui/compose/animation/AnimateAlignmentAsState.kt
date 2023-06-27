@@ -24,7 +24,6 @@ private val DefaultAnimation = spring<Float>()
  * @param finishedListener An optional end listener to get notified when the animation is finished.
  * @return
  */
-@Suppress("Unused")
 @Composable
 fun animateAlignmentAsState(
     targetAlignment: BiasAlignment,

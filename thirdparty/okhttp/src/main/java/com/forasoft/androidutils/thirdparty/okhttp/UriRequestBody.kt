@@ -14,7 +14,6 @@ import okio.source
  * @property contentResolver [ContentResolver] to be used to get [uri] contents
  * @property uri content to wrap
  */
-@Suppress("unused")
 class UriRequestBody(
     private val contentType: MediaType?,
     private val contentResolver: ContentResolver,

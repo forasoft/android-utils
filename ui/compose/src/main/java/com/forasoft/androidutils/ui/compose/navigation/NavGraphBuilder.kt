@@ -41,7 +41,6 @@ fun NavGraphBuilder.composableDestination(
  * @param dialogProperties properties that should be passed to [androidx.compose.ui.window.Dialog].
  * @param content composable content for the destination that will be hosted within the Dialog.
  */
-@Suppress("Unused")
 fun NavGraphBuilder.dialogDestination(
     destination: Destination<*>,
     dialogProperties: DialogProperties = DialogProperties(),
@@ -61,7 +60,6 @@ fun NavGraphBuilder.dialogDestination(
  *
  * @param builder the builder used to construct the graph.
  */
-@Suppress("Unused")
 inline fun NavGraphBuilder.navigationGraph(graph: Graph<*>, builder: NavGraphBuilder.() -> Unit) {
     navigation(
         route = graph.routeSchema,

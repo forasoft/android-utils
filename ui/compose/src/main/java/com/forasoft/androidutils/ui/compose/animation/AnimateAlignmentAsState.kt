@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.BiasAlignment
 
 private val DefaultAnimation = spring<Float>()
@@ -40,5 +41,7 @@ fun animateAlignmentAsState(
         animationSpec = animationSpec,
         finishedListener = finishedListener,
     )
-    return derivedStateOf { BiasAlignment(horizontalBias, verticalBias) }
+    return remember {
+        derivedStateOf { BiasAlignment(horizontalBias, verticalBias) }
+    }
 }

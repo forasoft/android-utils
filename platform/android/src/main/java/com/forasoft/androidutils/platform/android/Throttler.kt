@@ -3,7 +3,6 @@ package com.forasoft.androidutils.platform.android
 import android.os.SystemClock
 import androidx.annotation.MainThread
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.milliseconds
 
 /**
  * Class that allows to throttle operations with a certain delay. If code is wrapped
@@ -12,11 +11,6 @@ import kotlin.time.Duration.Companion.milliseconds
  */
 @MainThread
 class Throttler(delay: Duration) {
-
-    /**
-     * Returns a new instance of [Throttler] configured with the given delay.
-     */
-    constructor(delayMillis: Long) : this(delayMillis.milliseconds)
 
     private val delayMillis = delay.inWholeMilliseconds
     private var lastOperationTimestamp = 0L

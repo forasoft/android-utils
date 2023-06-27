@@ -6,7 +6,7 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 
 /**
- * Class that allows to throttle operations with specific delay. If code is wrapped
+ * Class that allows to throttle operations with a certain delay. If code is wrapped
  * in [throttle] method, then each next call will be ignored if less time has passed since
  * the previous call than the specified delay.
  */

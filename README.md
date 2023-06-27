@@ -84,6 +84,8 @@ Notable examples:
   displays messages with `Toast`s.
 * [Timber.plantTree](platform/android/src/main/java/com/forasoft/androidutils/platform/android/TimberTree.kt)
   allows to plant custom logging trees.
+* [Throttler](platform/android/src/main/java/com/forasoft/androidutils/platform/android/Throttler.kt)
+  allows to throttle operations with a certain delay.
 
 #### Dependency
 

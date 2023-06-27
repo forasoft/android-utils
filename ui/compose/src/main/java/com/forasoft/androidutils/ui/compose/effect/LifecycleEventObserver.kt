@@ -12,7 +12,6 @@ import androidx.lifecycle.LifecycleOwner
  *
  * @param onEvent callback that will be invoked when a state transition event happens.
  */
-@Suppress("Unused", "FunctionNaming")
 @Composable
 fun LifecycleEventObserver(onEvent: (owner: LifecycleOwner, event: Lifecycle.Event) -> Unit) {
     val lifecycle = LocalLifecycleOwner.current.lifecycle

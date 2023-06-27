@@ -7,7 +7,6 @@ import timber.log.Timber
  *
  * @param onLog callback to be invoked for all Timber logs.
  */
-@Suppress("Unused")
 inline fun Timber.Forest.plantTree(
     crossinline onLog: (priority: Int, tag: String?, message: String, throwable: Throwable?) -> Unit,
 ) {

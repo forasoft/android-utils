@@ -1,6 +1,12 @@
 package com.forasoft.androidutils.thirdparty.okhttp.logging
 
-import okhttp3.*
+import okhttp3.Headers
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import okhttp3.Response
 import okhttp3.internal.http.promisesBody
 import okio.Buffer
 import okio.GzipSource
@@ -37,7 +43,6 @@ import java.nio.charset.StandardCharsets
  * <-- HTTP FAILED: java.net.SocketTimeoutException: timeout
  * ```
  */
-@Suppress("Unused", "TooManyFunctions")
 object LoggingInterceptor : Interceptor() {
 
     override fun onRequest(info: RequestInfo): Request {

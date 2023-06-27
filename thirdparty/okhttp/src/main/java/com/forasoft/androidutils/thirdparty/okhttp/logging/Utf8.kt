@@ -1,7 +1,7 @@
 package com.forasoft.androidutils.thirdparty.okhttp.logging
 
-import java.io.EOFException
 import okio.Buffer
+import java.io.EOFException
 
 /**
  * Returns true if the body in question probably contains human readable text. Uses a small
@@ -9,7 +9,7 @@ import okio.Buffer
  * signatures.
  */
 // Source: https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/src/main/kotlin/okhttp3/logging/internal/utf8.kt
-@Suppress("ReturnCount", "UnusedPrivateMember", "MagicNumber")
+@Suppress("MagicNumber", "ReturnCount")
 internal fun Buffer.isProbablyUtf8(): Boolean {
     try {
         val prefix = Buffer()

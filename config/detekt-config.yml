@@ -1,13 +1,24 @@
 build:
   maxIssues: 100
-  excludeCorrectable: false
 
 naming:
   FunctionNaming:
-    ignoreAnnotated: [ 'Composable' ]
+    ignoreAnnotated: ['Composable']
   TopLevelPropertyNaming:
     constantPattern: '[A-Z][_A-Za-z0-9]*'
 
+complexity:
+  LongParameterList:
+    active: false
+  LongMethod:
+    active: false
+  TooManyFunctions:
+    active: false
+
 style:
+  MagicNumber:
+    ignorePropertyDeclaration: true
+  UnusedPrivateMember:
+    ignoreAnnotated: ['Preview', 'ThemePreviews', 'FontSizePreviews', 'DensityPreviews', 'LocalePreviews']
   WildcardImport:
     active: false

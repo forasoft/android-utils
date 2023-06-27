@@ -11,7 +11,6 @@ import com.forasoft.androidutils.ui.compose.navigation.Graph
  *
  * @see [Graph].
  */
-@Suppress("Unused")
 abstract class SimpleGraph : Graph<Unit>() {
 
     abstract override val routeSchema: String

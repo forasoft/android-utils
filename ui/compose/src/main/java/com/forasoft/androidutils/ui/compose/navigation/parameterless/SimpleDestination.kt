@@ -11,7 +11,6 @@ import com.forasoft.androidutils.ui.compose.navigation.Destination
  *
  * @see [Destination].
  */
-@Suppress("Unused")
 abstract class SimpleDestination : Destination<Unit>() {
 
     abstract override val routeSchema: String

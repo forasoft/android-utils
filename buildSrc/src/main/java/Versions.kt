@@ -12,7 +12,7 @@ object Versions {
     const val navigation = "2.6.0"
     const val startup = "1.1.1"
 
-    const val composeBom = "2023.06.00"
+    const val composeBom = "2023.06.01"
     const val composeCompiler = "1.4.7"
 
     const val kotlin = "1.8.21"
@@ -26,7 +26,7 @@ object Versions {
     const val junit = "4.13.2"
     const val androidJunit = "1.1.5"
     const val espresso = "3.5.1"
-    const val truth = "1.1.4"
+    const val truth = "1.1.5"
     const val robolectric = "4.10.3"
 
 }

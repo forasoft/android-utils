@@ -2,8 +2,8 @@ package com.forasoft.androidutils.clean.usecase
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.retryWhen
 import timber.log.Timber
 
 /**
@@ -29,9 +29,10 @@ abstract class FlowUseCase<in P, out R>(private val dispatcher: CoroutineDispatc
      * or caught [Exception].
      */
     operator fun invoke(params: P): Flow<Result<R>> = execute(params)
-        .catch { e ->
+        .retryWhen { e, _ ->
             Timber.tag(className).e(e, "Exception occurred while executing $className with parameters $params")
             emit(Result.failure(e))
+            true
         }
         .flowOn(dispatcher)
 

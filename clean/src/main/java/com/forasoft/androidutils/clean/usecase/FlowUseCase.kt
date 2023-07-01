@@ -3,6 +3,7 @@ package com.forasoft.androidutils.clean.usecase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.retryWhen
 import timber.log.Timber
 
@@ -29,6 +30,7 @@ abstract class FlowUseCase<in P, out R>(private val dispatcher: CoroutineDispatc
      * or caught [Exception].
      */
     operator fun invoke(params: P): Flow<Result<R>> = execute(params)
+        .map { Result.success(it) }
         .retryWhen { e, _ ->
             Timber.tag(className).e(e, "Exception occurred while executing $className with parameters $params")
             emit(Result.failure(e))
@@ -36,7 +38,7 @@ abstract class FlowUseCase<in P, out R>(private val dispatcher: CoroutineDispatc
         }
         .flowOn(dispatcher)
 
-    protected abstract fun execute(params: P): Flow<Result<R>>
+    protected abstract fun execute(params: P): Flow<R>
 
     companion object {
         private const val TAG = "FlowUseCase"

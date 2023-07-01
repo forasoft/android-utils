@@ -6,7 +6,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
@@ -36,15 +35,15 @@ class FlowUseCaseTest {
     }
 
     private class GetOneUseCase(dispatcher: CoroutineDispatcher) : FlowUseCase<Int>(dispatcher) {
-        override fun execute(params: Unit): Flow<Result<Int>> {
-            return flow { emit(1) }.map { Result.success(it) }
+        override fun execute(params: Unit): Flow<Int> {
+            return flow { emit(1) }
         }
     }
 
     private class GetIOExceptionUseCase(dispatcher: CoroutineDispatcher) :
         FlowUseCase<Int>(dispatcher) {
-        override fun execute(params: Unit): Flow<Result<Int>> {
-            return flow<Int> { throw IOException() }.map { Result.success(it) }
+        override fun execute(params: Unit): Flow<Int> {
+            return flow { throw IOException() }
         }
     }
 

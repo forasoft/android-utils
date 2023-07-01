@@ -6,7 +6,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -48,11 +47,11 @@ class FlowUseCaseTest {
         dispatcher: CoroutineDispatcher
     ) : FlowUseCase<DivideIntUseCase.Params, Int>(dispatcher) {
 
-        override fun execute(params: Params): Flow<Result<Int>> {
+        override fun execute(params: Params): Flow<Int> {
             val (dividend, divisor) = params
             return flow {
                 emit(dividend / divisor)
-            }.map { Result.success(it) }
+            }
         }
 
         data class Params(val dividend: Int, val divisor: Int)

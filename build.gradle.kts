@@ -1,15 +1,8 @@
 buildscript {
-
     repositories {
         google()
         mavenCentral()
     }
-
-    dependencies {
-        classpath(Plugins.BuildScript.androidGradlePlugin)
-        classpath(Plugins.BuildScript.kotlinPlugin)
-    }
-
 }
 
 plugins {

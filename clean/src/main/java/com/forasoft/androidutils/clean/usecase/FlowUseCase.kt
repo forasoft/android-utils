@@ -2,6 +2,7 @@ package com.forasoft.androidutils.clean.usecase
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.retryWhen
@@ -11,6 +12,9 @@ import timber.log.Timber
  * Implementation of UseCase Clean Architecture pattern.
  *
  * Encapsulates an operation (usually business logic).
+ *
+ * Override [shouldRetry] method to specify whether to retry [Flow] collection
+ * when an exception occurs. Default implementation returns `false`.
  *
  * @param P type of operation parameters.
  * @param R type of operation expected result.
@@ -31,14 +35,24 @@ abstract class FlowUseCase<in P, out R>(private val dispatcher: CoroutineDispatc
      */
     operator fun invoke(params: P): Flow<Result<R>> = execute(params)
         .map { Result.success(it) }
-        .retryWhen { e, _ ->
+        .retryWhen { e, attempt ->
             Timber.tag(className).e(e, "Exception occurred while executing $className with parameters $params")
             emit(Result.failure(e))
-            true
+            shouldRetry(e, attempt)
+        }
+        .catch { e ->
+            Timber.tag(className).e(e, "Exception occurred while executing $className with parameters $params")
+            emit(Result.failure(e))
         }
         .flowOn(dispatcher)
 
     protected abstract fun execute(params: P): Flow<R>
+
+    /**
+     * Specifies whether to retry [Flow] collection when an exception occurs.
+     * Default implementation returns `false`.
+     */
+    open suspend fun shouldRetry(exception: Throwable, attempt: Long): Boolean = false
 
     companion object {
         private const val TAG = "FlowUseCase"

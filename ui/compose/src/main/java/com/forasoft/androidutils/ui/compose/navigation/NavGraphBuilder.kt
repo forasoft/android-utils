@@ -1,5 +1,6 @@
 package com.forasoft.androidutils.ui.compose.navigation
 
+import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavBackStackEntry
@@ -17,7 +18,7 @@ import androidx.navigation.navigation
  */
 fun NavGraphBuilder.composableDestination(
     destination: Destination<*>,
-    content: @Composable (NavBackStackEntry) -> Unit,
+    content: @Composable AnimatedContentScope.(NavBackStackEntry) -> Unit,
 ) {
     composable(
         route = destination.routeSchema,

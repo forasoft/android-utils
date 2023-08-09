@@ -10,6 +10,9 @@ import kotlinx.coroutines.flow.Flow
  *
  * Encapsulates an operation (usually business logic). Parameterless version of [FlowUseCase].
  *
+ * Override [shouldRetry] method to specify whether to retry flow collection
+ * when an exception occurs. Default implementation returns `false`.
+ *
  * @param R type of operation expected result.
  * @see [UseCase]
  * @property dispatcher [CoroutineDispatcher] to run the operation on.

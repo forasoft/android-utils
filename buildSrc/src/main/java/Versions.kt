@@ -4,7 +4,7 @@ object Versions {
     const val targetSdk = 33
 
     const val androidGradlePlugin = "7.4.1"
-    const val detektPlugin = "1.23.0"
+    const val detektPlugin = "1.23.1"
     const val checkDependencyUpdatesPlugin = "1.5.0"
 
     const val jetpackCore = "1.10.1"
@@ -13,10 +13,10 @@ object Versions {
     const val startup = "1.1.1"
 
     const val composeBom = "2023.06.01"
-    const val composeCompiler = "1.4.8"
+    const val composeCompiler = "1.5.1"
 
-    const val kotlin = "1.8.22"
-    const val coroutines = "1.7.2"
+    const val kotlin = "1.9.0"
+    const val coroutines = "1.7.3"
 
     const val okHttp = "4.11.0"
     const val webRtc = "104.5112.10"

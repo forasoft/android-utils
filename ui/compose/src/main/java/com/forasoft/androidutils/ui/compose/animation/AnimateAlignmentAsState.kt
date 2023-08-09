@@ -6,7 +6,6 @@ import androidx.compose.animation.core.spring
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.BiasAlignment
 
@@ -28,19 +27,25 @@ private val DefaultAnimation = spring<Float>()
 fun animateAlignmentAsState(
     targetAlignment: BiasAlignment,
     animationSpec: AnimationSpec<Float> = DefaultAnimation,
+    visibilityThreshold: Float = 0.01f,
+    label: String = "AlignmentAnimation",
     finishedListener: ((Float) -> Unit)? = null
 ): State<BiasAlignment> {
-    val horizontalBias by animateFloatAsState(
+    val horizontalBias = animateFloatAsState(
         targetValue = targetAlignment.horizontalBias,
         animationSpec = animationSpec,
+        visibilityThreshold = visibilityThreshold,
+        label = label,
         finishedListener = finishedListener,
     )
-    val verticalBias by animateFloatAsState(
+    val verticalBias = animateFloatAsState(
         targetValue = targetAlignment.verticalBias,
         animationSpec = animationSpec,
+        visibilityThreshold = visibilityThreshold,
+        label = label,
         finishedListener = finishedListener,
     )
     return remember {
-        derivedStateOf { BiasAlignment(horizontalBias, verticalBias) }
+        derivedStateOf { BiasAlignment(horizontalBias.value, verticalBias.value) }
     }
 }

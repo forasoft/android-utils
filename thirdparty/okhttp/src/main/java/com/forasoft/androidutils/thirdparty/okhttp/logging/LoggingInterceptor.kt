@@ -106,7 +106,7 @@ object LoggingInterceptor : Interceptor() {
                 add(getHeaderString("Content-Type", contentType.toString()))
             if (contentLength != null && contentLength != -1L)
                 add(getHeaderString("Content-Length", contentLength.toString()))
-            headers.forEach { (key, value) ->
+            headers.iterator().forEach { (key, value) ->
                 add(getHeaderString(key, value))
             }
         }
@@ -137,7 +137,7 @@ object LoggingInterceptor : Interceptor() {
     private fun getBody(body: RequestBody): String {
         if (body is MultipartBody) {
             return buildString {
-                body.parts.forEach { part ->
+                body.parts.iterator().forEach { part ->
                     val buffer = Buffer()
                     part.body.writeTo(buffer)
                     appendHeaders(

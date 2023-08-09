@@ -35,7 +35,7 @@ sealed interface Text {
      * Represents an empty text with a value of empty [String].
      */
     @Immutable
-    object Empty : Text {
+    data object Empty : Text {
         override fun getString(context: Context): kotlin.String = ""
     }
 

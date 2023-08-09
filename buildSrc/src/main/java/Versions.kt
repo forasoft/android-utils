@@ -9,10 +9,10 @@ object Versions {
 
     const val jetpackCore = "1.10.1"
     const val appCompat = "1.6.1"
-    const val navigation = "2.6.0"
+    const val navigation = "2.7.0"
     const val startup = "1.1.1"
 
-    const val composeBom = "2023.06.01"
+    const val composeBom = "2023.08.00"
     const val composeCompiler = "1.5.1"
 
     const val kotlin = "1.9.0"

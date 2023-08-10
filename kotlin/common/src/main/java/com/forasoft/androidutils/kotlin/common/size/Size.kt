@@ -11,13 +11,13 @@ import java.math.RoundingMode
  * @property bitCount size in bits
  */
 @JvmInline
-value class Size internal constructor(val bitCount: BigInteger) {
+public value class Size internal constructor(public val bitCount: BigInteger) {
 
-    operator fun minus(other: Size) = Size(this.bitCount - other.bitCount)
+    public operator fun minus(other: Size): Size = Size(this.bitCount - other.bitCount)
 
-    operator fun plus(other: Size) = Size(this.bitCount + other.bitCount)
+    public operator fun plus(other: Size): Size = Size(this.bitCount + other.bitCount)
 
-    operator fun times(other: Number): Size {
+    public operator fun times(other: Number): Size {
         val otherBigDecimal = when (other) {
             is Double, is Float -> other.toDouble().toBigDecimal()
             is BigDecimal -> other
@@ -32,7 +32,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
         return Size(bitCount)
     }
 
-    operator fun div(other: Number): Size {
+    public operator fun div(other: Number): Size {
         val otherBigDecimal = when (other) {
             is Double, is Float -> other.toDouble().toBigDecimal()
             is BigDecimal -> other
@@ -48,7 +48,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
         return Size(bitCount)
     }
 
-    operator fun compareTo(another: Size): Int {
+    public operator fun compareTo(another: Size): Int {
         return this.bitCount.compareTo(another.bitCount)
     }
 
@@ -64,7 +64,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
      * @param prefix prefix to be used in size calculation
      * @param unit output units
      */
-    fun getValue(prefix: SizePrefix? = null, unit: SizeUnit): BigDecimal {
+    public fun getValue(prefix: SizePrefix? = null, unit: SizeUnit): BigDecimal {
         var unitCount = this.bitCount.toBigDecimal().divide(unit.bitCount.toBigDecimal())
         if (prefix != null) unitCount = unitCount.divide(prefix.multiplier.toBigDecimal())
         return unitCount
@@ -81,7 +81,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
      *
      * @param unit output units
      */
-    fun getValue(unit: SizeUnit) = getValue(null, unit)
+    public fun getValue(unit: SizeUnit): BigDecimal = getValue(null, unit)
 
     /**
      * Returns a [SizePrefix] and amount of [unit] that corresponds to this [Size].
@@ -94,11 +94,12 @@ value class Size internal constructor(val bitCount: BigInteger) {
      * @param unit output units
      * @param threshold largest unit amount allowed without moving to the next (bigger) prefix
      */
-    fun getPrefixedSiValue(
+    public fun getPrefixedSiValue(
         unit: SizeUnit,
         threshold: BigDecimal,
-    ): Pair<SizePrefix.SiPrefix?, BigDecimal> =
-        getPrefixedValue(unit, threshold, SizePrefix.siPrefixes)
+    ): Pair<SizePrefix.SiPrefix?, BigDecimal> {
+        return getPrefixedValue(unit, threshold, SizePrefix.siPrefixes)
+    }
 
     /**
      * Returns a [SizePrefix] and amount of [unit] that corresponds to this [Size].
@@ -112,11 +113,12 @@ value class Size internal constructor(val bitCount: BigInteger) {
      * @param threshold largest unit amount allowed without moving to the next (bigger) prefix
      */
     @Suppress("MemberVisibilityCanBePrivate")
-    fun getPrefixedBinaryValue(
+    public fun getPrefixedBinaryValue(
         unit: SizeUnit,
         threshold: BigDecimal,
-    ): Pair<SizePrefix.BinaryPrefix?, BigDecimal> =
-        getPrefixedValue(unit, threshold, SizePrefix.binaryPrefixes)
+    ): Pair<SizePrefix.BinaryPrefix?, BigDecimal> {
+        return getPrefixedValue(unit, threshold, SizePrefix.binaryPrefixes)
+    }
 
     private fun <T : SizePrefix> getPrefixedValue(
         unit: SizeUnit,
@@ -140,7 +142,7 @@ value class Size internal constructor(val bitCount: BigInteger) {
         return "${"%.2f".format(value.toDouble())}${prefix?.abbreviation ?: ""}${SizeUnit.BYTE.abbreviation}"
     }
 
-    companion object {
+    public companion object {
         internal fun of(
             amount: Number = 1,
             prefix: SizePrefix? = null,

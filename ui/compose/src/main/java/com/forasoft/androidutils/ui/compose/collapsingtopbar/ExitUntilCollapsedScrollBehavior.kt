@@ -51,7 +51,6 @@ internal class ExitUntilCollapsedScrollBehavior(
             }
         }
 
-        @Suppress("ReturnCount")
         override fun onPostScroll(
             consumed: Offset,
             available: Offset,

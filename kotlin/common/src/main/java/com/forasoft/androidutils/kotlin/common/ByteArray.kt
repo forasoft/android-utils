@@ -11,6 +11,6 @@ package com.forasoft.androidutils.kotlin.common
  *
  * @param separator [String] used as separator between converted bytes. Defaults to `" "`.
  */
-fun ByteArray.toHexString(separator: String = " "): String {
+public fun ByteArray.toHexString(separator: String = " "): String {
     return this.joinToString(separator) { byte -> "%02X".format(byte) }
 }

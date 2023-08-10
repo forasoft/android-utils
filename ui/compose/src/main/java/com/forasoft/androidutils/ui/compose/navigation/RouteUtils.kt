@@ -3,7 +3,7 @@ package com.forasoft.androidutils.ui.compose.navigation
 /**
  * Contains helper methods for generating Jetpack Navigation route schemas and routes.
  */
-object RouteUtils {
+public object RouteUtils {
 
     /**
      * Generates a route schema based on the route unchanging base, names of mandatory
@@ -28,7 +28,7 @@ object RouteUtils {
      * @see [generateRoute]
      * @return string that can be used as a route schema for a destination.
      */
-    fun generateRouteSchema(
+    public fun generateRouteSchema(
         routeBase: String,
         argNames: Array<String> = emptyArray(),
         optionalArgNames: Array<String> = emptyArray(),
@@ -76,7 +76,7 @@ object RouteUtils {
      * @see [generateRouteSchema]
      * @return string that can be used as a route for NavController navigation.
      */
-    fun generateRoute(
+    public fun generateRoute(
         routeBase: String,
         args: Array<Any> = emptyArray(),
         optionalArgs: Array<OptionalNavArg> = emptyArray(),

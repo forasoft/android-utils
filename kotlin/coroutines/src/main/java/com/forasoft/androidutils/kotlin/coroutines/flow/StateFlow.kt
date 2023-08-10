@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.stateIn
  * Returns [StateFlow] containing the results of applying the given transform
  * function to each value of the original StateFlow.
  */
-fun <T, R> StateFlow<T>.mapState(
+public fun <T, R> StateFlow<T>.mapState(
     coroutineScope: CoroutineScope,
     started: SharingStarted = SharingStarted.WhileSubscribed(),
     transform: (T) -> R,

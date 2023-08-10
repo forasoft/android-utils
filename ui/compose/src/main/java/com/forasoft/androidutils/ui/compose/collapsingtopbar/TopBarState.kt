@@ -1,9 +1,13 @@
 package com.forasoft.androidutils.ui.compose.collapsingtopbar
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 
 // Source: androidx.compose.material3.TopAppBarState
@@ -19,7 +23,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
  * @param initialContentOffset the initial value for [TopBarState.contentOffset]
  */
 @Stable
-class TopBarState(
+public class TopBarState(
     initialHeightOffsetLimit: Float,
     initialHeightOffset: Float,
     initialContentOffset: Float,
@@ -31,7 +35,7 @@ class TopBarState(
      *
      * Use this limit to coerce the [heightOffset] value when it's updated.
      */
-    var heightOffsetLimit by mutableStateOf(initialHeightOffsetLimit)
+    public var heightOffsetLimit: Float by mutableFloatStateOf(initialHeightOffsetLimit)
 
     /**
      * The top app bar's current height offset in pixels. This height offset is applied to the fixed
@@ -39,10 +43,10 @@ class TopBarState(
      *
      * Updates to the [heightOffset] value are coerced between zero and [heightOffsetLimit].
      */
-    var heightOffset: Float
-        get() = _heightOffset.value
+    public var heightOffset: Float
+        get() = _heightOffset.floatValue
         set(newOffset) {
-            _heightOffset.value = newOffset.coerceIn(
+            _heightOffset.floatValue = newOffset.coerceIn(
                 minimumValue = heightOffsetLimit,
                 maximumValue = 0f
             )
@@ -58,7 +62,7 @@ class TopBarState(
      * consumes scroll events. A common implementation would update the value to be the sum of all
      * [NestedScrollConnection.onPostScroll] `consumed.y` values.
      */
-    var contentOffset by mutableStateOf(initialContentOffset)
+    public var contentOffset: Float by mutableFloatStateOf(initialContentOffset)
 
     /**
      * A value that represents the collapsed height percentage of the app bar.
@@ -66,7 +70,7 @@ class TopBarState(
      * A `0.0` represents a fully expanded bar, and `1.0` represents a fully collapsed bar (computed
      * as [heightOffset] / [heightOffsetLimit]).
      */
-    val collapsedFraction: Float
+    public val collapsedFraction: Float
         get() = if (heightOffsetLimit != 0f) {
             heightOffset / heightOffsetLimit
         } else {
@@ -80,7 +84,7 @@ class TopBarState(
      * A `0.0` indicates that the app bar does not overlap any content, while `1.0` indicates that
      * the entire visible app bar area overlaps the scrolled content.
      */
-    val overlappedFraction: Float
+    public val overlappedFraction: Float
         get() = if (heightOffsetLimit != 0f) {
             1 - ((heightOffsetLimit - contentOffset).coerceIn(
                 minimumValue = heightOffsetLimit,
@@ -90,13 +94,13 @@ class TopBarState(
             0f
         }
 
-    private var _heightOffset = mutableStateOf(initialHeightOffset)
+    private var _heightOffset = mutableFloatStateOf(initialHeightOffset)
 
-    companion object {
+    public companion object {
         /**
          * The default [Saver] implementation for [TopBarState].
          */
-        val Saver: Saver<TopBarState, *> = listSaver(
+        public val Saver: Saver<TopBarState, *> = listSaver(
             save = { listOf(it.heightOffsetLimit, it.heightOffset, it.contentOffset) },
             restore = {
                 TopBarState(
@@ -123,7 +127,7 @@ class TopBarState(
  * @param initialContentOffset the initial value for [TopBarState.contentOffset]
  */
 @Composable
-fun rememberTopBarState(
+public fun rememberTopBarState(
     initialHeightOffsetLimit: Float = -Float.MAX_VALUE,
     initialHeightOffset: Float = 0f,
     initialContentOffset: Float = 0f

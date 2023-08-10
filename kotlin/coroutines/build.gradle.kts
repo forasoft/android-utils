@@ -2,46 +2,10 @@ plugins {
     id(Plugins.javaLibrary)
     id(Plugins.kotlinJvm)
 
-    id(Plugins.detekt) version Versions.detektPlugin
-    id(Plugins.checkDependencyUpdates) version Versions.checkDependencyUpdatesPlugin
+    id(Plugins.detekt) version Versions.Plugins.detekt
+    id(Plugins.checkDependencyUpdates) version Versions.Plugins.checkDependencyUpdates
 
     id(Plugins.mavenPublish)
-}
-
-detekt {
-    parallel = true
-    buildUponDefaultConfig = true
-    config = files("../../config/detekt-config.yml")
-}
-
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-    reports {
-        html.required.set(true)
-        xml.required.set(false)
-        txt.required.set(false)
-        sarif.required.set(false)
-        md.required.set(false)
-    }
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-
-    withSourcesJar()
-    withJavadocJar()
-}
-
-tasks.test {
-    useJUnit()
-}
-
-dependencies {
-    implementation(Dependencies.coroutines)
-
-    testImplementation(Dependencies.junit)
-    testImplementation(Dependencies.truth)
-    testImplementation(Dependencies.coroutinesTest)
 }
 
 afterEvaluate {
@@ -52,5 +16,45 @@ afterEvaluate {
                 artifactId = "kotlin-coroutines"
             }
         }
+    }
+}
+
+kotlin {
+    explicitApi()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    withSourcesJar()
+    withJavadocJar()
+}
+
+tasks.test {
+    useJUnit()
+}
+
+dependencies {
+    implementation(Dependencies.Kotlin.coroutines)
+
+    testImplementation(Dependencies.junit)
+    testImplementation(Dependencies.truth)
+    testImplementation(Dependencies.Kotlin.coroutinesTest)
+}
+
+detekt {
+    parallel = true
+    buildUponDefaultConfig = true
+    config.from("../../config/detekt-config.yml")
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    reports {
+        html.required.set(true)
+        xml.required.set(false)
+        txt.required.set(false)
+        sarif.required.set(false)
+        md.required.set(false)
     }
 }

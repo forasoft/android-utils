@@ -9,14 +9,15 @@ import kotlinx.coroutines.flow.getAndUpdate
  *
  * Underlying read-only [Job] can be retrieved with [job] property.
  */
-class JobHolder {
+public class JobHolder {
 
     private val _job = MutableStateFlow<Job?>(null)
 
     /**
      * Current job.
      */
-    val job get() = _job.value
+    public val job: Job?
+        get() = _job.value
 
     /**
      * Replaces the current job with a new one **and cancels the current one**. This method is
@@ -27,7 +28,7 @@ class JobHolder {
      * @param job [Job] to interrupt the current one with.
      * @see [replaceWith]
      */
-    infix fun interruptWith(job: Job?) {
+    public infix fun interruptWith(job: Job?) {
         _job.getAndUpdate { job }?.cancel()
     }
 
@@ -40,8 +41,10 @@ class JobHolder {
      * @param job [Job] to replace the current one with.
      * @see [interruptWith]
      */
-    infix fun replaceWith(job: Job?) {
+    public infix fun replaceWith(job: Job?) {
         _job.value = job
     }
+
+    public companion object
 
 }

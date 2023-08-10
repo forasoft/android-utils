@@ -11,7 +11,7 @@ import com.forasoft.androidutils.ui.compose.navigation.parameterless.SimpleGraph
  * @param P type of graph's arguments.
  * @see [SimpleGraph].
  */
-abstract class Graph<P> : Destination<P>() {
+public abstract class Graph<P> : Destination<P>() {
 
     /**
      * String that can be used as a route schema for a nested graph.
@@ -28,6 +28,6 @@ abstract class Graph<P> : Destination<P>() {
     /**
      * Graph's start [Destination].
      */
-    abstract val startDestination: Destination<*>
+    public abstract val startDestination: Destination<*>
 
 }

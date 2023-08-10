@@ -9,7 +9,7 @@ import java.lang.ref.WeakReference
 /**
  * Displays messages with [Toast]s.
  */
-class ToastLogger(context: Context) {
+public class ToastLogger(context: Context) {
 
     private val contextRef = WeakReference(context)
 
@@ -17,7 +17,7 @@ class ToastLogger(context: Context) {
 
     private var currentToastRef: WeakReference<Toast>? = null
 
-    fun log(message: String) {
+    public fun log(message: String) {
         handler.post {
             val context = contextRef.get() ?: return@post
             currentToastRef?.get()?.cancel()

@@ -6,7 +6,7 @@ package com.forasoft.androidutils.kotlin.common.size
  * @property bitCount size in bits
  * @property abbreviation standard abbreviation
  */
-enum class SizeUnit(val bitCount: Int, val abbreviation: String) {
+public enum class SizeUnit(public val bitCount: Int, public val abbreviation: String) {
     BIT(bitCount = 1, abbreviation = "bit"),
-    BYTE(bitCount = 8, abbreviation = "B")
+    BYTE(bitCount = 8, abbreviation = "B"),
 }

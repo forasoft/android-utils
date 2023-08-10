@@ -1,29 +1,26 @@
-@file:Suppress("UnstableApiUsage")
-
 plugins {
     id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
 
-    id(Plugins.detekt) version Versions.detektPlugin
-    id(Plugins.checkDependencyUpdates) version Versions.checkDependencyUpdatesPlugin
+    id(Plugins.detekt) version Versions.Plugins.detekt
+    id(Plugins.checkDependencyUpdates) version Versions.Plugins.checkDependencyUpdates
 
     id(Plugins.mavenPublish)
 }
 
-detekt {
-    parallel = true
-    buildUponDefaultConfig = true
-    config = files("../../config/detekt-config.yml")
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                from(components.findByName("release"))
+                artifactId = "ui-compose"
+            }
+        }
+    }
 }
 
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-    reports {
-        html.required.set(true)
-        xml.required.set(false)
-        txt.required.set(false)
-        sarif.required.set(false)
-        md.required.set(false)
-    }
+kotlin {
+    explicitApi()
 }
 
 android {
@@ -49,12 +46,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     buildFeatures {
@@ -62,7 +59,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.composeCompiler
+        kotlinCompilerExtensionVersion = Versions.Jetpack.Compose.compiler
     }
 
     publishing {
@@ -94,25 +91,30 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 dependencies {
     implementation(project(Dependencies.Modules.platformAndroid))
 
-    implementation(Dependencies.jetpackCore)
-    implementation(Dependencies.navigationCompose)
+    implementation(Dependencies.Jetpack.core)
+    implementation(Dependencies.Jetpack.Compose.navigation)
 
-    implementation(platform(Dependencies.composeBom))
-    implementation(Dependencies.composeRuntime)
-    implementation(Dependencies.composeUi)
-    implementation(Dependencies.composeAnimation)
+    implementation(platform(Dependencies.Jetpack.Compose.bom))
+    implementation(Dependencies.Jetpack.Compose.runtime)
+    implementation(Dependencies.Jetpack.Compose.ui)
+    implementation(Dependencies.Jetpack.Compose.animation)
 
     testImplementation(Dependencies.junit)
     testImplementation(Dependencies.truth)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("maven") {
-                from(components.findByName("release"))
-                artifactId = "ui-compose"
-            }
-        }
+detekt {
+    parallel = true
+    buildUponDefaultConfig = true
+    config.from("../../config/detekt-config.yml")
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    reports {
+        html.required.set(true)
+        xml.required.set(false)
+        txt.required.set(false)
+        sarif.required.set(false)
+        md.required.set(false)
     }
 }

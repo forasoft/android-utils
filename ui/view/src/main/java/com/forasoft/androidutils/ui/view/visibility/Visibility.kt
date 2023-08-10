@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 /**
  * Sets visibility to [targetVisibility] and alpha to `0` for this [View].
  */
-fun View.hideImmediately(targetVisibility: Int = View.GONE) {
+public fun View.hideImmediately(targetVisibility: Int = View.GONE) {
     this.visibility = targetVisibility
     this.alpha = 0f
 }
@@ -14,7 +14,7 @@ fun View.hideImmediately(targetVisibility: Int = View.GONE) {
 /**
  * Sets visibility to [View.VISIBLE] and alpha to `1` for this [View].
  */
-fun View.showImmediately() {
+public fun View.showImmediately() {
     this.isVisible = true
     this.alpha = 1f
 }

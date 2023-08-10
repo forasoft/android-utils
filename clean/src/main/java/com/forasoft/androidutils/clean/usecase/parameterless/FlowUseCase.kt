@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.Flow
  * @see [UseCase]
  * @property dispatcher [CoroutineDispatcher] to run the operation on.
  */
-abstract class FlowUseCase<out R>(dispatcher: CoroutineDispatcher) :
+public abstract class FlowUseCase<out R>(dispatcher: CoroutineDispatcher) :
     FlowUseCase<Unit, R>(dispatcher) {
 
     /**
@@ -27,6 +27,6 @@ abstract class FlowUseCase<out R>(dispatcher: CoroutineDispatcher) :
      * @return [Flow] of [Result] that encapsulates the successful result of the operation
      * or caught [Exception].
      */
-    operator fun invoke(): Flow<Result<R>> = invoke(Unit)
+    public operator fun invoke(): Flow<Result<R>> = invoke(Unit)
 
 }

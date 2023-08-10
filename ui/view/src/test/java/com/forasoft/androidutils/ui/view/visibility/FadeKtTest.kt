@@ -270,7 +270,6 @@ class FadeKtTest {
         }
     }
 
-    @Suppress("EmptyFunctionBlock")
     private fun onAnimationEndListener(onEnd: () -> Unit): Animator.AnimatorListener {
         return object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator) {

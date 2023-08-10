@@ -1,6 +1,11 @@
 package com.forasoft.androidutils.ui.compose.collapsingtopbar
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalDensity
@@ -15,7 +20,7 @@ internal fun CollapsingTopBar(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
-    var contentHeightPx by remember { mutableStateOf(0) }
+    var contentHeightPx by remember { mutableIntStateOf(0) }
 
     val heightOffsetLimit = -contentHeightPx
     SideEffect {

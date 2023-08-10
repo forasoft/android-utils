@@ -7,7 +7,6 @@ import com.forasoft.androidutils.logpecker.ui.addLogPeckerDynamicShortcut
 /**
  * Initializes LogPecker at application startup.
  */
-@Suppress("unused")
 internal class LogPeckerInitializer : Initializer<Unit> {
 
     override fun create(context: Context) {

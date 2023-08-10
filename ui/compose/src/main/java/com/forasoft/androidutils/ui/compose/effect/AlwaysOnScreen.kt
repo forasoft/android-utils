@@ -10,7 +10,7 @@ import com.forasoft.androidutils.platform.android.getActivity
  * Effect that keeps the screen on while is in composition.
  */
 @Composable
-fun AlwaysOnScreen() {
+public fun AlwaysOnScreen() {
     val context = LocalContext.current
     DisposableEffect(context) {
         val window = context.getActivity()?.window

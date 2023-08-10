@@ -13,16 +13,16 @@ import java.util.*
  * Use [isOperationOngoing] and [ongoingOperationKeys] to check if the operation is
  * ongoing or not.
  */
-class OperationTracker {
+public class OperationTracker {
 
     private val ongoingOperations = MutableStateFlow(setOf<Operation>())
 
     /**
      * [Flow] that contains [Set] of [OperationKey]s of the ongoing operations.
      */
-    val ongoingOperationKeys = ongoingOperations
-        .map {
-            it.map { request -> request.key }.toSet()
+    public val ongoingOperationKeys: Flow<Set<OperationKey>> = ongoingOperations
+        .map { operations ->
+            operations.map { request -> request.key }.toSet()
         }
 
     /**
@@ -33,7 +33,7 @@ class OperationTracker {
      * @param operation operation to track.
      * @return result of the [operation].
      */
-    suspend fun <R : Any> track(key: OperationKey, operation: suspend () -> R): R {
+    public suspend fun <R : Any> track(key: OperationKey, operation: suspend () -> R): R {
         val request = Operation(UUID.randomUUID().toString(), key)
         try {
             ongoingOperations.update { it + request }
@@ -47,11 +47,13 @@ class OperationTracker {
      * Returns [Flow] that indicates if there is **at least one** ongoing operation with
      * a key from the given [keys].
      */
-    fun isOperationOngoing(vararg keys: OperationKey): Flow<Boolean> {
+    public fun isOperationOngoing(vararg keys: OperationKey): Flow<Boolean> {
         val keySet = keys.toSet()
         return ongoingOperationKeys.map { ongoingKeys ->
             ongoingKeys.any { it in keySet }
         }
     }
+
+    public companion object
 
 }

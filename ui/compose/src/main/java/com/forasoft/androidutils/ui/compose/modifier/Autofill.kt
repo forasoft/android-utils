@@ -21,10 +21,10 @@ import androidx.compose.ui.platform.LocalAutofillTree
  * lambda is the value that has been provided by autofill
  */
 @OptIn(ExperimentalComposeUiApi::class)
-fun Modifier.autofill(
+public fun Modifier.autofill(
     autofillTypes: List<AutofillType>,
     onFill: (autofilledValue: String) -> Unit,
-) = composed {
+): Modifier = composed {
     val autofill = LocalAutofill.current
     val autofillNode = AutofillNode(onFill = onFill, autofillTypes = autofillTypes)
     LocalAutofillTree.current += autofillNode

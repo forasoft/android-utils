@@ -21,7 +21,7 @@ import androidx.compose.ui.layout.SubcomposeLayout
  * applied to the content root.
  */
 @Composable
-fun CollapsingTopBarLayout(
+public fun CollapsingTopBarLayout(
     topBar: @Composable () -> Unit,
     scrollBehavior: TopBarScrollBehavior,
     modifier: Modifier = Modifier,

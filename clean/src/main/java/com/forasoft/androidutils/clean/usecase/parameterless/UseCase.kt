@@ -13,7 +13,7 @@ import kotlinx.coroutines.CoroutineDispatcher
  * @see [FlowUseCase]
  * @property dispatcher [CoroutineDispatcher] to run the operation on.
  */
-abstract class UseCase<out R>(dispatcher: CoroutineDispatcher) : UseCase<Unit, R>(dispatcher) {
+public abstract class UseCase<out R>(dispatcher: CoroutineDispatcher) : UseCase<Unit, R>(dispatcher) {
 
     /**
      * Invokes the operation and returns its encapsulated result
@@ -23,6 +23,6 @@ abstract class UseCase<out R>(dispatcher: CoroutineDispatcher) : UseCase<Unit, R
      * @return [Result] that encapsulates the successful result of the operation or caught
      * [Exception].
      */
-    suspend operator fun invoke(): Result<R> = invoke(Unit)
+    public suspend operator fun invoke(): Result<R> = invoke(Unit)
 
 }

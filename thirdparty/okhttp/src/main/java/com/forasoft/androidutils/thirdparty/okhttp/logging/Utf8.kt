@@ -9,7 +9,6 @@ import java.io.EOFException
  * signatures.
  */
 // Source: https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/src/main/kotlin/okhttp3/logging/internal/utf8.kt
-@Suppress("MagicNumber", "ReturnCount")
 internal fun Buffer.isProbablyUtf8(): Boolean {
     try {
         val prefix = Buffer()

@@ -8,7 +8,7 @@ import kotlin.time.Duration.Companion.milliseconds
  * Represents animation durations specified in system resources.
  * The corresponding value can be retrieved with [Context.getSystemAnimationDuration] function.
  */
-enum class SystemAnimationDuration {
+public enum class SystemAnimationDuration {
     SHORT,
     MEDIUM,
     LONG,
@@ -20,7 +20,7 @@ enum class SystemAnimationDuration {
  * @param duration [SystemAnimationDuration] that represents the system animation duration
  * specified in system resources.
  */
-fun Context.getSystemAnimationDuration(duration: SystemAnimationDuration): Duration {
+public fun Context.getSystemAnimationDuration(duration: SystemAnimationDuration): Duration {
     val resId = when (duration) {
         SystemAnimationDuration.SHORT -> android.R.integer.config_shortAnimTime
         SystemAnimationDuration.MEDIUM -> android.R.integer.config_mediumAnimTime

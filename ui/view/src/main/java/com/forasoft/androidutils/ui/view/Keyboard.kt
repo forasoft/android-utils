@@ -9,7 +9,7 @@ import androidx.core.content.getSystemService
  *
  * @param flags additional operating flags required by [InputMethodManager.showSoftInput].
  */
-fun View.showKeyboard(flags: Int = InputMethodManager.SHOW_IMPLICIT) {
+public fun View.showKeyboard(flags: Int = InputMethodManager.SHOW_IMPLICIT) {
     val inputMethodManager = this.context.getSystemService<InputMethodManager>()
     inputMethodManager?.showSoftInput(this, flags)
 }
@@ -19,7 +19,7 @@ fun View.showKeyboard(flags: Int = InputMethodManager.SHOW_IMPLICIT) {
  *
  * @param flags additional operating flags required by [InputMethodManager.hideSoftInputFromWindow].
  */
-fun View.hideKeyboard(flags: Int = 0) {
+public fun View.hideKeyboard(flags: Int = 0) {
     val inputMethodManager = this.context.getSystemService<InputMethodManager>()
     inputMethodManager?.hideSoftInputFromWindow(this.windowToken, flags)
 }

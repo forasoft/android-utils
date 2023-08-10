@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -7,6 +5,7 @@ pluginManagement {
         mavenCentral()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -15,6 +14,7 @@ dependencyResolutionManagement {
         maven { url = java.net.URI.create("https://jitpack.io") }
     }
 }
+
 rootProject.name = "AndroidUtils"
 include(":clean")
 include(":kotlin:common")

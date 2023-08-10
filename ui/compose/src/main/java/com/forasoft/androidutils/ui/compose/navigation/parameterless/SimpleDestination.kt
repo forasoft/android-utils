@@ -11,14 +11,14 @@ import com.forasoft.androidutils.ui.compose.navigation.Destination
  *
  * @see [Destination].
  */
-abstract class SimpleDestination : Destination<Unit>() {
+public abstract class SimpleDestination : Destination<Unit>() {
 
     abstract override val routeSchema: String
 
     /**
      * String that can be used as a route for NavController navigation.
      */
-    val route: String get() = routeSchema
+    public val route: String get() = routeSchema
 
     @Deprecated(
         message = "Use 'route' property instead",

@@ -4,26 +4,25 @@ plugins {
     id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
 
-    id(Plugins.detekt) version Versions.detektPlugin
-    id(Plugins.checkDependencyUpdates) version Versions.checkDependencyUpdatesPlugin
+    id(Plugins.detekt) version Versions.Plugins.detekt
+    id(Plugins.checkDependencyUpdates) version Versions.Plugins.checkDependencyUpdates
 
     id(Plugins.mavenPublish)
 }
 
-detekt {
-    parallel = true
-    buildUponDefaultConfig = true
-    config = files("../../config/detekt-config.yml")
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                from(components.findByName("release"))
+                artifactId = "platform-android"
+            }
+        }
+    }
 }
 
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-    reports {
-        html.required.set(true)
-        xml.required.set(false)
-        txt.required.set(false)
-        sarif.required.set(false)
-        md.required.set(false)
-    }
+kotlin {
+    explicitApi()
 }
 
 android {
@@ -49,12 +48,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     publishing {
@@ -66,17 +65,22 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.jetpackCore)
+    implementation(Dependencies.Jetpack.core)
     implementation(Dependencies.timber)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("maven") {
-                from(components.findByName("release"))
-                artifactId = "platform-android"
-            }
-        }
+detekt {
+    parallel = true
+    buildUponDefaultConfig = true
+    config.from("../../config/detekt-config.yml")
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    reports {
+        html.required.set(true)
+        xml.required.set(false)
+        txt.required.set(false)
+        sarif.required.set(false)
+        md.required.set(false)
     }
 }

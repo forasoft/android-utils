@@ -10,7 +10,6 @@ import kotlin.math.abs
  * Settles the top bar by flinging, in case the given velocity is greater than zero, and snapping
  * after the fling settles.
  */
-@Suppress("MagicNumber")
 internal suspend fun settleTopBar(
     state: TopBarState,
     velocity: Float,

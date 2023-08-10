@@ -33,7 +33,6 @@ sealed interface Text {
     ) : Text {
 
         override fun getString(context: Context): kotlin.String {
-            @Suppress("SpreadOperator")
             return context.resources.getString(this.resourceId, *this.args)
         }
 
@@ -69,7 +68,6 @@ sealed interface Text {
     ) : Text {
 
         override fun getString(context: Context): kotlin.String {
-            @Suppress("SpreadOperator")
             return context.resources.getQuantityString(this.resourceId, this.count, *this.args)
         }
 

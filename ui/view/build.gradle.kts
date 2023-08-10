@@ -2,8 +2,8 @@ plugins {
     id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
 
-    id(Plugins.detekt) version Versions.detektPlugin
-    id(Plugins.checkDependencyUpdates) version Versions.checkDependencyUpdatesPlugin
+    id(Plugins.detekt) version Versions.Plugins.detekt
+    id(Plugins.checkDependencyUpdates) version Versions.Plugins.checkDependencyUpdates
 
     id(Plugins.mavenPublish)
 }
@@ -63,14 +63,14 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.jetpackCore)
+    implementation(Dependencies.Jetpack.core)
 
     testImplementation(Dependencies.junit)
     testImplementation(Dependencies.truth)
     testImplementation(Dependencies.robolectric)
 
-    androidTestImplementation(Dependencies.androidJunit)
-    androidTestImplementation(Dependencies.espresso)
+    androidTestImplementation(Dependencies.Jetpack.junit)
+    androidTestImplementation(Dependencies.Jetpack.espresso)
     androidTestImplementation(Dependencies.truth)
 }
 

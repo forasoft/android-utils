@@ -4,8 +4,8 @@ plugins {
     id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
 
-    id(Plugins.detekt) version Versions.detektPlugin
-    id(Plugins.checkDependencyUpdates) version Versions.checkDependencyUpdatesPlugin
+    id(Plugins.detekt) version Versions.Plugins.detekt
+    id(Plugins.checkDependencyUpdates) version Versions.Plugins.checkDependencyUpdates
 
     id(Plugins.mavenPublish)
 }
@@ -67,10 +67,10 @@ android {
 dependencies {
     implementation(project(Dependencies.Modules.platformAndroid))
 
-    implementation(Dependencies.jetpackCore)
-    implementation(Dependencies.appCompat)
-    implementation(Dependencies.startup)
-    implementation(Dependencies.coroutines)
+    implementation(Dependencies.Jetpack.core)
+    implementation(Dependencies.Jetpack.appCompat)
+    implementation(Dependencies.Jetpack.startup)
+    implementation(Dependencies.Kotlin.coroutines)
 }
 
 detekt {

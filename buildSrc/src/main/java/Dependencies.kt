@@ -4,18 +4,29 @@ object Dependencies {
         const val platformAndroid = ":platform:android"
     }
 
-    const val jetpackCore = "androidx.core:core-ktx:${Versions.jetpackCore}"
-    const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
-    const val navigationCompose = "androidx.navigation:navigation-compose:${Versions.navigation}"
-    const val startup = "androidx.startup:startup-runtime:${Versions.startup}"
+    object Kotlin {
+        const val coroutines =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Kotlin.coroutines}"
+        const val coroutinesTest =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Kotlin.coroutines}"
+    }
 
-    const val composeBom = "androidx.compose:compose-bom:${Versions.composeBom}"
-    const val composeRuntime = "androidx.compose.runtime:runtime"
-    const val composeUi = "androidx.compose.ui:ui"
-    const val composeAnimation = "androidx.compose.animation:animation"
+    object Jetpack {
+        const val core = "androidx.core:core-ktx:${Versions.Jetpack.core}"
+        const val appCompat = "androidx.appcompat:appcompat:${Versions.Jetpack.appCompat}"
+        const val startup = "androidx.startup:startup-runtime:${Versions.Jetpack.startup}"
+        const val junit = "androidx.test.ext:junit-ktx:${Versions.Jetpack.junit}"
+        const val espresso = "androidx.test.espresso:espresso-core:${Versions.Jetpack.espresso}"
 
-    const val coroutines =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+        object Compose {
+            const val bom = "androidx.compose:compose-bom:${Versions.Jetpack.Compose.bom}"
+            const val runtime = "androidx.compose.runtime:runtime"
+            const val ui = "androidx.compose.ui:ui"
+            const val animation = "androidx.compose.animation:animation"
+            const val navigation =
+                "androidx.navigation:navigation-compose:${Versions.Jetpack.navigation}"
+        }
+    }
 
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
     const val webRtc = "com.github.webrtc-sdk:android:${Versions.webRtc}"
@@ -23,11 +34,7 @@ object Dependencies {
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
     const val junit = "junit:junit:${Versions.junit}"
-    const val androidJunit = "androidx.test.ext:junit-ktx:${Versions.androidJunit}"
-    const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val truth = "com.google.truth:truth:${Versions.truth}"
     const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
-    const val coroutinesTest =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
 
 }

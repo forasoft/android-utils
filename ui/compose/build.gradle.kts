@@ -2,8 +2,8 @@ plugins {
     id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
 
-    id(Plugins.detekt) version Versions.detektPlugin
-    id(Plugins.checkDependencyUpdates) version Versions.checkDependencyUpdatesPlugin
+    id(Plugins.detekt) version Versions.Plugins.detekt
+    id(Plugins.checkDependencyUpdates) version Versions.Plugins.checkDependencyUpdates
 
     id(Plugins.mavenPublish)
 }
@@ -59,7 +59,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.composeCompiler
+        kotlinCompilerExtensionVersion = Versions.Jetpack.Compose.compiler
     }
 
     publishing {
@@ -91,13 +91,13 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 dependencies {
     implementation(project(Dependencies.Modules.platformAndroid))
 
-    implementation(Dependencies.jetpackCore)
-    implementation(Dependencies.navigationCompose)
+    implementation(Dependencies.Jetpack.core)
+    implementation(Dependencies.Jetpack.Compose.navigation)
 
-    implementation(platform(Dependencies.composeBom))
-    implementation(Dependencies.composeRuntime)
-    implementation(Dependencies.composeUi)
-    implementation(Dependencies.composeAnimation)
+    implementation(platform(Dependencies.Jetpack.Compose.bom))
+    implementation(Dependencies.Jetpack.Compose.runtime)
+    implementation(Dependencies.Jetpack.Compose.ui)
+    implementation(Dependencies.Jetpack.Compose.animation)
 
     testImplementation(Dependencies.junit)
     testImplementation(Dependencies.truth)

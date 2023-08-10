@@ -2,8 +2,8 @@ plugins {
     id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
 
-    id(Plugins.detekt) version Versions.detektPlugin
-    id(Plugins.checkDependencyUpdates) version Versions.checkDependencyUpdatesPlugin
+    id(Plugins.detekt) version Versions.Plugins.detekt
+    id(Plugins.checkDependencyUpdates) version Versions.Plugins.checkDependencyUpdates
 
     id(Plugins.mavenPublish)
 }
@@ -63,12 +63,12 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.coroutines)
+    implementation(Dependencies.Kotlin.coroutines)
     implementation(Dependencies.timber)
 
     testImplementation(Dependencies.junit)
     testImplementation(Dependencies.truth)
-    testImplementation(Dependencies.coroutinesTest)
+    testImplementation(Dependencies.Kotlin.coroutinesTest)
 }
 
 detekt {

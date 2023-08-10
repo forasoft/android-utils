@@ -43,7 +43,7 @@ import java.nio.charset.StandardCharsets
  * <-- HTTP FAILED: java.net.SocketTimeoutException: timeout
  * ```
  */
-object LoggingInterceptor : Interceptor() {
+public object LoggingInterceptor : Interceptor() {
 
     override fun onRequest(info: RequestInfo): Request {
         val (request, connection) = info
@@ -230,5 +230,5 @@ object LoggingInterceptor : Interceptor() {
 
     private const val HEADER_NAME_VALUE_SEPARATOR = ": "
     private const val HEADER_ENTRY_SEPARATOR = " || "
-    const val LOG_TAG = "OkHttpLogging"
+    private const val LOG_TAG = "OkHttpLogging"
 }

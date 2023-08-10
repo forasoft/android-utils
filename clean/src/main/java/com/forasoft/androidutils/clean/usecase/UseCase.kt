@@ -16,7 +16,7 @@ import kotlin.time.Duration.Companion.milliseconds
  * @see [FlowUseCase]
  * @property dispatcher [CoroutineDispatcher] to run the operation on.
  */
-abstract class UseCase<in P, out R>(private val dispatcher: CoroutineDispatcher) {
+public abstract class UseCase<in P, out R>(private val dispatcher: CoroutineDispatcher) {
 
     private val className = if (Timber.treeCount != 0) this.javaClass.simpleName else TAG
 
@@ -30,7 +30,7 @@ abstract class UseCase<in P, out R>(private val dispatcher: CoroutineDispatcher)
      * [Exception].
      */
     @Suppress("TooGenericExceptionCaught")
-    suspend operator fun invoke(params: P): Result<R> {
+    public suspend operator fun invoke(params: P): Result<R> {
         return try {
             val result: Result<R>
             val executionDuration = measureTimeMillis {
@@ -50,7 +50,7 @@ abstract class UseCase<in P, out R>(private val dispatcher: CoroutineDispatcher)
 
     protected abstract suspend fun execute(params: P): R
 
-    companion object {
+    public companion object {
         private const val TAG = "UseCase"
     }
 

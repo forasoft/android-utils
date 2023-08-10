@@ -17,7 +17,7 @@ import com.forasoft.androidutils.platform.android.getActivity
  * Should be one of [WindowInsetsControllerCompat] behavior constants.
  */
 @Composable
-fun HiddenSystemBars(
+public fun HiddenSystemBars(
     behavior: Int = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE,
 ) {
     val view = LocalView.current

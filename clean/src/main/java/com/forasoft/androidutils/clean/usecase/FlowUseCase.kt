@@ -21,7 +21,7 @@ import timber.log.Timber
  * @see [UseCase]
  * @property dispatcher [CoroutineDispatcher] to run the operation on.
  */
-abstract class FlowUseCase<in P, out R>(private val dispatcher: CoroutineDispatcher) {
+public abstract class FlowUseCase<in P, out R>(private val dispatcher: CoroutineDispatcher) {
 
     private val className = if (Timber.treeCount != 0) this.javaClass.simpleName else TAG
 
@@ -33,7 +33,7 @@ abstract class FlowUseCase<in P, out R>(private val dispatcher: CoroutineDispatc
      * @return [Flow] of [Result] that encapsulates the successful result of the operation
      * or caught [Exception].
      */
-    operator fun invoke(params: P): Flow<Result<R>> = execute(params)
+    public operator fun invoke(params: P): Flow<Result<R>> = execute(params)
         .map { Result.success(it) }
         .retryWhen { e, attempt ->
             Timber.tag(className).e(e, "Exception occurred while executing $className with parameters $params")
@@ -52,9 +52,9 @@ abstract class FlowUseCase<in P, out R>(private val dispatcher: CoroutineDispatc
      * Specifies whether to retry [Flow] collection when an exception occurs.
      * Default implementation returns `false`.
      */
-    open suspend fun shouldRetry(exception: Throwable, attempt: Long): Boolean = false
+    public open suspend fun shouldRetry(exception: Throwable, attempt: Long): Boolean = false
 
-    companion object {
+    public companion object {
         private const val TAG = "FlowUseCase"
     }
 

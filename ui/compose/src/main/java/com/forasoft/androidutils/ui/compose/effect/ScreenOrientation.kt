@@ -13,7 +13,7 @@ import com.forasoft.androidutils.platform.android.getActivity
  * @param orientation one of [ActivityInfo.screenOrientation] constants.
  */
 @Composable
-fun ScreenOrientation(orientation: Int) {
+public fun ScreenOrientation(orientation: Int) {
     val context = LocalContext.current
     DisposableEffect(context, orientation) {
         val activity = context.getActivity() ?: return@DisposableEffect onDispose {}

@@ -17,7 +17,7 @@ import java.io.File
  * Goes up the [ContextWrapper] hierarchy and returns the first [Activity] found.
  * If none of the [ContextWrapper]s of the current context are Activity, returns `null`.
  */
-fun Context.getActivity(): Activity? {
+public fun Context.getActivity(): Activity? {
     var context: Context? = this
     while (true) {
         when (context) {
@@ -34,7 +34,7 @@ fun Context.getActivity(): Activity? {
  * @param url link to open.
  * @return `true` if the browser has been successfully opened, `false` otherwise.
  */
-fun Context.openUrl(url: String): Boolean {
+public fun Context.openUrl(url: String): Boolean {
     val uri = Uri.parse(url)
     val intent = Intent(Intent.ACTION_VIEW, uri)
     val isActivityStarted = this.tryStartActivity(intent)
@@ -49,7 +49,7 @@ fun Context.openUrl(url: String): Boolean {
  *
  * @return `true` if settings screen has been successfully opened, `false` otherwise.
  */
-fun Context.openApplicationSettings(): Boolean {
+public fun Context.openApplicationSettings(): Boolean {
     val packageName = this.packageName
     val uri = Uri.fromParts("package", packageName, null)
     val intent = Intent().apply {
@@ -73,7 +73,7 @@ fun Context.openApplicationSettings(): Boolean {
  * @param mimeType optional file MIME type.
  * @param chooserTitle optional title that will be displayed in the chooser.
  */
-fun Context.viewFile(
+public fun Context.viewFile(
     file: File,
     fileProviderAuthority: String,
     mimeType: String = "*/*",
@@ -97,7 +97,7 @@ fun Context.viewFile(
  * @param mimeType optional files MIME type.
  * @param label user-readable label for shared data
  */
-fun Context.shareFiles(
+public fun Context.shareFiles(
     files: List<File>,
     fileProviderAuthority: String,
     mimeType: String = "*/*",

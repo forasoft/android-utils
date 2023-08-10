@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
  *
  * @constructor Create empty Interceptor
  */
-abstract class Interceptor : Interceptor {
+public abstract class Interceptor : Interceptor {
 
     final override fun intercept(chain: Interceptor.Chain): Response {
         val initialRequest = chain.request()
@@ -52,7 +52,7 @@ abstract class Interceptor : Interceptor {
      * @param info intercepted request information
      * @return request to be performed
      */
-    open fun onRequest(info: RequestInfo): Request {
+    public open fun onRequest(info: RequestInfo): Request {
         return info.request
     }
 
@@ -62,7 +62,7 @@ abstract class Interceptor : Interceptor {
      * @param info intercepted response information
      * @return response to be passed to consumers
      */
-    open fun onResponse(info: ResponseInfo): Response {
+    public open fun onResponse(info: ResponseInfo): Response {
         return info.response
     }
 
@@ -71,7 +71,7 @@ abstract class Interceptor : Interceptor {
      *
      * @param exception exception thrown during request execution
      */
-    open fun onError(exception: Exception) = Unit
+    public open fun onError(exception: Exception): Unit = Unit
 }
 
 /**
@@ -80,7 +80,7 @@ abstract class Interceptor : Interceptor {
  * @property request intercepted request
  * @property connection [Connection] the [request] will be executed on
  */
-data class RequestInfo(
+public data class RequestInfo(
     val request: Request,
     val connection: Connection?,
 )
@@ -91,7 +91,7 @@ data class RequestInfo(
  * @property requestDurationMillis duration, in millis, between sending the [Request] and receiving the [Response]
  * @property response intercepted response
  */
-data class ResponseInfo(
+public data class ResponseInfo(
     val requestDurationMillis: Long,
     val response: Response,
 )

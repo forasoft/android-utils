@@ -23,7 +23,7 @@ import androidx.navigation.navigation
  * @param popExitTransition callback to determine the destination's popExit transition
  * @param content composable for the destination.
  */
-fun NavGraphBuilder.composableDestination(
+public fun NavGraphBuilder.composableDestination(
     destination: Destination<*>,
     enterTransition: (@JvmSuppressWildcards
     AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition?)? = null,
@@ -61,7 +61,7 @@ fun NavGraphBuilder.composableDestination(
  * @param dialogProperties properties that should be passed to [androidx.compose.ui.window.Dialog].
  * @param content composable content for the destination that will be hosted within the Dialog.
  */
-fun NavGraphBuilder.dialogDestination(
+public fun NavGraphBuilder.dialogDestination(
     destination: Destination<*>,
     dialogProperties: DialogProperties = DialogProperties(),
     content: @Composable (NavBackStackEntry) -> Unit,
@@ -80,7 +80,10 @@ fun NavGraphBuilder.dialogDestination(
  *
  * @param builder the builder used to construct the graph.
  */
-inline fun NavGraphBuilder.navigationGraph(graph: Graph<*>, builder: NavGraphBuilder.() -> Unit) {
+public inline fun NavGraphBuilder.navigationGraph(
+    graph: Graph<*>,
+    builder: NavGraphBuilder.() -> Unit,
+) {
     navigation(
         route = graph.routeSchema,
         startDestination = graph.startDestination.routeSchema,

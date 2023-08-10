@@ -13,30 +13,30 @@ import com.forasoft.androidutils.ui.compose.navigation.parameterless.SimpleDesti
  * @param P type of destination's arguments.
  * @see [SimpleDestination].
  */
-abstract class Destination<P> {
+public abstract class Destination<P> {
 
     /**
      * String that can be used as a route schema for a destination.
      */
-    abstract val routeSchema: String
+    public abstract val routeSchema: String
 
     /**
      * Returns a string that can be used as a route for NavController navigation.
      *
      * @param args destination's arguments.
      */
-    abstract fun createRoute(args: P): String
+    public abstract fun createRoute(args: P): String
 
     /**
      * List of arguments associated with the destination.
      */
-    open val arguments: List<NamedNavArgument>
+    public open val arguments: List<NamedNavArgument>
         get() = emptyList()
 
     /**
      * List of deep links associated with the destinations.
      */
-    open val deepLinks: List<NavDeepLink>
+    public open val deepLinks: List<NavDeepLink>
         get() = emptyList()
 
 }

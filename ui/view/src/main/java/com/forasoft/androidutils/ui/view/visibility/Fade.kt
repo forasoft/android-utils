@@ -22,7 +22,7 @@ import kotlin.time.Duration
  * to `null` that results in linear interpolation.
  * @param listener [Animator.AnimatorListener] that receives notifications from the animation.
  */
-fun View.fade(
+public fun View.fade(
     isVisible: Boolean,
     duration: Duration = context.getSystemAnimationDuration(SystemAnimationDuration.SHORT),
     fadeOutTargetVisibility: Int = View.GONE,
@@ -46,7 +46,7 @@ fun View.fade(
  * to `null` that results in linear interpolation.
  * @param listener [Animator.AnimatorListener] that receives notifications from the animation.
  */
-fun View.fadeIn(
+public fun View.fadeIn(
     duration: Duration = context.getSystemAnimationDuration(SystemAnimationDuration.SHORT),
     interpolator: TimeInterpolator? = null,
     listener: Animator.AnimatorListener? = null,
@@ -76,7 +76,7 @@ fun View.fadeIn(
  * to `null` that results in linear interpolation.
  * @param listener [Animator.AnimatorListener] that receives notifications from the animation.
  */
-fun View.fadeOut(
+public fun View.fadeOut(
     duration: Duration = context.getSystemAnimationDuration(SystemAnimationDuration.SHORT),
     targetVisibility: Int = View.GONE,
     interpolator: TimeInterpolator? = null,

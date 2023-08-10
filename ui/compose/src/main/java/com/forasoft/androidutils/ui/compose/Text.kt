@@ -13,7 +13,7 @@ import androidx.compose.ui.platform.LocalContext
  * Returns String value of the given [Text].
  */
 @Composable
-fun textString(text: Text): String {
+public fun textString(text: Text): String {
     // Will be recomposed when Configuration gets updated.
     LocalConfiguration.current
     val context = LocalContext.current
@@ -24,18 +24,18 @@ fun textString(text: Text): String {
  * Abstraction that allows to present a text in different forms.
  */
 @Stable
-sealed interface Text {
+public sealed interface Text {
 
     /**
      * Returns a [String] value of the text.
      */
-    fun getString(context: Context): kotlin.String
+    public fun getString(context: Context): kotlin.String
 
     /**
      * Represents an empty text with a value of empty [String].
      */
     @Immutable
-    data object Empty : Text {
+    public data object Empty : Text {
         override fun getString(context: Context): kotlin.String = ""
     }
 
@@ -46,8 +46,8 @@ sealed interface Text {
      * @property args parameters for the parametrized string.
      */
     @Immutable
-    class Resource(
-        @StringRes val resourceId: Int,
+    public class Resource(
+        @StringRes public val resourceId: Int,
         private vararg val args: Any = emptyArray(),
     ) : Text {
 
@@ -81,8 +81,8 @@ sealed interface Text {
      * @property args parameters for the parametrized string.
      */
     @Immutable
-    class PluralsResource(
-        @PluralsRes val resourceId: Int,
+    public class PluralsResource(
+        @PluralsRes public val resourceId: Int,
         private val count: Int,
         private vararg val args: Any = emptyArray(),
     ) : Text {
@@ -115,7 +115,7 @@ sealed interface Text {
      * Represents the plain [String] text.
      */
     @Immutable
-    data class String(private val text: kotlin.String) : Text {
+    public data class String(private val text: kotlin.String) : Text {
         override fun getString(context: Context): kotlin.String = text
     }
 

@@ -46,7 +46,7 @@ class LoggingInterceptorTest {
 
         val expectedMessage = LogMessage(
             priority = Log.VERBOSE,
-            tag = LoggingInterceptor.LOG_TAG,
+            tag = LOG_TAG,
             message = "--> POST $DOMAIN$endpoint \n" +
                     "Content-Type: application/x-www-form-urlencoded || ${headerValue.first}: ${headerValue.second}\n" +
                     "${bodyValue.first}=${bodyValue.second}\n" +
@@ -66,7 +66,7 @@ class LoggingInterceptorTest {
 
         val exceptedMessage = LogMessage(
             priority = Log.ERROR,
-            tag = LoggingInterceptor.LOG_TAG,
+            tag = LOG_TAG,
             message = "<-- HTTP FAILED",
             throwable = null
         )
@@ -96,6 +96,7 @@ class LoggingInterceptorTest {
     )
 
     companion object {
+        private const val LOG_TAG = "OkHttpLogging"
         private const val DOMAIN = "https://localhost:8080/"
     }
 }

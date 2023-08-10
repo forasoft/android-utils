@@ -11,7 +11,7 @@ import androidx.compose.runtime.remember
 // Source: androidx.compose.material3.TopAppBarDefaults
 
 /** Contains default values used for the top app bar implementations. */
-object TopBarDefaults {
+public object TopBarDefaults {
 
     /**
      * Returns a pinned [TopBarScrollBehavior] that tracks nested-scroll callbacks and
@@ -23,7 +23,7 @@ object TopBarDefaults {
      * pinned [TopBarScrollBehavior]
      */
     @Composable
-    fun rememberPinnedScrollBehavior(
+    public fun rememberPinnedScrollBehavior(
         state: TopBarState = rememberTopBarState(),
         canScroll: () -> Boolean = { true },
     ): TopBarScrollBehavior = remember(
@@ -49,7 +49,7 @@ object TopBarDefaults {
      * app bar when the user flings the app bar itself, or the content below it
      */
     @Composable
-    fun rememberEnterAlwaysScrollBehavior(
+    public fun rememberEnterAlwaysScrollBehavior(
         state: TopBarState = rememberTopBarState(),
         canScroll: () -> Boolean = { true },
         snapAnimationSpec: AnimationSpec<Float>? = spring(stiffness = Spring.StiffnessMediumLow),
@@ -87,7 +87,7 @@ object TopBarDefaults {
      * app bar when the user flings the app bar itself, or the content below it
      */
     @Composable
-    fun rememberExitUntilCollapsedScrollBehavior(
+    public fun rememberExitUntilCollapsedScrollBehavior(
         state: TopBarState = rememberTopBarState(),
         canScroll: () -> Boolean = { true },
         snapAnimationSpec: AnimationSpec<Float>? = spring(stiffness = Spring.StiffnessMediumLow),

@@ -7,17 +7,17 @@ import androidx.annotation.StringRes
 /**
  * Interface that allows to present text in different forms.
  */
-sealed interface Text {
+public sealed interface Text {
 
     /**
      * Returns a [String] value of the text.
      */
-    fun getString(context: Context): kotlin.String
+    public fun getString(context: Context): kotlin.String
 
     /**
      * Represents an empty text with a value of empty [String].
      */
-    object Empty : Text {
+    public data object Empty : Text {
         override fun getString(context: Context): kotlin.String = ""
     }
 
@@ -27,8 +27,8 @@ sealed interface Text {
      * @property resourceId id of the resource string.
      * @property args parameters for the parametrized string.
      */
-    class Resource(
-        @StringRes val resourceId: Int,
+    public class Resource(
+        @StringRes public val resourceId: Int,
         private vararg val args: Any = emptyArray(),
     ) : Text {
 
@@ -61,8 +61,8 @@ sealed interface Text {
      * @property count the number used to get the correct string for the plural rules.
      * @property args parameters for the parametrized string.
      */
-    class PluralsResource(
-        @PluralsRes val resourceId: Int,
+    public class PluralsResource(
+        @PluralsRes public val resourceId: Int,
         private val count: Int,
         private vararg val args: Any = emptyArray(),
     ) : Text {
@@ -94,7 +94,7 @@ sealed interface Text {
     /**
      * Represents the plain [String] text.
      */
-    class String(private val text: kotlin.String) : Text {
+    public data class String(private val text: kotlin.String) : Text {
 
         override fun getString(context: Context): kotlin.String = text
 

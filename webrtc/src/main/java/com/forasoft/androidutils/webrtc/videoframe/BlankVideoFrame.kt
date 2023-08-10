@@ -18,7 +18,7 @@ private val BLACK_UV_BYTE = 0b10001000.toUByte().toByte()
  * @param height the height of the frame in pixels
  * @param rotation the rotation of the frame in degrees, multiple of 90
  */
-fun getBlankVideoFrame(width: Int, height: Int, rotation: Int): VideoFrame {
+public fun getBlankVideoFrame(width: Int, height: Int, rotation: Int): VideoFrame {
     val chromaHeight: Int = (height + 1) / 2
     val strideUV: Int = (width + 1) / 2
 

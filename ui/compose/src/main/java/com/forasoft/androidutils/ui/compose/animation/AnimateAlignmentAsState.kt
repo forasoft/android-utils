@@ -24,7 +24,7 @@ private val DefaultAnimation = spring<Float>()
  * @return
  */
 @Composable
-fun animateAlignmentAsState(
+public fun animateAlignmentAsState(
     targetAlignment: BiasAlignment,
     animationSpec: AnimationSpec<Float> = DefaultAnimation,
     visibilityThreshold: Float = 0.01f,

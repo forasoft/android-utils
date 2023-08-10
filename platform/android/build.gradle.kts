@@ -10,20 +10,19 @@ plugins {
     id(Plugins.mavenPublish)
 }
 
-detekt {
-    parallel = true
-    buildUponDefaultConfig = true
-    config = files("../../config/detekt-config.yml")
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                from(components.findByName("release"))
+                artifactId = "platform-android"
+            }
+        }
+    }
 }
 
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-    reports {
-        html.required.set(true)
-        xml.required.set(false)
-        txt.required.set(false)
-        sarif.required.set(false)
-        md.required.set(false)
-    }
+kotlin {
+    explicitApi()
 }
 
 android {
@@ -70,13 +69,18 @@ dependencies {
     implementation(Dependencies.timber)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("maven") {
-                from(components.findByName("release"))
-                artifactId = "platform-android"
-            }
-        }
+detekt {
+    parallel = true
+    buildUponDefaultConfig = true
+    config.from("../../config/detekt-config.yml")
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    reports {
+        html.required.set(true)
+        xml.required.set(false)
+        txt.required.set(false)
+        sarif.required.set(false)
+        md.required.set(false)
     }
 }

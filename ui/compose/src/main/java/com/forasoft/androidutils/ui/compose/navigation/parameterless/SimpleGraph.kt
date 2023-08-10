@@ -11,14 +11,14 @@ import com.forasoft.androidutils.ui.compose.navigation.Graph
  *
  * @see [Graph].
  */
-abstract class SimpleGraph : Graph<Unit>() {
+public abstract class SimpleGraph : Graph<Unit>() {
 
     abstract override val routeSchema: String
 
     /**
      * String that can be used as a route for NavController navigation.
      */
-    val route: String get() = routeSchema
+    public val route: String get() = routeSchema
 
     @Deprecated(
         message = "Use 'route' property instead",

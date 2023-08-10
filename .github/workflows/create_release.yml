@@ -2,7 +2,7 @@ name: Create release
 
 on:
   push:
-    tags: 'v[0-9]+.[0-9]+.[0-9]+'
+    tags: 'v[0-9]+.[0-9]+.[0-9]+-?[a-z]*[0-9]*'
 
 jobs:
   run-unit-tests:

@@ -4,6 +4,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
+/**
+ * An implementation of [BehaviorController] that manages [Behavior] in a stack.
+ *
+ * @param defaultBehavior [Behavior] used by default
+ */
 public open class DefaultBehaviorController<T : Behavior>(
     private var defaultBehavior: T,
 ) : BehaviorController<T> {

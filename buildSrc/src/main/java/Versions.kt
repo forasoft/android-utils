@@ -29,7 +29,7 @@ object Versions {
         }
     }
 
-    const val okHttp = "4.11.0"
+    const val okHttp = "4.12.0"
     const val webRtc = "104.5112.10"
 
     const val timber = "5.0.1"

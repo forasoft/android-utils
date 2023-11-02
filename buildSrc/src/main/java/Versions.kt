@@ -24,7 +24,7 @@ object Versions {
         const val espresso = "3.5.1"
 
         object Compose {
-            const val bom = "2023.08.00"
+            const val bom = "2023.10.01"
             const val compiler = "1.5.3"
         }
     }

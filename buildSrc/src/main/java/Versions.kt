@@ -6,7 +6,7 @@ object Versions {
 
     object Plugins {
         const val androidGradle = "8.1.2"
-        const val detekt = "1.23.1"
+        const val detekt = "1.23.3"
         const val checkDependencyUpdates = "1.5.0"
     }
 

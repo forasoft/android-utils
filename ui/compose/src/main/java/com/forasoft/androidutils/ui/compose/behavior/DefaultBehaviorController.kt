@@ -29,8 +29,7 @@ public open class DefaultBehaviorController<T : Behavior>(
     }
 
     override fun popBehavior(behavior: T) {
-        val lastIndex = behaviorStack.indexOfLast { it == behavior }
-        behaviorStack.removeAt(lastIndex)
+        behaviorStack.remove(behavior)
         updateCurrentBehavior()
     }
 

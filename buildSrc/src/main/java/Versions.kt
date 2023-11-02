@@ -5,7 +5,7 @@ object Versions {
     const val targetSdk = 33
 
     object Plugins {
-        const val androidGradle = "8.1.0"
+        const val androidGradle = "8.1.2"
         const val detekt = "1.23.1"
         const val checkDependencyUpdates = "1.5.0"
     }

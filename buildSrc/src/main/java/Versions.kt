@@ -36,6 +36,6 @@ object Versions {
 
     const val junit = "4.13.2"
     const val truth = "1.1.5"
-    const val robolectric = "4.10.3"
+    const val robolectric = "4.11.1"
 
 }

@@ -18,7 +18,7 @@ object Versions {
     object Jetpack {
         const val core = "1.12.0"
         const val appCompat = "1.6.1"
-        const val navigation = "2.7.0"
+        const val navigation = "2.7.5"
         const val startup = "1.1.1"
         const val junit = "1.1.5"
         const val espresso = "3.5.1"

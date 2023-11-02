@@ -26,4 +26,6 @@ public class Throttler(delay: Duration) {
         }
     }
 
+    public companion object
+
 }

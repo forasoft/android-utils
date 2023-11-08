@@ -130,6 +130,11 @@ Notable examples:
   controlling system bars state, etc.
 * [CollapsingTopBarLayout](ui/compose/src/main/java/com/forasoft/androidutils/ui/compose/collapsingtopbar/CollapsingTopBarLayout.kt)
   is Jetpack Compose implementation of CollapsingTopBar layout.
+* [Behavior](ui/compose/src/main/java/com/forasoft/androidutils/ui/compose/behavior)
+  is a set of components created to describe the behavior of some component and 
+  to manage its current behavior.
+* [PopupAnimated](ui/compose/src/main/java/com/forasoft/androidutils/ui/compose/popup/animated/PopupAnimated.kt)
+  is Jetpack Compose Popup wrapper that allows to add enter/exit animations for the content.
 
 #### Dependency
 

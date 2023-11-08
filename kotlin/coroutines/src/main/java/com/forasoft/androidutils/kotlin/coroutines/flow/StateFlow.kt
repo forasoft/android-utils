@@ -11,11 +11,11 @@ import kotlinx.coroutines.flow.stateIn
  * function to each value of the original StateFlow.
  */
 public fun <T, R> StateFlow<T>.mapState(
-    coroutineScope: CoroutineScope,
+    scope: CoroutineScope,
     started: SharingStarted = SharingStarted.WhileSubscribed(),
     transform: (T) -> R,
 ): StateFlow<R> {
     return this
         .map(transform)
-        .stateIn(coroutineScope, started, transform(this.value))
+        .stateIn(scope, started, transform(this.value))
 }

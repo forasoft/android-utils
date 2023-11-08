@@ -11,7 +11,7 @@ import androidx.compose.runtime.remember
 // Source: androidx.compose.material3.TopAppBarDefaults
 
 /** Contains default values used for the top app bar implementations. */
-public object TopBarDefaults {
+public object CollapsingTopBarDefaults {
 
     /**
      * Returns a pinned [TopBarScrollBehavior] that tracks nested-scroll callbacks and

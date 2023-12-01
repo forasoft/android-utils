@@ -10,7 +10,7 @@ object Versions {
     }
 
     object Kotlin {
-        const val kotlin = "1.9.10"
+        const val kotlin = "1.9.20"
         const val coroutines = "1.7.3"
     }
 
@@ -24,7 +24,7 @@ object Versions {
 
         object Compose {
             const val bom = "2023.10.01"
-            const val compiler = "1.5.3"
+            const val compiler = "1.5.5"
         }
     }
 

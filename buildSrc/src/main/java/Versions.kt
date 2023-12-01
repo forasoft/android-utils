@@ -1,11 +1,10 @@
 object Versions {
 
     const val compileSdk = 34
-    // TODO: Update to 34 when AGP 8.2 release
-    const val targetSdk = 33
+    const val targetSdk = 34
 
     object Plugins {
-        const val androidGradle = "8.1.2"
+        const val androidGradle = "8.2.0"
         const val detekt = "1.23.3"
         const val checkDependencyUpdates = "1.5.0"
     }

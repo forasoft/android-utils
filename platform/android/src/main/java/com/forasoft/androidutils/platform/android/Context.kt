@@ -9,8 +9,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.util.Log
 import androidx.core.content.FileProvider
-import timber.log.Timber
 import java.io.File
 
 /**
@@ -39,7 +39,7 @@ public fun Context.openUrl(url: String): Boolean {
     val intent = Intent(Intent.ACTION_VIEW, uri)
     val isActivityStarted = this.tryStartActivity(intent)
     if (!isActivityStarted) {
-        Timber.tag("Context.openBrowser").w("Activity that can open URL is not found")
+        Log.w(LOG_TAG, "Activity that can open URL is not found")
     }
     return isActivityStarted
 }
@@ -58,8 +58,7 @@ public fun Context.openApplicationSettings(): Boolean {
     }
     val isActivityStarted = this.tryStartActivity(intent)
     if (!isActivityStarted) {
-        Timber.tag("Context.openApplicationSettings")
-            .w("Activity that can open application settings is not found")
+        Log.w(LOG_TAG, "Activity that can open application settings is not found")
     }
     return isActivityStarted
 }
@@ -140,3 +139,5 @@ private fun Context.tryStartActivity(intent: Intent): Boolean {
         false
     }
 }
+
+private const val LOG_TAG = "Context"

@@ -14,6 +14,9 @@ object Dependencies {
     object Jetpack {
         const val core = "androidx.core:core-ktx:${Versions.Jetpack.core}"
         const val appCompat = "androidx.appcompat:appcompat:${Versions.Jetpack.appCompat}"
+        const val activity = "androidx.activity:activity-ktx:${Versions.Jetpack.activity}"
+        const val dataStorePreferences =
+            "androidx.datastore:datastore-preferences:${Versions.Jetpack.dataStore}"
         const val startup = "androidx.startup:startup-runtime:${Versions.Jetpack.startup}"
         const val junit = "androidx.test.ext:junit-ktx:${Versions.Jetpack.junit}"
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.Jetpack.espresso}"

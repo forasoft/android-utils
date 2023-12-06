@@ -1,5 +1,6 @@
 package com.forasoft.androidutils.thirdparty.okhttp.logging
 
+import android.util.Log
 import okhttp3.Headers
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -10,7 +11,6 @@ import okhttp3.Response
 import okhttp3.internal.http.promisesBody
 import okio.Buffer
 import okio.GzipSource
-import timber.log.Timber
 import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 
@@ -65,7 +65,7 @@ public object LoggingInterceptor : Interceptor() {
             append("--> END ")
             append(request.method)
         }
-        Timber.tag(LOG_TAG).v(message)
+        Log.v(LOG_TAG, message)
         return super.onRequest(info)
     }
 
@@ -85,12 +85,12 @@ public object LoggingInterceptor : Interceptor() {
             }
             append("<-- END HTTP")
         }
-        Timber.tag(LOG_TAG).v(message)
+        Log.v(LOG_TAG, message)
         return super.onResponse(info)
     }
 
     override fun onError(exception: Exception) {
-        Timber.tag(LOG_TAG).e(exception, "<-- HTTP FAILED")
+        Log.e(LOG_TAG, "<-- HTTP FAILED", exception)
         super.onError(exception)
     }
 

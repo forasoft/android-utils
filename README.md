@@ -221,6 +221,18 @@ implementation("com.github.forasoft.android-utils:thirdparty-okhttp:<version>")
 
 Min SDK: 21
 
+## PermissionManager
+
+A wrapper around Android permissions that allows to work with permissions outside of the UI layer.
+
+#### Dependency
+
+```kotlin
+implementation("com.github.forasoft.android-utils:permissionmanager:<version>")
+```
+
+Min SDK: 21
+
 # Download
 
 * Add Jitpack repository to the repository list in your project-level `settings.gradle` file

@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 plugins {
     id(Plugins.androidLibrary)
     id(Plugins.kotlinAndroid)
@@ -15,7 +13,7 @@ afterEvaluate {
         publications {
             create<MavenPublication>("maven") {
                 from(components.findByName("release"))
-                artifactId = "webrtc"
+                artifactId = "permissionmanager"
             }
         }
     }
@@ -26,7 +24,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.forasoft.androidutils.webrtc"
+    namespace = "com.forasoft.androidutils.permissionmanager"
     compileSdk = Versions.compileSdk
 
     defaultConfig {
@@ -38,7 +36,7 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -65,7 +63,8 @@ android {
 }
 
 dependencies {
-    compileOnly(Dependencies.webRtc)
+    implementation(Dependencies.Jetpack.activity)
+    implementation(Dependencies.Jetpack.dataStorePreferences)
 }
 
 detekt {

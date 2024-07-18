@@ -1,8 +1,10 @@
 package com.forasoft.androidutils.clean.usecase
 
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import kotlin.coroutines.coroutineContext
 import kotlin.system.measureTimeMillis
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -43,6 +45,7 @@ public abstract class UseCase<in P, out R>(private val dispatcher: CoroutineDisp
             Timber.tag(className).v("Execution of $className took $executionDuration")
             result
         } catch (e: Exception) {
+            coroutineContext.ensureActive()
             Timber.tag(className).e(e, "Exception occurred while executing $className with parameters $params")
             Result.failure(e)
         }
